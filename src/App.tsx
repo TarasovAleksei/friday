@@ -23,7 +23,7 @@ function App() {
                     <Route path={'/recoverypassword'} render={() => <RecoveryPassword/>}/>
                     <Route path={'/newpassword'} render={() => <NewPassword/>}/>
                     <Route path={'/404'} render={() => <Error404/>}/>
-                    {/*<Redirect from={'/*'} to={'/404'}/>*/}
+                    <Redirect from={'*'} to={'/404'}/>
                 </Switch>
             </div>
         </div>
