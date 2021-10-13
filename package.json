@@ -13,6 +13,7 @@
     "@types/react-redux": "^7.1.19",
     "@types/react-router-dom": "^5.3.1",
     "axios": "^0.23.0",
+    "gh-pages-deploy": "^0.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.5",
@@ -23,7 +24,7 @@
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
-  "homepage": "https://TarasovAleksei.github.io/tasks",
+  "homepage": "https://TarasovAleksei.github.io/friday",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
