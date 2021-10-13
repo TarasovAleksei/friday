@@ -1,0 +1,98 @@
+.default {
+    display: inline-block;
+    width: 10em;
+    font-size: 70%;
+    color: rgba(255, 255, 255, .9);
+    border: 1px solid;
+    border-color: #60a3d8;
+    border-radius: 6px;
+    outline: none;
+    height: 30px;
+    background: #60a3d8;
+}
+.default:first-line {
+    font-size: 170%;
+    font-weight: 700;
+}
+.default:hover {
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(#9dc7e7, #74afdd 50%, #378bce);
+}
+.default:active {
+    color: rgb(255, 255, 255);
+    border-color: #2970a9;
+    background-image: linear-gradient(#5796c8, #6aa2ce);
+}
+.brownBtn {
+    display: inline-block;
+    width: 15em;
+    font-size: 70%;
+    color: rgba(255, 255, 255, .9);
+    border: 1px solid;
+    border-color: #5f4404;
+    border-radius: 6px;
+    outline: none;
+    background: #874802;
+}
+.brownBtn:first-line {
+    font-size: 170%;
+    font-weight: 700;
+}
+.brownBtn:hover {
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(#865204, #9c6906 50%, #d09304);
+}
+.brownBtn:active {
+    color: rgb(255, 255, 255);
+    border-color: #af5710;
+    background-image: linear-gradient(#9c6906 50%, #d09304, #865204);
+}
+.greyBtn {
+    display: inline-block;
+    width: 15em;
+    font-size: 70%;
+    color: rgba(255, 255, 255, .9);
+    border: 1px solid;
+    border-color: #848690;
+    border-radius: 6px;
+    outline: none;
+    background: #8d8a8a;
+}
+.greyBtn:first-line {
+    font-size: 170%;
+    font-weight: 700;
+}
+.greyBtn:hover {
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(#d0d1d2, #898c8d 50%, #383839);
+}
+.greyBtn:active {
+    color: rgb(255, 255, 255);
+    border-color: #888b8d;
+    background-image: linear-gradient( #898c8d 50%, #383839, #d0d1d2);
+}
+.red {
+    display: inline-block;
+    width: 15em;
+    font-size: 70%;
+    color: rgba(255, 255, 255, .9);
+    border: 1px solid;
+    border-color: red;
+    border-radius: 6px;
+    outline: none;
+    background: #f62c2c;
+}
+.red:first-line {
+    font-size: 170%;
+    font-weight: 700;
+}
+.red:hover {
+    color: rgb(255, 255, 255);
+    background-image: linear-gradient(#ffd4d9, #f59fb4 50%, #bb405a);
+}
+.red:active {
+    color: rgb(255, 255, 255);
+    border-color: #c40000;
+    background-image: linear-gradient(#ee999e, #f16076);
+    box-shadow: none;
+}
