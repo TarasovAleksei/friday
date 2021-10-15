@@ -10,6 +10,7 @@ import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Header} from "./Components/Header/Header";
 
+
 function App() {
     return (
         <div className="App">
@@ -31,3 +32,4 @@ function App() {
 }
 
 export default App;
+
