@@ -9,8 +9,8 @@ export const Login = () => {
             <div>Login</div>
             <SuperInputText/>
             <SuperInputText/>
-            <SuperCheckbox/> Remember me
-            <SuperButton/>
+            <SuperCheckbox/> <span>Remember me</span>
+            <SuperButton name={'Login'}/>
         </div>
     );
 };
