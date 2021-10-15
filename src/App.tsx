@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.module.css';
 import {SuperComponents} from "./common/SuperComponents/SuperComponents";
 import {Login} from "./Components/Login/Login";
 import {Registration} from "./Components/Registration/Registration";
@@ -9,13 +9,13 @@ import {RecoveryPassword} from "./Components/RecoveryPassword/RecoveryPassword";
 import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Header} from "./Components/Header/Header";
-
+import s from './App.module.css'
 
 function App() {
     return (
         <div className="App">
             <Header/>
-            <div>
+            <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <SuperComponents/>}/>
                     <Route path={'/login'} render={() => <Login/>}/>
