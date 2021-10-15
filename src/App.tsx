@@ -9,7 +9,7 @@ import {RecoveryPassword} from "./Components/RecoveryPassword/RecoveryPassword";
 import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Header} from "./Components/Header/Header";
-//ыва
+
 function App() {
     return (
         <div className="App">
