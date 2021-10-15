@@ -4,7 +4,7 @@ import {SuperComponents} from "./common/SuperComponents/SuperComponents";
 import {Login} from "./Components/Login/Login";
 import {Registration} from "./Components/Registration/Registration";
 import {Profile} from "./Components/Profile/Profile";
-import Error404 from "./Components/Error404/Error404";
+import {Error404} from "./Components/Error404/Error404";
 import {RecoveryPassword} from "./Components/RecoveryPassword/RecoveryPassword";
 import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
