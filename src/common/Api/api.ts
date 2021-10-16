@@ -15,6 +15,9 @@ export const authAPI = {
     register(login: LoginType) {
         return instance.post<LoginType, ResponseRegistration>('/auth/register', login)
     },
+    login({email, password, rememberMe}: LoginParamsType) {
+        return instance.post<LoginParamsType, ResponseLogin>('auth/login', {email, password, rememberMe})
+    }
 }
 
 // types
@@ -25,6 +28,24 @@ export type ResponseRegistration = {
 export type LoginType = {
     email: string
     password: string
+}
+export type ResponseLogin = {
+    _id: string;
+    email: string;
+    name: string;
+    avatar?: string;
+    publicCardPacksCount: number; // количество колод
+    created: Date;
+    updated: Date;
+    isAdmin: boolean;
+    verified: boolean; // подтвердил ли почту
+    rememberMe: boolean;
+    error?: string;
+}
+export type LoginParamsType = {
+    email: string
+    password: string
+    rememberMe: boolean
 }
 
 
