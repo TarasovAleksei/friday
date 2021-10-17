@@ -23,7 +23,7 @@ export const Registration = (props: PropsType) => {
                 <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
                 <SuperInputText onChangeText={props.onChangePassword} value={props.password}/>
                 <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}/>
-                <NavLink to={'/login'}>
+                <NavLink to={'/auth'}>
                     <SuperButton name={'cancel'}/>
                 </NavLink>
                 <SuperButton name={'register'} onClick={props.registration}/>

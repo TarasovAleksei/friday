@@ -14,8 +14,8 @@ export const HeaderContainer = () => {
         dispatch(logoutTC())
     }
 
-   /* if (!isLoggedIn) {
-        return <Redirect to={'/login'}/>
+    /*if (!isLoggedIn) {
+        return <Redirect to={'/auth'}/>
     }*/
 
     return (

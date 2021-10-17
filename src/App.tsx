@@ -9,7 +9,7 @@ import s from './App.module.css'
 import {RegistrationContainer} from "./Components/Registration/RegistrationContainer";
 import {HeaderContainer} from "./Components/Header/HeaderContainer";
 import {RecoveryPasswordContainer} from "./Components/RecoveryPassword/RecoveryPasswordContainer";
-import {LoginContainer} from "./Components/Login/LoginContainer";
+import {AuthContainer} from "./Components/Auth/AuthContainer";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <SuperComponents/>}/>
-                    <Route path={'/login'} render={() => <LoginContainer/>}/>
+                    <Route path={'/auth'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <Profile/>}/>
                     <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>
