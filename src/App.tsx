@@ -9,7 +9,7 @@ import {Redirect, Route, Switch} from 'react-router-dom';
 import s from './App.module.css'
 import {RegistrationContainer} from "./Components/Registration/RegistrationContainer";
 import {HeaderContainer} from "./Components/Header/HeaderContainer";
-import {AuthContainer} from "./Components/Auth/AuthContainer";
+import {LoginContainer} from "./Components/Login/LoginContainer";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <SuperComponents/>}/>
-                    <Route path={'/auth'} render={() => <AuthContainer/>}/>
+                    <Route path={'/login'} render={() => <LoginContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <Profile/>}/>
                     <Route path={'/recoverypassword'} render={() => <RecoveryPassword/>}/>

@@ -7,15 +7,32 @@ export const Header: React.FC<PropsType> = (props) => {
 
     const {
         logoutHandler,
-        isLoggedIn
+        isLoggedIn,
     } = props
 
     return (
         <nav className={s.nav}>
-            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/profile">Profile</NavLink></div>
-            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/newpassword">New Password</NavLink></div>
-            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/404">Error 404</NavLink></div>
-            {isLoggedIn && <SuperButton name={'logout'} onClick={logoutHandler}/>}
+
+            {/*{!isLoggedIn &&
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/login">Login
+            </NavLink>
+            </div>
+            }*/}
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/login">Login
+            </NavLink>
+            </div>
+            <div className={s.item}><NavLink activeClassName={s.activeLink}
+                                             to="/profile">Profile</NavLink></div>
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/registration">Registration
+            </NavLink>
+            </div>
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/newpassword">New Password</NavLink>
+            </div>
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/404">Error 404</NavLink>
+            </div>
+            <SuperButton name='logout' onClick={logoutHandler}/>
+            {/*{ isLoggedIn && <SuperButton name='logout' onClick={logoutHandler}/> }*/}
+
         </nav>
     )
 }
