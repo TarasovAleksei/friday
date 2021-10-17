@@ -15,6 +15,9 @@ export const authAPI = {
     register(login: LoginType) {
         return instance.post<LoginType, ResponseRegistration>('/auth/register', login)
     },
+    forgot(email: string) {
+        return instance.post('/auth/forgot', email)
+    },
     login({email, password, rememberMe}: LoginParamsType) {
         return instance.post<LoginParamsType, ResponseLogin>('auth/login', {email, password, rememberMe})
     },

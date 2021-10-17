@@ -1,19 +1,19 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/SuperInputText";
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 
 type PropsType = {
-    handleCancel: ()=>void
-    email:string
+    email: string
     password: string
     repeatPassword: string
-    message:string
-    onChangeEmail:(email:string)=>void
-    onChangePassword:(password:string)=>void
-    onChangeRepeatPassword:(repeatPassword:string)=>void
-    registration: ()=>void
+    message: string
+    onChangeEmail: (email: string) => void
+    onChangePassword: (password: string) => void
+    onChangeRepeatPassword: (repeatPassword: string) => void
+    registration: () => void
 }
-export const Registration = (props:PropsType) => {
+export const Registration = (props: PropsType) => {
 
     return (
         <>
@@ -23,7 +23,9 @@ export const Registration = (props:PropsType) => {
                 <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
                 <SuperInputText onChangeText={props.onChangePassword} value={props.password}/>
                 <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}/>
-                <SuperButton name={'cancel'} onClick={props.handleCancel}/>
+                <NavLink to={'/login'}>
+                    <SuperButton name={'cancel'}/>
+                </NavLink>
                 <SuperButton name={'register'} onClick={props.registration}/>
             </div>
         </>
