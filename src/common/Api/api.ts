@@ -17,6 +17,9 @@ export const authAPI = {
     },
     login({email, password, rememberMe}: LoginParamsType) {
         return instance.post<LoginParamsType, ResponseLogin>('auth/login', {email, password, rememberMe})
+    },
+    logout() {
+        return instance.delete<ResponseLogout>('auth/me')
     }
 }
 
@@ -46,6 +49,10 @@ export type LoginParamsType = {
     email: string
     password: string
     rememberMe: boolean
+}
+export type ResponseLogout = {
+    info: string
+    error: string
 }
 
 

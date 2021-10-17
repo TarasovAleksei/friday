@@ -6,20 +6,20 @@ import {Error404} from "./Components/Error404/Error404";
 import {RecoveryPassword} from "./Components/RecoveryPassword/RecoveryPassword";
 import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
-import {Header} from "./Components/Header/Header";
 import s from './App.module.css'
 import {RegistrationContainer} from "./Components/Registration/RegistrationContainer";
-import {LoginContainer} from "./Components/Login/LoginContainer";
+import {HeaderContainer} from "./Components/Header/HeaderContainer";
+import {AuthContainer} from "./Components/Auth/AuthContainer";
 
 function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <HeaderContainer/>
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <SuperComponents/>}/>
-                    <Route path={'/login'} render={() => <LoginContainer/>}/>
+                    <Route path={'/auth'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <Profile/>}/>
                     <Route path={'/recoverypassword'} render={() => <RecoveryPassword/>}/>

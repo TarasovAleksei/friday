@@ -34,7 +34,7 @@ export const RegistrationContainer = () => {
         dispatch(registrationTC({email, password}))
     }
     if (!bla) {
-        return <Redirect from={'/registration'} to={'/login'}/>
+        return <Redirect from={'/registration'} to={'/auth'}/>
     }
 
     return (

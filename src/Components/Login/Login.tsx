@@ -13,22 +13,24 @@ export const Login: React.FC<PropsType> = (props) => {
         onChangeEmail,
         onChangePassword,
         onChangeRememberMe,
-        auth
+        auth,
+        errorMessage
     } = props
 
     return (
         <div>
             <div>Login</div>
-            <div>e-mail</div>
-            <SuperInputText onChangeText={onChangeEmail} value={email}/>
-            <div>password</div>
-            <SuperInputText onChangeText={onChangePassword} value={password}/>
+            { errorMessage }
+            <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
+            <SuperInputText type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
             <div>
                 <NavLink to='/recoverypassword'>forgot password?</NavLink>
             </div>
             <div>
                 <SuperCheckbox onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
-                Remember me
+                <div>
+                    Remember me
+                </div>
             </div>
             <SuperButton name={'Login'} onClick={auth}/>
         </div>
@@ -44,4 +46,5 @@ type PropsType = {
     onChangePassword: (password: string) => void
     onChangeRememberMe: (rememberMe: boolean) => void
     auth: () => void
+    errorMessage: string
 }

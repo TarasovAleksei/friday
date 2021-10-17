@@ -12,7 +12,7 @@ export const LoginContainer = () => {
     const [rememberMe, setRememberMe] = useState(false)
 
     const {
-        isLoggedIn
+        isLoggedIn, errorMessage
     } = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
 
     const dispatch = useDispatch()
@@ -41,6 +41,7 @@ export const LoginContainer = () => {
                onChangeEmail={onChangeEmail}
                onChangePassword={onChangePassword}
                onChangeRememberMe={onChangeRememberMe}
-               auth={auth}/>
+               auth={auth}
+               errorMessage={errorMessage}/>
     )
 };
