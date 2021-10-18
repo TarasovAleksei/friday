@@ -1,26 +1,32 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import {Redirect} from 'react-router-dom';
-import {AppRootStateType} from "../../Store/redux-store";
 import {UserData} from "../../common/Api/api";
+import {RequestStatusType} from "../../Store/appReducer";
 
-export const Profile = () => {
+export const Profile: React.FC<PropsType> = (props) => {
 
-    const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
-    const data = useSelector<AppRootStateType, UserData>(state => state.auth.data)
-
-    if (!isLoggedIn) {
-        return <Redirect to={'/auth'}/>
-    }
+    const {
+        data,
+        status,
+    } = props
 
     return (
-        <div>
-            Profile
-            <div>{data.avatar}</div>
-            <div>{data.name}</div>
-            <div>{data._id}</div>
-        </div>
-    );
-};
+        <>
+            {status === 'loading'
+                ? <div style={{color: 'green'}}>Loading...</div>
+                : <div>
+                    Profile
+                    <div>{data.avatar}</div>
+                    <div>{data.name}</div>
+                    <div>{data._id}</div>
+                </div>
+            }
+        </>
+    )
+}
 
+//types
+type PropsType = {
+    data: UserData
+    status: RequestStatusType
+}
 

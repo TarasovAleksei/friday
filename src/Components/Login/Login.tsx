@@ -3,6 +3,7 @@ import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/Sup
 import {SuperCheckbox} from "../../common/SuperComponents/c3-SuperCheckbox/SuperCheckbox";
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import {NavLink} from 'react-router-dom';
+import {RequestStatusType} from "../../Store/appReducer";
 import s from "./Login.module.css"
 import logo from '../../images/logo/logo.png';
 export const Login: React.FC<PropsType> = (props) => {
@@ -15,34 +16,42 @@ export const Login: React.FC<PropsType> = (props) => {
         onChangePassword,
         onChangeRememberMe,
         auth,
-        errorMessage
+        errorMessage,
+        status,
     } = props
 
     return (
         <div className={s.inner}>
             <div className={s.wrap}>
-                    <img className={s.img} src={logo} alt="" />
-                </div>
+                <img className={s.img} src={logo} alt="" />
+            </div>
             <h1 className={s.title}>Login</h1>
+            {
+                status === 'loading'
+                && <div
+                    style={{color: 'green'}}>
+                    Loading...
+                </div>
+            }
             { errorMessage }
             <form className={s.formLogin} action="">
-                <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
-                <SuperInputText type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
-            <div className={s.wrapper}>
-                 <div className={s.recover}>
-                <NavLink style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} to='/recoverypassword'>forgot password?</NavLink>
-            </div> 
-            <div className={s.formWrap}>
-                <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
-                <span className={s.span}>Remember me</span>
-            </div>
-            </div>
-           
+            <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
+            <SuperInputText type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
+                <div className={s.wrapper}>
+                    <div className={s.recover}>
+                        <NavLink style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} to='/recoverypassword'>forgot password?</NavLink>
+                    </div>
+                    <div className={s.formWrap}>
+                        <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
+                        <span className={s.span}>Remember me</span>
+                    </div>
+                </div>
+
             <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
-           
-          
+
+
             </form>
-            
+
         </div>
     );
 };
@@ -57,4 +66,5 @@ type PropsType = {
     onChangeRememberMe: (rememberMe: boolean) => void
     auth: () => void
     errorMessage: string
+    status: RequestStatusType
 }

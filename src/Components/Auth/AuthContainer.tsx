@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Auth} from "./Auth";
 import {setSuccessRegAC} from "../../Store/registrationReducer";
 import {useDispatch} from "react-redux";

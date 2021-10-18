@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Login} from "./Login";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
 import {authTC, InitialStateType} from "../../Store/authReducer";
 import {Redirect} from 'react-router-dom';
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const LoginContainer = () => {
 
@@ -14,8 +15,11 @@ export const LoginContainer = () => {
     const {
         isLoggedIn, errorMessage
     } = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     const dispatch = useDispatch()
+
+    console.log(11111, isLoggedIn)
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
@@ -42,6 +46,7 @@ export const LoginContainer = () => {
                onChangePassword={onChangePassword}
                onChangeRememberMe={onChangeRememberMe}
                auth={auth}
-               errorMessage={errorMessage}/>
+               errorMessage={errorMessage}
+               status={status}/>
     )
 };
