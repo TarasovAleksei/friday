@@ -20,7 +20,6 @@ export const registrationReducer = (state: InitialStateType = initialState, acti
 
 export const setMessageAC = (message: string) => ({type: 'REGISTRATION/SET-MESSAGE', message} as const)
 
-
 export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     authAPI.register(data).then(response => {
         dispatch(setMessageAC('loading'))
