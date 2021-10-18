@@ -3,6 +3,7 @@ import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/Sup
 import {SuperCheckbox} from "../../common/SuperComponents/c3-SuperCheckbox/SuperCheckbox";
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import {NavLink} from 'react-router-dom';
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const Login: React.FC<PropsType> = (props) => {
 
@@ -14,13 +15,21 @@ export const Login: React.FC<PropsType> = (props) => {
         onChangePassword,
         onChangeRememberMe,
         auth,
-        errorMessage
+        errorMessage,
+        status,
     } = props
 
     return (
         <div>
             <div>Login</div>
-            { errorMessage }
+            {
+                status === 'loading'
+            && <div
+                style={{color: 'green'}}>
+                Loading...
+            </div>
+            }
+            {errorMessage}
             <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
             <SuperInputText type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
             <div>
@@ -47,4 +56,5 @@ type PropsType = {
     onChangeRememberMe: (rememberMe: boolean) => void
     auth: () => void
     errorMessage: string
+    status: RequestStatusType
 }
