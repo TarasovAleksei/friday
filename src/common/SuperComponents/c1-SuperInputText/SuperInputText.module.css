@@ -1,17 +1,19 @@
 .standartInput {
-    width: 200px;
-    border: 2px solid #aaa;
-    border-radius: 4px;
-    margin: 8px 0;
     outline: none;
-    padding: 8px;
+    width: 100%;
+    padding: 7px 0px;
+    margin: 0px 0;
     box-sizing: border-box;
-    transition: .3s;
+    border: none;
+    border-bottom: 2px solid #cecfda;
+
 }
+
 .standartInput:focus {
-    border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
+    /*  border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue; */
 }
+
 .orangeInput {
     width: 200px;
     border: 2px solid #ff6100;
@@ -22,10 +24,12 @@
     box-sizing: border-box;
     transition: .3s;
 }
+
 .orangeInput:focus {
     border-color: #7901a5;
     box-shadow: 0 0 8px 0 #dc4dc1;
 }
+
 .brownInput {
     width: 200px;
     border: 2px solid #310404;
@@ -36,10 +40,12 @@
     box-sizing: border-box;
     transition: .3s;
 }
+
 .brownInput:focus {
     border-color: #56e747;
     box-shadow: 0 0 8px 0 #07ec28;
 }
+
 .errorInput {
     width: 200px;
     border: 2px solid #aaa;

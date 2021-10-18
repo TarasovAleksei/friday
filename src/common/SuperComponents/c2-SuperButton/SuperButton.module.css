@@ -1,28 +1,37 @@
 .default {
     display: inline-block;
-    width: 10em;
-    font-size: 70%;
-    color: rgba(255, 255, 255, .9);
-    border: 1px solid;
-    border-color: #60a3d8;
-    border-radius: 6px;
+    padding: 7px 36px;
+    font-size: 10px;
+    border: none;
     outline: none;
-    height: 30px;
-    background: #60a3d8;
+    border-radius: 30px;
+    color: #21268f;
+    opacity: 0.8;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    font-family: "SF UI Display";
+    font-weight: 500;
+    background-color: #d7d8ef;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
 }
+
 .default:first-line {
     font-size: 170%;
     font-weight: 700;
 }
+
 .default:hover {
     color: rgb(255, 255, 255);
-    background-image: linear-gradient(#9dc7e7, #74afdd 50%, #378bce);
+    background-color: #21268f;
 }
+
 .default:active {
     color: rgb(255, 255, 255);
-    border-color: #2970a9;
-    background-image: linear-gradient(#5796c8, #6aa2ce);
+    background-color: #21268f;
 }
+
 .brownBtn {
     display: inline-block;
     width: 15em;
@@ -34,19 +43,23 @@
     outline: none;
     background: #874802;
 }
+
 .brownBtn:first-line {
     font-size: 170%;
     font-weight: 700;
 }
+
 .brownBtn:hover {
     color: rgb(255, 255, 255);
     background-image: linear-gradient(#865204, #9c6906 50%, #d09304);
 }
+
 .brownBtn:active {
     color: rgb(255, 255, 255);
     border-color: #af5710;
     background-image: linear-gradient(#9c6906 50%, #d09304, #865204);
 }
+
 .greyBtn {
     display: inline-block;
     width: 15em;
@@ -58,19 +71,23 @@
     outline: none;
     background: #8d8a8a;
 }
+
 .greyBtn:first-line {
     font-size: 170%;
     font-weight: 700;
 }
+
 .greyBtn:hover {
     color: rgb(255, 255, 255);
     background-image: linear-gradient(#d0d1d2, #898c8d 50%, #383839);
 }
+
 .greyBtn:active {
     color: rgb(255, 255, 255);
     border-color: #888b8d;
-    background-image: linear-gradient( #898c8d 50%, #383839, #d0d1d2);
+    background-image: linear-gradient(#898c8d 50%, #383839, #d0d1d2);
 }
+
 .red {
     display: inline-block;
     width: 15em;
@@ -82,14 +99,17 @@
     outline: none;
     background: #f62c2c;
 }
+
 .red:first-line {
     font-size: 170%;
     font-weight: 700;
 }
+
 .red:hover {
     color: rgb(255, 255, 255);
     background-image: linear-gradient(#ffd4d9, #f59fb4 50%, #bb405a);
 }
+
 .red:active {
     color: rgb(255, 255, 255);
     border-color: #c40000;
