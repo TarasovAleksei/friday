@@ -1,6 +1,6 @@
 import {authAPI, LoginParamsType} from "../common/Api/api";
 import {Dispatch} from "redux";
-import {initializeAppTC, setAppStatusAC, SetAppStatusActionType} from "./appReducer";
+import {initializeAppTC, setAppStatusAC, SetAppStatusActionType, setIsInitializedAC} from "./appReducer";
 
 export type InitialStateType = typeof initialState
 const initialState = {
@@ -28,9 +28,9 @@ export const authTC = (data: LoginParamsType) => (dispatch: Dispatch<any>) => {
     dispatch(setAppStatusAC("loading"))
     authAPI.login(data)
         .then(res => {
+            dispatch(initializeAppTC())
             dispatch(setIsLoggedInAC(true))
             dispatch(setAppStatusAC("succeeded"))
-            dispatch(initializeAppTC())
         })
         .catch(e => {
             const error = e.response
@@ -39,12 +39,13 @@ export const authTC = (data: LoginParamsType) => (dispatch: Dispatch<any>) => {
             dispatch(setErrorMessageAC(error))
         })
 }
-export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
+export const logoutTC = () => (dispatch: Dispatch) => {
     dispatch(setAppStatusAC("loading"))
     authAPI.logout()
         .then(res => {
             dispatch(setIsLoggedInAC(false))
             dispatch(setAppStatusAC("succeeded"))
+            dispatch(setIsInitializedAC(false))
         })
         .catch()
 }

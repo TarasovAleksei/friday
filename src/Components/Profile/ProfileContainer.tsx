@@ -13,17 +13,16 @@ export const ProfileContainer = () => {
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
 
+
+    if (!isLoggedIn) {
+        return <Redirect to={'/auth'}/>
+    }
     if (!isInitialized) {
         return <h1
             style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%', color: 'green'}}>
             Loading...
         </h1>
     }
-
-    if (!isLoggedIn) {
-        return <Redirect to={'/auth'}/>
-    }
-
     return (
         <Profile data={data}
                  status={status}/>

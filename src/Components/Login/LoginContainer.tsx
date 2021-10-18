@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Login} from "./Login";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
@@ -18,8 +18,6 @@ export const LoginContainer = () => {
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     const dispatch = useDispatch()
-
-    console.log(11111, isLoggedIn)
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
