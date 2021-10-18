@@ -27,11 +27,11 @@ export const Registration = (props: PropsType) => {
                 </div>
                 <span className={s.span}>Registration</span>
                 <form action="">
-                <label htmlFor="">Email</label>
+                <label htmlFor="text">Email</label>
                     <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
-                <label htmlFor="">Password</label>
+                <label htmlFor="text">Password</label>
                     <SuperInputText onChangeText={props.onChangePassword} value={props.password}/>
-                <label htmlFor="">Confirm password</label>
+                <label htmlFor="text">Confirm password</label>
                     <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}/>
                 <div className={s.wrapper}>
                     <NavLink to={'/auth'}>

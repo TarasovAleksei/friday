@@ -5,8 +5,8 @@
     margin: 0px 0;
     box-sizing: border-box;
     border: none;
-    border-bottom: 2px solid #24254a;
-    opacity: 0.2;
+    border-bottom: 2px solid #cecfda;
+
 }
 
 .standartInput:focus {
