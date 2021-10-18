@@ -24,7 +24,7 @@ export const LoginContainer = () => {
         setPassword(password)
     }
     const onChangeRememberMe = () => {
-        setRememberMe(true)
+        setRememberMe(!rememberMe)
     }
     const auth = () => {
         dispatch(authTC({email, password, rememberMe}))

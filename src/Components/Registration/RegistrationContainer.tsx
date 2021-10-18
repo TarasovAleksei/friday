@@ -4,15 +4,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
 import {
     InitialStateType,
-    registrationTC,
+    registrationTC, setMessageAC,
 } from "../../Store/registrationReducer";
+import {Redirect} from "react-router-dom";
 
 export const RegistrationContainer = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPass] = useState<string>('')
     const [repeatPassword, setRepeatPass] = useState<string>('')
     const dispatch = useDispatch()
-    const {message} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
+    const {message, successRegistration} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
@@ -24,7 +25,13 @@ export const RegistrationContainer = () => {
         setRepeatPass(repeatPassword)
     }
     const registration = () => {
-        dispatch(registrationTC({email, password}))
+        password === repeatPassword ?
+            dispatch(registrationTC({email, password}))
+            : dispatch(setMessageAC('not valid password'))
+
+    }
+    if (successRegistration) {
+        return <Redirect to={'/auth'}/>
     }
     return (
         <>
