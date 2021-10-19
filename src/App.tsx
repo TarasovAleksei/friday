@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import './App.module.css';
-import {SuperComponents} from "./common/SuperComponents/SuperComponents";
 import {Error404} from "./Components/Error404/Error404";
 import {NewPassword} from "./Components/NewPassword/NewPassword";
 import {Redirect, Route, Switch} from 'react-router-dom';
@@ -13,10 +12,9 @@ import {initializeAppTC} from "./Store/appReducer";
 import {useDispatch} from "react-redux";
 import {ProfileContainer} from './Components/Profile/ProfileContainer';
 
+
 function App() {
-
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(initializeAppTC())
     }, [dispatch])
@@ -26,7 +24,7 @@ function App() {
             <HeaderContainer/>
             <div className={s.test}>
                 <Switch>
-                    <Route exact path={'/'} render={() => <SuperComponents/>}/>
+                    <Route exact path={'/'} render={() => <ProfileContainer/>}/>
                     <Route path={'/auth'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <ProfileContainer/>}/>

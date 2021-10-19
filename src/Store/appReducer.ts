@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI, UserData} from "../common/Api/api";
 import {setIsLoggedInAC, SetIsLoggedInActionType} from "./authReducer";
+import {AppRootStateType} from "./redux-store";
 
 const initialState = {
     status: 'succeeded' as RequestStatusType,
@@ -26,14 +27,13 @@ export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', 
 export const setIsInitializedAC = (value: boolean) => ({type: 'APP/SET-APP-INITIALIZED', value} as const)
 export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROFILE', data} as const)
 
-export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>) => {
+export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
     authAPI.me()
         .then((res) => {
-            console.log({res})
-
             dispatch(setIsLoggedInAC(true))
             dispatch(setDataProfileAC(res.data))
             dispatch(setIsInitializedAC(true))
+            console.log(getState().app.isInitialized)
         })
 }
 
