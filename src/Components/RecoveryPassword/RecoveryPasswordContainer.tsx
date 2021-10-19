@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
 import {InitialStateType, loginVerificationTC, setLoginAC} from "../../Store/forgotPasswordReducer";
-import {Redirect} from "react-router-dom";
 import {RecoveryPassword} from "./RecoveryPassword";
 
 export const RecoveryPasswordContainer = () => {

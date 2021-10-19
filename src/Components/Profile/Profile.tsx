@@ -12,7 +12,7 @@ export const Profile: React.FC<PropsType> = (props) => {
     return (
         <>
             {status === 'loading'
-                ? <div style={{color: 'green'}}>Loading...</div>
+                ? <h1 style={{color: 'green'}}>Loading...</h1>
                 : <div>
                     Profile
                     <div>{data.avatar}</div>

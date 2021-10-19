@@ -9,11 +9,14 @@ import {
 import {Redirect} from "react-router-dom";
 
 export const RegistrationContainer = () => {
+
     const [email, setEmail] = useState<string>('')
     const [password, setPass] = useState<string>('')
     const [repeatPassword, setRepeatPass] = useState<string>('')
-    const dispatch = useDispatch()
+
     const {message, successRegistration, lockButton} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
+
+    const dispatch = useDispatch()
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
@@ -30,11 +33,12 @@ export const RegistrationContainer = () => {
         } else {
             dispatch(setMessageAC('please confirm password'))
         }
-
     }
+
     if (successRegistration) {
         return <Redirect to={'/auth'}/>
     }
+
     return (
         <>
             <Registration registration={registration} onChangeRepeatPassword={onChangeRepeatPassword}

@@ -28,12 +28,17 @@ export const setIsInitializedAC = (value: boolean) => ({type: 'APP/SET-APP-INITI
 export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROFILE', data} as const)
 
 export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
-    authAPI.me()
+        authAPI.me()
         .then((res) => {
+            debugger
             dispatch(setIsLoggedInAC(true))
             dispatch(setDataProfileAC(res.data))
-            dispatch(setIsInitializedAC(true))
             console.log(getState().app.isInitialized)
+        }).catch((e) => {
+        console.error(e)
+    })
+        .finally(() => {
+            dispatch(setIsInitializedAC(true))
         })
 }
 

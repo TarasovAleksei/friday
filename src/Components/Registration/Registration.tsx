@@ -5,18 +5,6 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import s from './Registration.module.css';
 import logo from '../../images/logo/logo.png';
 
-
-type PropsType = {
-    email: string
-    password: string
-    repeatPassword: string
-    message: string
-    disabled: boolean
-    onChangeEmail: (email: string) => void
-    onChangePassword: (password: string) => void
-    onChangeRepeatPassword: (repeatPassword: string) => void
-    registration: () => void
-}
 export const Registration = (props: PropsType) => {
     console.log(props.disabled)
     return (
@@ -45,8 +33,19 @@ export const Registration = (props: PropsType) => {
                 </form>
             </div>
         </>
-
     );
 }
 
+//types
+type PropsType = {
+    email: string
+    password: string
+    repeatPassword: string
+    message: string
+    disabled: boolean
+    onChangeEmail: (email: string) => void
+    onChangePassword: (password: string) => void
+    onChangeRepeatPassword: (repeatPassword: string) => void
+    registration: () => void
+}
 
