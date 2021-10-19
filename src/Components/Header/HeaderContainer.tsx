@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logoutTC} from "../../Store/authReducer";
 import {Header} from "./Header";
-import {Redirect} from "react-router-dom";
 import {AppRootStateType} from "../../Store/redux-store";
 
 export const HeaderContainer = () => {
