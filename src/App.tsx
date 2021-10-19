@@ -11,6 +11,7 @@ import {AuthContainer} from "./Components/Auth/AuthContainer";
 import {initializeAppTC} from "./Store/appReducer";
 import {useDispatch} from "react-redux";
 import {ProfileContainer} from './Components/Profile/ProfileContainer';
+import {NewPasswordContainer} from "./Components/NewPassword/NewPasswordContainer";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <ProfileContainer/>}/>
                     <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>
-                    <Route path={'/newpassword'} render={() => <NewPassword/>}/>
+                    <Route path={'/newpassword/:tokenForPass?'} render={() => <NewPasswordContainer/>}/>
                     <Route path={'/404'} render={() => <Error404/>}/>
                     <Redirect from={'*'} to={'/404'}/>
                 </Switch>

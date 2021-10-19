@@ -3,9 +3,8 @@ import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/Sup
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 
 type RecoveryPasswordPropsType = {
-    sendClick: () => void
+    onHandleForgot: ()=>void
     email: string
-    message: string
     onChangeEmail: (email: string) => void
 }
 
@@ -16,7 +15,7 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
             <div>
                 <span>Login - </span>
                 <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
-                <SuperButton name={'send'} onClick={props.sendClick}/>
+                <SuperButton name={'send'} onClick={props.onHandleForgot}/>
             </div>
         </div>
     );

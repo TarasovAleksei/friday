@@ -11,7 +11,7 @@ type PropsType = {
     password: string
     repeatPassword: string
     message: string
-    disabled:boolean
+    disabled: boolean
     onChangeEmail: (email: string) => void
     onChangePassword: (password: string) => void
     onChangeRepeatPassword: (repeatPassword: string) => void
@@ -24,23 +24,24 @@ export const Registration = (props: PropsType) => {
             <div className={s.inner}>
                 {props.message}
                 <div className={s.wrap}>
-                    <img className={s.img} src={logo} alt="" />
+                    <img className={s.img} src={logo} alt=""/>
                 </div>
                 <span className={s.span}>Registration</span>
                 <form action="">
-                <label htmlFor="text">Email</label>
+                    <label htmlFor="text">Email</label>
                     <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
-                <label htmlFor="text">Password</label>
+                    <label htmlFor="text">Password</label>
                     <SuperInputText onChangeText={props.onChangePassword} value={props.password} type={'password'}/>
-                <label htmlFor="text">Confirm password</label>
-                    <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword} type={'password'}/>
-                <div className={s.wrapper}>
-                    <NavLink to={'/auth'}>
-                    <SuperButton name={'Cancel'}/>
-                </NavLink>
-                {/*<SuperButton disabled={props.disabled} style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/>*/}
-                <button disabled={props.disabled} style={{padding: "0px 62px"}} onClick={props.registration}/>
-                </div>
+                    <label htmlFor="text">Confirm password</label>
+                    <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}
+                                    type={'password'}/>
+                    <div className={s.wrapper}>
+                        <NavLink to={'/auth'}>
+                            <SuperButton name={'Cancel'}/>
+                        </NavLink>
+                        <SuperButton disabled={props.disabled} style={{padding: "0px 62px"}} name={'Register'}
+                                     onClick={props.registration}/>
+                    </div>
                 </form>
             </div>
         </>

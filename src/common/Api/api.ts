@@ -15,8 +15,8 @@ export const authAPI = {
     register(login: LoginType) {
         return instance.post<LoginType, ResponseRegistration>('/auth/register', login)
     },
-    forgot(email: string) {
-        return instance.post('/auth/forgot', email)
+    forgot(data: ForgotData) {
+        return instance.post<ForgotData,ResponseForgot >('/auth/forgot', data)
     },
     login({email, password, rememberMe}: LoginParamsType) {
         return instance.post<LoginParamsType, ResponseLogin> ('auth/login', {email, password, rememberMe})
@@ -26,6 +26,9 @@ export const authAPI = {
     },
     me() {
         return instance.post<UserData>('auth/me')
+    },
+    setNewPass(data:NewPassData){
+        return instance.post<NewPassData, ResponseNewPass>('auth/set-new-password', data)
     }
 }
 
@@ -50,6 +53,14 @@ export type ResponseLogout = {
     info: string
     error: string
 }
+export type ResponseForgot = {
+    info: string
+    error: string
+}
+export type ResponseNewPass = {
+    info?:string,
+    error?: string
+}
 export type UserData = {
     _id: string;
     email: string;
@@ -62,6 +73,15 @@ export type UserData = {
     verified: boolean; // подтвердил ли почту
     rememberMe: boolean;
     error?: string;
+}
+export type ForgotData = {
+    email: string
+    from: string
+    message: string
+}
+export type NewPassData = {
+    password: string,
+    resetPasswordToken: string
 }
 
 
