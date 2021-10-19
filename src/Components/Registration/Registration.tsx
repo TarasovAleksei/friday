@@ -14,7 +14,7 @@ export const Registration = (props: PropsType) => {
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>
                 </div>
-                <span className={s.span}>Registration</span>
+                <h2 className={s.title}>Registration</h2>
                 <form action="">
                     <label htmlFor="text">Email</label>
                     <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
@@ -24,7 +24,7 @@ export const Registration = (props: PropsType) => {
                     <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}
                                     type={'password'}/>
                     <div className={s.wrapper}>
-                        <NavLink to={'/auth'}>
+                        <NavLink to={'/'}>
                             <SuperButton name={'Cancel'}/>
                         </NavLink>
                         <SuperButton disabled={props.disabled} style={{padding: "0px 62px"}} name={'Register'}
