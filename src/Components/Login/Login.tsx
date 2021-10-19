@@ -34,7 +34,7 @@ export const Login: React.FC<PropsType> = (props) => {
                 </div>
             }
             { errorMessage }
-            <form className={s.formLogin} action="">
+            <div className={s.formLogin}>
             <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
             <SuperInputText type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
                 <div className={s.wrapper}>
@@ -46,12 +46,8 @@ export const Login: React.FC<PropsType> = (props) => {
                         <span className={s.span}>Remember me</span>
                     </div>
                 </div>
-
             <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
-
-
-            </form>
-
+            </div>
         </div>
     );
 };

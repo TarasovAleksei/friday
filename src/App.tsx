@@ -9,15 +9,27 @@ import {HeaderContainer} from "./Components/Header/HeaderContainer";
 import {RecoveryPasswordContainer} from "./Components/RecoveryPassword/RecoveryPasswordContainer";
 import {AuthContainer} from "./Components/Auth/AuthContainer";
 import {initializeAppTC} from "./Store/appReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ProfileContainer} from './Components/Profile/ProfileContainer';
+import {AppRootStateType} from "./Store/redux-store";
 
 
 function App() {
+
+    const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
+
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(initializeAppTC())
-    }, [dispatch])
+    }, [])
+
+    if (!isInitialized) {
+        return <h1
+            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%', color: 'green'}}>
+            Loading...
+        </h1>
+    }
 
     return (
         <div className="App">
@@ -25,7 +37,6 @@ function App() {
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <AuthContainer/>}/>
-                    <Route path={'/auth'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <ProfileContainer/>}/>
                     <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>

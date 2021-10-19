@@ -35,7 +35,7 @@ export const Registration = (props: PropsType) => {
                 <label htmlFor="text">Confirm password</label>
                     <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword} type={'password'}/>
                 <div className={s.wrapper}>
-                    <NavLink to={'/auth'}>
+                    <NavLink to={'/'}>
                     <SuperButton name={'Cancel'}/>
                 </NavLink>
                 {/*<SuperButton disabled={props.disabled} style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/>*/}

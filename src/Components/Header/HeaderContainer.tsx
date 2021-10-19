@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logoutTC} from "../../Store/authReducer";
 import {Header} from "./Header";
 import {AppRootStateType} from "../../Store/redux-store";
+import { Redirect } from "react-router-dom";
 
 export const HeaderContainer = () => {
 
@@ -13,9 +14,9 @@ export const HeaderContainer = () => {
         dispatch(logoutTC())
     }
 
-    /*if (!isLoggedIn) {
-        return <Redirect to={'/auth'}/>
-    }*/
+    if (!isLoggedIn) {
+        return <Redirect to={'/'}/>
+    }
 
     return (
         <Header logoutHandler={logoutHandler}

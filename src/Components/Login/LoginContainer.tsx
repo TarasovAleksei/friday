@@ -12,9 +12,7 @@ export const LoginContainer = () => {
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
 
-    const {
-        isLoggedIn, errorMessage
-    } = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
+    const {isLoggedIn, errorMessage} = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     const dispatch = useDispatch()

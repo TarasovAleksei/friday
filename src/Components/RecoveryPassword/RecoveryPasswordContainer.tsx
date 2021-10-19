@@ -8,13 +8,16 @@ import {RecoveryPassword} from "./RecoveryPassword";
 export const RecoveryPasswordContainer = () => {
 
     const [mine, setMine] = useState(true)
+
     const dispatch = useDispatch()
+
     const {email, message} = useSelector<AppRootStateType, InitialStateType >(state => state.forgotPassword)
+
     const redirectCallback = () => setMine(false)
+
     const onChangeEmail = (email: string) => {
         dispatch(setLoginAC(email))
     }
-
 
     if(!mine){
         return <Redirect from={'recoveryPassword'} to={'newPassword'}/>
