@@ -25,7 +25,7 @@ export const Registration = (props: PropsType) => {
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt="" />
                 </div>
-                <span className={s.span}>Registration</span>
+                <h2 className={s.title}>Registration</h2>
                 <form action="">
                 <label htmlFor="text">Email</label>
                     <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
@@ -36,8 +36,11 @@ export const Registration = (props: PropsType) => {
                 <div className={s.wrapper}>
                     <NavLink to={'/auth'}>
                     <SuperButton name={'Cancel'}/>
+                    </NavLink>
+                <NavLink to={''}>
+                    <SuperButton name={'Register'}/>
                 </NavLink>
-                <SuperButton style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/>
+                {/* <SuperButton style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/> */}
                 </div>
                 </form>
             </div>

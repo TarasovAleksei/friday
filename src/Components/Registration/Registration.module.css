@@ -22,8 +22,8 @@
     width: 100%;
 }
 
-.span {
-    margin: 32px 0 39px;
+.title {
+    margin: 20px 0 30px;
     color: #2d2e46;
     font-family: "SF UI Display", sans-serif;
     font-size: 22px;
@@ -37,7 +37,7 @@ form {
 
 label {
     display: inline-block;
-    margin-top: 24px;
+    margin-top: 20px;
     opacity: 0.5;
     color: #24254a;
     font-family: "SF UI Display";
@@ -47,7 +47,7 @@ label {
 }
 
 .wrapper {
-    margin-top: 84px;
+    margin-top: 70px;
     display: flex;
     justify-content: space-between;
 }

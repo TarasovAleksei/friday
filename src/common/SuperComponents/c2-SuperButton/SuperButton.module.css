@@ -23,14 +23,13 @@
 }
 
 .default:hover {
-    display: block;
     color: #ffffff;
-    background: #21268f;
+    background-color: #21268f;
 }
 
 .default:active {
-    color: #ffffff;
-    background: #21268f;
+    color: rgb(255, 255, 255);
+    background-color: #21268f;
 }
 
 .brownBtn {
