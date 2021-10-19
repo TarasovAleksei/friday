@@ -9,8 +9,10 @@ import {HeaderContainer} from "./Components/Header/HeaderContainer";
 import {RecoveryPasswordContainer} from "./Components/RecoveryPassword/RecoveryPasswordContainer";
 import {AuthContainer} from "./Components/Auth/AuthContainer";
 import {initializeAppTC} from "./Store/appReducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ProfileContainer} from './Components/Profile/ProfileContainer';
+import {AppRootStateType} from "./Store/redux-store";
+import {Preloader} from "./common/assets/Preloader";
 
 
 function App() {
@@ -18,7 +20,6 @@ function App() {
     useEffect(() => {
         dispatch(initializeAppTC())
     }, [dispatch])
-
     return (
         <div className="App">
             <HeaderContainer/>

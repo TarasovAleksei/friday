@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Login} from "./Login";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
-import {authTC, InitialStateType} from "../../Store/authReducer";
+import {loginTC, InitialStateType} from "../../Store/authReducer";
 import {Redirect} from 'react-router-dom';
 import {RequestStatusType} from "../../Store/appReducer";
 
@@ -13,7 +13,7 @@ export const LoginContainer = () => {
     const [rememberMe, setRememberMe] = useState(false)
 
     const {
-        isLoggedIn, errorMessage
+        errorMessage
     } = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
@@ -29,11 +29,7 @@ export const LoginContainer = () => {
         setRememberMe(!rememberMe)
     }
     const auth = () => {
-        dispatch(authTC({email, password, rememberMe}))
-    }
-
-    if (isLoggedIn) {
-        return <Redirect to={'/profile'}/>
+        dispatch(loginTC({email, password, rememberMe}))
     }
 
     return (

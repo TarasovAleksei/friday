@@ -1,12 +1,9 @@
 import {Dispatch} from "redux";
-import {authAPI, UserData} from "../common/Api/api";
-import {setIsLoggedInAC, SetIsLoggedInActionType} from "./authReducer";
-import {AppRootStateType} from "./redux-store";
+import {getAuthMeTC, SetIsLoggedInActionType} from "./authReducer";
 
 const initialState = {
     status: 'succeeded' as RequestStatusType,
     isInitialized: false,
-    data: {} as UserData
 }
 
 export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
@@ -14,9 +11,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
         case "APP/SET-STATUS":
             return {...state, status: action.status};
         case "APP/SET-APP-INITIALIZED":
-            return {...state, isInitialized: action.value}
-        case "login/SET-DATA-PROFILE":
-            return {...state, data: action.data}
+            return {...state, isInitialized: true}
         default:
             return state
     }
@@ -24,17 +19,14 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
 
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
-export const setIsInitializedAC = (value: boolean) => ({type: 'APP/SET-APP-INITIALIZED', value} as const)
-export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROFILE', data} as const)
+export const setIsInitializedAC = () => ({type: 'APP/SET-APP-INITIALIZED'} as const)
 
-export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
-    authAPI.me()
-        .then((res) => {
-            dispatch(setIsLoggedInAC(true))
-            dispatch(setDataProfileAC(res.data))
-            dispatch(setIsInitializedAC(true))
-            console.log(getState().app.isInitialized)
-        })
+
+export const initializeAppTC = () => (dispatch: Dispatch<any>) => {
+    const promise = dispatch(getAuthMeTC())
+    Promise.all([promise]).then(() => {
+        dispatch(setIsInitializedAC())
+    })
 }
 
 export type RequestStatusType = 'loading' | 'succeeded'
@@ -42,10 +34,8 @@ type InitialStateType = typeof initialState
 
 export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>
 export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>
-export type SetDataProfileActionType = ReturnType<typeof setDataProfileAC>
 type ActionsType =
     | SetAppStatusActionType
     | SetAppErrorActionType
     | SetIsLoggedInActionType
     | ReturnType<typeof setIsInitializedAC>
-    | SetDataProfileActionType
