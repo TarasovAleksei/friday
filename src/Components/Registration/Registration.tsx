@@ -11,13 +11,14 @@ type PropsType = {
     password: string
     repeatPassword: string
     message: string
+    disabled:boolean
     onChangeEmail: (email: string) => void
     onChangePassword: (password: string) => void
     onChangeRepeatPassword: (repeatPassword: string) => void
     registration: () => void
 }
 export const Registration = (props: PropsType) => {
-
+    console.log(props.disabled)
     return (
         <>
             <div className={s.inner}>
@@ -30,14 +31,15 @@ export const Registration = (props: PropsType) => {
                 <label htmlFor="text">Email</label>
                     <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
                 <label htmlFor="text">Password</label>
-                    <SuperInputText onChangeText={props.onChangePassword} value={props.password}/>
+                    <SuperInputText onChangeText={props.onChangePassword} value={props.password} type={'password'}/>
                 <label htmlFor="text">Confirm password</label>
-                    <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}/>
+                    <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword} type={'password'}/>
                 <div className={s.wrapper}>
                     <NavLink to={'/auth'}>
                     <SuperButton name={'Cancel'}/>
                 </NavLink>
-                <SuperButton style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/>
+                {/*<SuperButton disabled={props.disabled} style={{padding: "0px 62px"}} name={'Register'} onClick={props.registration}/>*/}
+                <button disabled={props.disabled} style={{padding: "0px 62px"}} onClick={props.registration}/>
                 </div>
                 </form>
             </div>

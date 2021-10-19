@@ -24,7 +24,7 @@ function App() {
             <HeaderContainer/>
             <div className={s.test}>
                 <Switch>
-                    <Route exact path={'/'} render={() => <ProfileContainer/>}/>
+                    <Route exact path={'/'} render={() => <AuthContainer/>}/>
                     <Route path={'/auth'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
                     <Route path={'/profile'} render={() => <ProfileContainer/>}/>

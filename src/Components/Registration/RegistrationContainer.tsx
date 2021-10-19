@@ -13,7 +13,7 @@ export const RegistrationContainer = () => {
     const [password, setPass] = useState<string>('')
     const [repeatPassword, setRepeatPass] = useState<string>('')
     const dispatch = useDispatch()
-    const {message, successRegistration} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
+    const {message, successRegistration, lockButton} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
@@ -25,9 +25,11 @@ export const RegistrationContainer = () => {
         setRepeatPass(repeatPassword)
     }
     const registration = () => {
-        password === repeatPassword ?
+        if (password === repeatPassword) {
             dispatch(registrationTC({email, password}))
-            : dispatch(setMessageAC('not valid password'))
+        } else {
+            dispatch(setMessageAC('please confirm password'))
+        }
 
     }
     if (successRegistration) {
@@ -39,6 +41,7 @@ export const RegistrationContainer = () => {
                           onChangePassword={onChangePassword}
                           onChangeEmail={onChangeEmail} message={message} email={email} password={password}
                           repeatPassword={repeatPassword}
+                          disabled={lockButton}
             />
         </>
     );
