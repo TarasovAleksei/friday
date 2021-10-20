@@ -1,6 +1,7 @@
 import React from 'react';
 import {UserData} from "../../common/Api/api";
 import {RequestStatusType} from "../../Store/appReducer";
+import {HeaderContainer} from "../Header/HeaderContainer";
 
 export const Profile: React.FC<PropsType> = (props) => {
 
@@ -11,6 +12,7 @@ export const Profile: React.FC<PropsType> = (props) => {
 
     return (
         <>
+            <HeaderContainer/>
             {status === 'loading'
                 ? <h1 style={{color: 'green'}}>Loading...</h1>
                 : <div>

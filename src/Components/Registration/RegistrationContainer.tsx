@@ -36,7 +36,7 @@ export const RegistrationContainer = () => {
     }
 
     if (successRegistration) {
-        return <Redirect to={'/auth'}/>
+        return <Redirect to={'/'}/>
     }
 
     return (

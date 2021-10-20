@@ -33,7 +33,7 @@ function App() {
 
     return (
         <div className="App">
-            <HeaderContainer/>
+            {/*<HeaderContainer/>*/}
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <AuthContainer/>}/>

@@ -10,6 +10,7 @@ export const initialState = {
                 password recovery link:
                 <a href='http://localhost:3000/#/newpassword/$token$'>
                 link</a></div>`,
+    testMessage: '' as string | null
 }
 
 export const forgotPasswordReducer = (state: InitialStateType = initialState, action: TotalActionType): InitialStateType => {
@@ -18,14 +19,21 @@ export const forgotPasswordReducer = (state: InitialStateType = initialState, ac
             return {
                 ...state, email: action.email
             }
+        case "FORGOT-PASSWORD/SET-TEST-MESSAGE":
+            return {
+                ...state, testMessage: action.testMessage
+            }
         default:
             return state
     }
 
 }
 export const setLoginAC = (email: string) => ({type: 'FORGOT-PASSWORD/SET-EMAIL', email} as const)
-export const setTokenAC = (tokenForPass: string) => ({type: 'FORGOT-PASSWORD/SET-TOKEN', tokenForPass} as const)
-export const setNewPassAC = (newPassword: string) => ({type: 'FORGOT-PASSWORD/SET-NEW_PASS', newPassword} as const)
+export const setTestMessageAC = (testMessage: string | null) => ({
+    type: 'FORGOT-PASSWORD/SET-TEST-MESSAGE',
+    testMessage
+} as const)
+
 
 export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     const data: ForgotData = {
@@ -37,8 +45,8 @@ export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => Ap
         .then(response => {
         })
         .catch((error) => {
-        console.log(error.response.data.error)
-    })
+            console.log(error.response.data.error)
+        })
 }
 export const setNewPassTC = (password: string, resetPasswordToken: string) => (dispatch: Dispatch<any>) => {
     const data: NewPassData = {
@@ -47,13 +55,14 @@ export const setNewPassTC = (password: string, resetPasswordToken: string) => (d
     }
     authAPI.setNewPass(data)
         .then((res) => {
-        console.log(res.info)
-    })
+            dispatch(setTestMessageAC('success'))
+        })
         .catch((error) => {
-        console.log(error.response.data.error)
-    })
+            dispatch(setTestMessageAC(error.response.data.error))
+        })
 }
 
 export type SetEmailActionType = ReturnType<typeof setLoginAC>
+export type SetTestMessageActionType = ReturnType<typeof setTestMessageAC>
 
-export type TotalActionType = SetEmailActionType
+export type TotalActionType = SetEmailActionType | SetTestMessageActionType
