@@ -16,12 +16,12 @@ export const Registration = (props: PropsType) => {
                 </div>
                 <h2 className={s.title}>Registration</h2>
                 <form action="">
-                    <label htmlFor="text">Email</label>
-                    <SuperInputText onChangeText={props.onChangeEmail} value={props.email}/>
-                    <label htmlFor="text">Password</label>
-                    <SuperInputText onChangeText={props.onChangePassword} value={props.password} type={'password'}/>
-                    <label htmlFor="text">Confirm password</label>
-                    <SuperInputText onChangeText={props.onChangeRepeatPassword} value={props.repeatPassword}
+                   {/*  <label htmlFor="text">Email</label> */}
+                    <SuperInputText style={{marginTop:'20px'}} onChangeText={props.onChangeEmail} placeholder={'Email'} value={props.email}/>
+                    {/* <label htmlFor="text">Password</label> */}
+                    <SuperInputText style={{marginTop:'20px'}} onChangeText={props.onChangePassword} placeholder={'Password'} value={props.password} type={'password'}/>
+                    {/* <label htmlFor="text">Confirm password</label> */}
+                    <SuperInputText style={{marginTop:'20px'}} onChangeText={props.onChangeRepeatPassword} placeholder={'Confirm password'} value={props.repeatPassword}
                                     type={'password'}/>
                     <div className={s.wrapper}>
                         <NavLink to={'/'}>

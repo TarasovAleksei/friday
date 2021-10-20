@@ -1,14 +1,15 @@
 .checkbox {
-    --border-default: #bbbbc1;
-    --border-hover: #9898a3;
-    --active: #6E7BF2;
-    --active-tick: #ffffff;
+
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     position: relative;
     -webkit-tap-highlight-color: transparent;
+    --border-default: #bbbbc1;
+    --border-hover: #9898a3;
+    --active: #f26ec6;
+    --active-tick: #ffffff;
 }
 
 .spanClassName {

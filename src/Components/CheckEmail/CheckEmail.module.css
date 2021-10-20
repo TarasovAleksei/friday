@@ -32,7 +32,7 @@
 }
 
 .titleEmail {
-    margin: 32px 0 25px;
+    margin: 32px 0 15px;
     color: #2d2e46;
     font-family: "SF UI Display", sans-serif;
     font-size: 22px;
@@ -40,7 +40,6 @@
 }
 
 .spanEmail {
-    margin-bottom: 30px;
     text-align: center;
     color: #6b6b7e;
     font-family: "SF UI Display", sans-serif;

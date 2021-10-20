@@ -16,9 +16,6 @@ export const CheckEmail = () => {
         </div>
         <h1 className={s.titleEmail}>Check Email</h1>
         <span className={s.spanEmail}>We’ve sent an Email with instructions to example@mail.com</span>
-        <NavLink to={'/'}>
-            <SuperButton style={{maxWidth:'266px', width:'100%' }} name={'Back'} />
-        </NavLink>
     </div>
     );
 };

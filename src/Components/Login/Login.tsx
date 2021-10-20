@@ -39,7 +39,7 @@ export const Login: React.FC<PropsType> = (props) => {
             <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='Password' onChangeText={onChangePassword} value={password}/>
                 <div className={s.wrapper}>
                     <div className={s.recover}>
-                        <NavLink style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} to='/recoverypassword'>forgot password?</NavLink>
+                        <NavLink className={s.navbar} style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>Forgot password?</NavLink>
                     </div>
                     <div className={s.formWrap}>
                         <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
