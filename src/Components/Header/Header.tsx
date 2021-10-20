@@ -17,6 +17,7 @@ export const Header: React.FC<PropsType> = (props) => {
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/">Login</NavLink></div>
             }
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/profile">Profile</NavLink></div>
+            <div className={s.item}><NavLink activeClassName={s.activeLink} to="/newpassword">New password</NavLink></div>
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/404">Error 404</NavLink></div>
             { isLoggedIn && <SuperButton name='logout' onClick={logoutHandler}/> }
 

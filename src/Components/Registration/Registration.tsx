@@ -6,7 +6,7 @@ import s from './Registration.module.css';
 import logo from '../../images/logo/logo.png';
 
 export const Registration = (props: PropsType) => {
-    console.log(props.disabled)
+
     return (
         <>
             <div className={s.inner}>

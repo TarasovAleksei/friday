@@ -33,8 +33,10 @@ export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => Ap
         from: getState().forgotPassword.from,
         message: getState().forgotPassword.message,
     }
-    authAPI.forgot(data).then(response => {
-    }).catch((error) => {
+    authAPI.forgot(data)
+        .then(response => {
+        })
+        .catch((error) => {
         console.log(error.response.data.error)
     })
 }
@@ -43,9 +45,11 @@ export const setNewPassTC = (password: string, resetPasswordToken: string) => (d
         password,
         resetPasswordToken
     }
-    authAPI.setNewPass(data).then((res)=>{
+    authAPI.setNewPass(data)
+        .then((res) => {
         console.log(res.info)
-    }).catch((error) => {
+    })
+        .catch((error) => {
         console.log(error.response.data.error)
     })
 }

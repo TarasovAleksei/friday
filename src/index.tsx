@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'normalize.css';
 import './index.css';
 import App from './App';
 import {HashRouter} from "react-router-dom";
@@ -9,11 +8,13 @@ import {store} from "./Store/redux-store";
 
 
 ReactDOM.render(
-        <HashRouter basename={'friday'}>
+    <React.StrictMode>
+        <HashRouter basename={'/friday'}>
             <Provider store={store}>
                 <App/>
             </Provider>
         </HashRouter>
-  ,
+    </React.StrictMode>
+    ,
     document.getElementById('root')
 );
