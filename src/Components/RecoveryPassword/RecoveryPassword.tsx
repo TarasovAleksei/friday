@@ -18,14 +18,13 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
                 <img className={s.img} src={logo} alt=""/>
             </div>
             <h2 className={s.title}>Forgot your password?</h2>
-            <form className={s.form} action="">
+            <div className={s.form} >
                 <SuperInputText onChangeText={props.onChangeEmail} placeholder={'Email'} value={props.email}/>
                 <label style={{marginTop: '15px'}} htmlFor="Email">Enter your email address and we will send you further instructions</label>
-                <NavLink to={'/'}>
+                <NavLink to={'/CheckEmail'}>
                      <SuperButton style={{padding: '9px 70px', marginTop: '100px'}} name={'Send Instructions'} onClick={props.onHandleForgot}/>
                 </NavLink>
-               
-            </form>
+            </div>
         </div>
 
     );

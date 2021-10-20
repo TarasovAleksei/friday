@@ -1,4 +1,4 @@
-.inner {
+.innerEmail {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,76 +14,36 @@
     -o-border-radius: 5px;
 }
 
-.wrap {
+.wrapLogoEmail {
     width: 163px;
 }
 
-.img {
+.imgEmailLogo {
     width: 100%;
 }
 
-.formLogin {
+.wrapPicEmail {
+    width: 108px;
+}
+
+.imgEmail {
+    margin-top: 10px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
 }
 
-.wrapper {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
-
-.formWrap {
-
-    display: flex;
-    align-self: flex-start;
-    align-items: left;
-}
-
-.title {
-    margin: 32px 0 39px;
+.titleEmail {
+    margin: 32px 0 25px;
     color: #2d2e46;
     font-family: "SF UI Display", sans-serif;
     font-size: 22px;
     font-weight: 600;
 }
 
-.span {
-    margin-left: 10px;
-    color: #2d2e46;
+.spanEmail {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #6b6b7e;
     font-family: "SF UI Display", sans-serif;
     font-size: 14px;
     font-weight: 600;
-}
-
-label {
-    display: inline-block;
-    margin-top: 24px;
-    opacity: 0.5;
-    color: #24254a;
-    font-family: "SF UI Display";
-    font-size: 13px;
-    font-weight: 400;
-
-}
-
-.formWrap label {
-    margin-top: 0px;
-}
-
-.recover {
-    color: #2d2e46;
-    font-family: "SF UI Display", sans-serif;
-    font-size: 14px;
-    font-weight: 400
-}
-
-.recover:hover {
-    font-weight: 600
 }

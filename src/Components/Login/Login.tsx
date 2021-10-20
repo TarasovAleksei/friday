@@ -48,7 +48,10 @@ export const Login: React.FC<PropsType> = (props) => {
                 </div>
             <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
             </div>
+
+            
         </div>
+        
     );
 };
 
