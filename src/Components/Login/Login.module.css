@@ -83,3 +83,7 @@ label {
     font-size: 14px;
     font-weight: 400
 }
+
+.recover:hover {
+    font-weight: 600
+}

@@ -35,8 +35,8 @@ export const Login: React.FC<PropsType> = (props) => {
             }
             { errorMessage }
             <div className={s.formLogin}>
-            <SuperInputText type='email' placeholder='email' onChangeText={onChangeEmail} value={email}/>
-            <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='password' onChangeText={onChangePassword} value={password}/>
+            <SuperInputText type='email' placeholder='Email' onChangeText={onChangeEmail} value={email}/>
+            <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='Password' onChangeText={onChangePassword} value={password}/>
                 <div className={s.wrapper}>
                     <div className={s.recover}>
                         <NavLink style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} to='/recoverypassword'>forgot password?</NavLink>
@@ -48,7 +48,10 @@ export const Login: React.FC<PropsType> = (props) => {
                 </div>
             <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
             </div>
+
+            
         </div>
+        
     );
 };
 

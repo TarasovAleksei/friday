@@ -21,7 +21,9 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
             <div className={s.form}>
                 <SuperInputText onChangeText={props.onChangeEmail} placeholder={'Email'} value={props.email}/>
                 <label style={{marginTop: '15px'}} htmlFor="Email">Enter your email address and we will send you further instructions</label>
-                <SuperButton style={{padding: '9px 70px', marginTop: '100px'}} name={'Send Instructions'} onClick={props.onHandleForgot}/>
+                <NavLink to={'/CheckEmail'}>
+                    <SuperButton style={{padding: '9px 70px', marginTop: '100px'}} name={'Send Instructions'} onClick={props.onHandleForgot}/>
+                </NavLink>
                 <div>Did you remember your password</div>
                 <NavLink to={'/'}>
                     <div>Try logging in</div>
