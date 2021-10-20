@@ -34,15 +34,13 @@ export const setSuccessRegAC = (successRegistration: boolean) => ({
     successRegistration
 } as const)
 export const setLockButtonAC = (lockButton: boolean) => ({type: 'REGISTRATION/LOCK-BUTTON', lockButton} as const)
-
 export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     dispatch(setLockButtonAC(true))
     authAPI.register(data).then(response => {
-        dispatch(setSuccessRegAC(true))
     }).catch((error) => {
         dispatch(setMessageAC(error.response.data.error))
     }).finally(() => {
-        dispatch(setLockButtonAC(false))
+            dispatch(setLockButtonAC(false))
         }
     )
 }
@@ -50,5 +48,6 @@ export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
 export type SetMessageActionType = ReturnType<typeof setMessageAC>
 export type SetSuccessRegActionType = ReturnType<typeof setSuccessRegAC>
 export type SetLockButtonActionType = ReturnType<typeof setLockButtonAC>
+
 export type TotalActionType =
     | SetMessageActionType | SetSuccessRegActionType | SetLockButtonActionType

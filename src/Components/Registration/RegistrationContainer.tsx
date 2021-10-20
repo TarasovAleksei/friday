@@ -14,6 +14,8 @@ export const RegistrationContainer = () => {
     const [password, setPass] = useState<string>('')
     const [repeatPassword, setRepeatPass] = useState<string>('')
 
+
+
     const {message, successRegistration, lockButton} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
 
     const dispatch = useDispatch()
@@ -27,6 +29,7 @@ export const RegistrationContainer = () => {
     const onChangeRepeatPassword = (repeatPassword: string) => {
         setRepeatPass(repeatPassword)
     }
+
     const registration = () => {
         if (password === repeatPassword) {
             dispatch(registrationTC({email, password}))
