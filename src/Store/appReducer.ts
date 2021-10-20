@@ -30,7 +30,6 @@ export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROF
 export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
         authAPI.me()
         .then((res) => {
-            debugger
             dispatch(setIsLoggedInAC(true))
             dispatch(setDataProfileAC(res.data))
             console.log(getState().app.isInitialized)
