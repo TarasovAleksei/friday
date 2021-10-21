@@ -11,29 +11,25 @@ export const initialState = {
 export const registrationReducer = (state: InitialStateType = initialState, action: TotalActionType): InitialStateType => {
     switch (action.type) {
         case "REGISTRATION/SET-MESSAGE":
-            return {
-                ...state, message: action.message
-            }
+            return {...state, message: action.message}
         case "REGISTRATION/SET-SUCCESS-REGISTR":
-            return {
-                ...state, successRegistration: action.successRegistration
-            }
-
+            return {...state, successRegistration: action.successRegistration}
         default:
             return state
     }
-
 }
 
+//actions
 export const setMessageAC = (message: string) => ({type: 'REGISTRATION/SET-MESSAGE', message} as const)
 export const setSuccessRegAC = (successRegistration: boolean) => ({
     type: 'REGISTRATION/SET-SUCCESS-REGISTR',
     successRegistration
 } as const)
 
+//thunks
 export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     dispatch(setLockButtonAC(true))
-    authAPI.register(data).then(response => {
+    authAPI.register(data).then(() => {
         dispatch(setSuccessRegAC(true))
     }).catch((error) => {
         dispatch(setMessageAC(error.response.data.error))
@@ -43,9 +39,9 @@ export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     )
 }
 
+//types
 export type SetMessageActionType = ReturnType<typeof setMessageAC>
 export type SetSuccessRegActionType = ReturnType<typeof setSuccessRegAC>
-
-
 export type TotalActionType =
-    | SetMessageActionType | SetSuccessRegActionType
+    | SetMessageActionType
+    | SetSuccessRegActionType

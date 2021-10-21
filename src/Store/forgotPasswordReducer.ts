@@ -17,25 +17,22 @@ export const initialState = {
 export const forgotPasswordReducer = (state: InitialStateType = initialState, action: TotalActionType): InitialStateType => {
     switch (action.type) {
         case "FORGOT-PASSWORD/SET-EMAIL":
-            return {
-                ...state, email: action.email
-            }
+            return {...state, email: action.email}
         case "FORGOT-PASSWORD/SET-TEST-MESSAGE":
-            return {
-                ...state, testMessage: action.testMessage
-            }
+            return {...state, testMessage: action.testMessage}
         default:
             return state
     }
-
 }
+
+//actions
 export const setLoginAC = (email: string) => ({type: 'FORGOT-PASSWORD/SET-EMAIL', email} as const)
 export const setTestMessageAC = (testMessage: string | null) => ({
     type: 'FORGOT-PASSWORD/SET-TEST-MESSAGE',
     testMessage
 } as const)
 
-
+//thunks
 export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     dispatch(setLockButtonAC(true))
     const data: ForgotData = {
@@ -44,14 +41,15 @@ export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => Ap
         message: getState().forgotPassword.message,
     }
     authAPI.forgot(data)
-        .then(response => {
+        .then(() => {
         })
         .catch((error) => {
             console.log(error.response.data.error)
-        }).finally(()=>{
+        }).finally(() => {
         dispatch(setLockButtonAC(false))
     })
 }
+
 export const setNewPassTC = (password: string, resetPasswordToken: string) => (dispatch: Dispatch<any>) => {
     dispatch(setLockButtonAC(true))
     const data: NewPassData = {
@@ -59,17 +57,17 @@ export const setNewPassTC = (password: string, resetPasswordToken: string) => (d
         resetPasswordToken
     }
     authAPI.setNewPass(data)
-        .then((res) => {
+        .then(() => {
             dispatch(setTestMessageAC('success'))
         })
         .catch((error) => {
             dispatch(setTestMessageAC(error.response.data.error))
-        }).finally(()=>{
+        }).finally(() => {
         dispatch(setLockButtonAC(false))
     })
 }
 
+//types
 export type SetEmailActionType = ReturnType<typeof setLoginAC>
 export type SetTestMessageActionType = ReturnType<typeof setTestMessageAC>
-
 export type TotalActionType = SetEmailActionType | SetTestMessageActionType

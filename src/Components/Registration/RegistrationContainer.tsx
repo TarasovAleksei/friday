@@ -2,10 +2,7 @@ import React, {useState} from 'react';
 import {Registration} from "./Registration";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
-import {
-    InitialStateType,
-    registrationTC, setMessageAC,
-} from "../../Store/registrationReducer";
+import {InitialStateType, registrationTC, setMessageAC} from "../../Store/registrationReducer";
 import {Redirect} from "react-router-dom";
 
 export const RegistrationContainer = () => {

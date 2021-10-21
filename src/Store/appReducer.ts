@@ -19,20 +19,20 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
         case "login/SET-DATA-PROFILE":
             return {...state, data: action.data}
         case "REGISTRATION/LOCK-BUTTON":
-            return {
-                ...state, lockButton: action.lockButton
-            }
+            return {...state, lockButton: action.lockButton}
         default:
             return state
     }
 }
 
+//actions
 export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
 export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
 export const setIsInitializedAC = (value: boolean) => ({type: 'APP/SET-APP-INITIALIZED', value} as const)
 export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROFILE', data} as const)
 export const setLockButtonAC = (lockButton: boolean) => ({type: 'REGISTRATION/LOCK-BUTTON', lockButton} as const)
 
+//thunks
 export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
     authAPI.me()
         .then((res) => {
@@ -47,9 +47,9 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState:
         })
 }
 
+//types
 export type RequestStatusType = 'loading' | 'succeeded'
 type InitialStateType = typeof initialState
-
 export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>
 export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>
 export type SetDataProfileActionType = ReturnType<typeof setDataProfileAC>

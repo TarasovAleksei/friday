@@ -6,6 +6,7 @@ import {NavLink} from 'react-router-dom';
 import {RequestStatusType} from "../../Store/appReducer";
 import s from "./Login.module.css"
 import logo from '../../images/logo/logo.png';
+
 export const Login: React.FC<PropsType> = (props) => {
 
     const {
@@ -17,13 +18,20 @@ export const Login: React.FC<PropsType> = (props) => {
         onChangeRememberMe,
         auth,
         errorMessage,
-        status, disabled
+        status,
+        disabled,
+        emailVisited,
+        emailError,
+        passwordVisited,
+        passwordError,
+        blurHandler,
+        formValid
     } = props
 
     return (
         <div className={s.inner}>
             <div className={s.wrap}>
-                <img className={s.img} src={logo} alt="" />
+                <img className={s.img} src={logo} alt=""/>
             </div>
             <h1 className={s.title}>Login</h1>
             {
@@ -33,24 +41,40 @@ export const Login: React.FC<PropsType> = (props) => {
                     Loading...
                 </div>
             }
-            {errorMessage}
+            <div style={{color: 'red'}}>{errorMessage}</div>
             <div className={s.formLogin}>
-                <SuperInputText type='email' placeholder='Email' onChangeText={onChangeEmail} value={email}/>
-                <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='Password'
-                                onChangeText={onChangePassword} value={password}/>
+                {(emailVisited && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
+                <SuperInputText onBlur={(e) => blurHandler(e)}
+                                type='email'
+                                placeholder='Email'
+                                onChangeText={onChangeEmail}
+                                value={email}/>
+                {(passwordVisited && passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
+                <SuperInputText style={{marginTop: '24px'}}
+                                type='password'
+                                placeholder='Password'
+                                onChangeText={onChangePassword}
+                                value={password}
+                                onBlur={(e) => blurHandler(e)}/>
                 <div className={s.wrapper}>
                     <div className={s.recover}>
-                        <NavLink className={s.navbar} style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>Forgot password?</NavLink>
+                        <NavLink className={s.navbar}
+                                 style={{textDecoration: 'none', color: '#2d2e46', alignItems: 'center'}}
+                                 activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>
+                            Forgot password?
+                        </NavLink>
                     </div>
                     <div className={s.formWrap}>
-                        <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
+                        <SuperCheckbox style={{margin: "0"}}
+                                       onChangeChecked={onChangeRememberMe}
+                                       checked={rememberMe}/>
                         <span className={s.span}>Remember me</span>
                     </div>
                 </div>
-                <SuperButton disabled={disabled} style={{maxWidth: '266px', width: '100%', marginTop: '70px'}}
+                <SuperButton disabled={disabled || !formValid}
+                             style={{maxWidth: '266px', width: '100%', marginTop: '70px'}}
                              name={'Login'} onClick={auth}/>
             </div>
-
         </div>
     );
 };
@@ -67,4 +91,10 @@ type PropsType = {
     auth: () => void
     errorMessage: string
     status: RequestStatusType
+    emailVisited: boolean
+    emailError: string
+    passwordVisited: boolean
+    passwordError: string
+    blurHandler: (e: React.FormEvent<HTMLInputElement>) => void
+    formValid: boolean
 }

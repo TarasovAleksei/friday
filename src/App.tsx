@@ -4,7 +4,6 @@ import {Error404} from "./Components/Error404/Error404";
 import {Redirect, Route, Switch} from 'react-router-dom';
 import s from './App.module.css'
 import {RegistrationContainer} from "./Components/Registration/RegistrationContainer";
-import {HeaderContainer} from "./Components/Header/HeaderContainer";
 import {RecoveryPasswordContainer} from "./Components/RecoveryPassword/RecoveryPasswordContainer";
 import {AuthContainer} from "./Components/Auth/AuthContainer";
 import {initializeAppTC} from "./Store/appReducer";
@@ -34,7 +33,6 @@ function App() {
 
     return (
         <div className="App">
-            {/*<HeaderContainer/>*/}
             <div className={s.test}>
                 <Switch>
                     <Route exact path={'/'} render={() => <AuthContainer/>}/>

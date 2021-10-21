@@ -37,7 +37,7 @@ export const authTC = (data: LoginParamsType) => (dispatch: Dispatch<any>) => {
                 ? e.response.data.error
                 : (e.message + ', more details in the console');
             dispatch(setErrorMessageAC(error))
-        }).finally(()=>{
+        }).finally(() => {
         dispatch(setLockButtonAC(false))
     })
 }
@@ -48,7 +48,7 @@ export const logoutTC = () => (dispatch: Dispatch) => {
         .then(() => {
             dispatch(setIsLoggedInAC(false))
             dispatch(setAppStatusAC("succeeded"))
-        }).finally(()=>{
+        }).finally(() => {
         dispatch(setLockButtonAC(false))
     })
 
