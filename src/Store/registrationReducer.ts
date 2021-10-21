@@ -6,7 +6,6 @@ export type InitialStateType = typeof initialState;
 export const initialState = {
     message: '',
     successRegistration: false,
-
 }
 
 export const registrationReducer = (state: InitialStateType = initialState, action: TotalActionType): InitialStateType => {
@@ -35,6 +34,7 @@ export const setSuccessRegAC = (successRegistration: boolean) => ({
 export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     dispatch(setLockButtonAC(true))
     authAPI.register(data).then(response => {
+        dispatch(setSuccessRegAC(true))
     }).catch((error) => {
         dispatch(setMessageAC(error.response.data.error))
     }).finally(() => {
