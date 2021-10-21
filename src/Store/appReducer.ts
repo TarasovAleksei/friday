@@ -48,7 +48,7 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState:
 }
 
 //types
-export type RequestStatusType = 'loading' | 'succeeded'
+export type RequestStatusType = 'loading' | 'succeeded' | ''
 type InitialStateType = typeof initialState
 export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>
 export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>

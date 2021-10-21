@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom";
 
 export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
     return (
-        <div className={s.conteiner}>
+        <div className={s.container}>
             <div className={s.inner}>
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>

@@ -39,8 +39,10 @@ export const authTC = (data: LoginParamsType) => (dispatch: Dispatch<any>) => {
             dispatch(setErrorMessageAC(error))
         }).finally(() => {
         dispatch(setLockButtonAC(false))
+        dispatch(setAppStatusAC(''))
     })
 }
+
 export const logoutTC = () => (dispatch: Dispatch) => {
     dispatch(setLockButtonAC(true))
     dispatch(setAppStatusAC("loading"))
@@ -51,7 +53,6 @@ export const logoutTC = () => (dispatch: Dispatch) => {
         }).finally(() => {
         dispatch(setLockButtonAC(false))
     })
-
 }
 
 //types

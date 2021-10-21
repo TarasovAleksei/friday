@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Login} from "./Login";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
-import {authTC, InitialStateType} from "../../Store/authReducer";
+import {authTC, InitialStateType, setErrorMessageAC} from "../../Store/authReducer";
 import {Redirect} from 'react-router-dom';
-import {RequestStatusType} from "../../Store/appReducer";
+import {RequestStatusType, setAppStatusAC} from "../../Store/appReducer";
 
 export const LoginContainer = () => {
 
@@ -29,10 +29,15 @@ export const LoginContainer = () => {
         } else {
             setFormValid(true)
         }
+        return function cleanup () {
+            dispatch(setErrorMessageAC(''))
+            dispatch(setAppStatusAC(''))
+
+        }
     }, [emailError, passwordError])
 
     const blurHandler = (e: React.FormEvent<HTMLInputElement>) => {
-        switch (e.currentTarget.type) {
+        switch (e.currentTarget.name) {
             case 'email':
                 setEmailVisited(true)
                 break
@@ -44,7 +49,7 @@ export const LoginContainer = () => {
 
     const onChangeEmail = (email: string) => {
         setEmail(email)
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         if (!re.test(String(email).toLowerCase())) {
             setEmailError('Invalid email address')
         } else {

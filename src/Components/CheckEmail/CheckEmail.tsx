@@ -6,7 +6,7 @@ import picEmail from '../../images/checkEmail/pic-email.png';
 export const CheckEmail = () => {
 
     return (
-        <div className={s.conteiner}>
+        <div className={s.container}>
             <div className={s.innerEmail}>
                 <div className={s.wrapLogoEmail}>
                     <img className={s.imgEmailLogo} src={logo} alt="logo" />
