@@ -1,6 +1,6 @@
 import {authAPI, LoginParamsType} from "../common/Api/api";
 import {Dispatch} from "redux";
-import {initializeAppTC, setAppStatusAC, SetAppStatusActionType} from "./appReducer";
+import {initializeAppTC, setAppStatusAC, SetAppStatusActionType, setLockButtonAC} from "./appReducer";
 
 export type InitialStateType = typeof initialState
 const initialState = {
@@ -25,30 +25,32 @@ export const setErrorMessageAC = (message: string) => ({type: 'login/SET-ERROR-M
 
 //thunks
 export const authTC = (data: LoginParamsType) => (dispatch: Dispatch<any>) => {
+    dispatch(setLockButtonAC(true))
     dispatch(setAppStatusAC("loading"))
-
     authAPI.login(data)
-
         .then(() => {
-            debugger
             dispatch(initializeAppTC())
             dispatch(setAppStatusAC("succeeded"))
         })
         .catch(e => {
-            debugger
             const error = e.response
                 ? e.response.data.error
                 : (e.message + ', more details in the console');
             dispatch(setErrorMessageAC(error))
-        })
+        }).finally(()=>{
+        dispatch(setLockButtonAC(false))
+    })
 }
 export const logoutTC = () => (dispatch: Dispatch) => {
+    dispatch(setLockButtonAC(true))
     dispatch(setAppStatusAC("loading"))
     authAPI.logout()
         .then(() => {
             dispatch(setIsLoggedInAC(false))
             dispatch(setAppStatusAC("succeeded"))
-        })
+        }).finally(()=>{
+        dispatch(setLockButtonAC(false))
+    })
 
 }
 

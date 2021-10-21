@@ -14,7 +14,7 @@ export const LoginContainer = () => {
 
     const {isLoggedIn, errorMessage} = useSelector<AppRootStateType, InitialStateType>(state => state.auth)
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
-
+    const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
     const dispatch = useDispatch()
 
     const onChangeEmail = (email: string) => {
@@ -43,6 +43,7 @@ export const LoginContainer = () => {
                onChangeRememberMe={onChangeRememberMe}
                auth={auth}
                errorMessage={errorMessage}
-               status={status}/>
-    )
+               status={status}
+               disabled = {lockButton}/>
+)
 };

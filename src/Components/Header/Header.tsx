@@ -8,6 +8,7 @@ export const Header: React.FC<PropsType> = (props) => {
     const {
         logoutHandler,
         isLoggedIn,
+        disabled
     } = props
 
     return (
@@ -19,7 +20,7 @@ export const Header: React.FC<PropsType> = (props) => {
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/profile">Profile</NavLink></div>
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/newpassword">New password</NavLink></div>
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/404">Error 404</NavLink></div>
-            { isLoggedIn && <SuperButton name='logout' onClick={logoutHandler}/> }
+            { isLoggedIn && <SuperButton disabled={disabled} name='logout' onClick={logoutHandler}/> }
 
         </nav>
     )
@@ -29,4 +30,5 @@ export const Header: React.FC<PropsType> = (props) => {
 type PropsType = {
     logoutHandler: () => void
     isLoggedIn: boolean
+    disabled: boolean
 }

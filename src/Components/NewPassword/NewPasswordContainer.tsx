@@ -13,7 +13,7 @@ export const NewPasswordContainer = () => {
     const tokenForPass = useParams<ParamsType>().tokenForPass
     const dispatch = useDispatch()
     const testMessage=useSelector<AppRootStateType, string|null>(state=>state.forgotPassword.testMessage)
-
+    const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
     const onChangeNewPass = (password: string) => {
         setNewPassword(password)
     }
@@ -21,7 +21,7 @@ export const NewPasswordContainer = () => {
         dispatch(setNewPassTC(newPassword, tokenForPass))
     }
     return (
-        <NewPassword testMessage={testMessage} onChangeNewPass={onChangeNewPass} newPassword={newPassword}
+        <NewPassword disabled={lockButton} testMessage={testMessage} onChangeNewPass={onChangeNewPass} newPassword={newPassword}
                      sendNewPass={sendNewPass}/>
     );
 };

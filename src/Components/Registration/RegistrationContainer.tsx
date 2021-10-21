@@ -9,17 +9,13 @@ import {
 import {Redirect} from "react-router-dom";
 
 export const RegistrationContainer = () => {
-
     const [email, setEmail] = useState<string>('')
     const [password, setPass] = useState<string>('')
     const [repeatPassword, setRepeatPass] = useState<string>('')
-
-
-
-    const {message, successRegistration, lockButton} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
+    const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
+    const {message, successRegistration} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
 
     const dispatch = useDispatch()
-
     const onChangeEmail = (email: string) => {
         setEmail(email)
     }

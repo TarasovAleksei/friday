@@ -7,6 +7,7 @@ import {RecoveryPassword} from "./RecoveryPassword";
 export const RecoveryPasswordContainer = () => {
     const dispatch = useDispatch()
     const {email} = useSelector<AppRootStateType, InitialStateType>(state => state.forgotPassword)
+    const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
     const onChangeEmail = (email: string) => {
         dispatch(setLoginAC(email))
     }
@@ -19,6 +20,7 @@ export const RecoveryPasswordContainer = () => {
             <RecoveryPassword email={email}
                               onChangeEmail={onChangeEmail}
                               onHandleForgot={onHandleForgot}
+                              disabled={lockButton}
             />
         </div>
     );

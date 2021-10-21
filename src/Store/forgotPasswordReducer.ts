@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI, ForgotData, NewPassData} from "../common/Api/api";
 import {AppRootStateType} from "./redux-store";
+import {setLockButtonAC} from "./appReducer";
 
 export type InitialStateType = typeof initialState;
 export const initialState = {
@@ -36,6 +37,7 @@ export const setTestMessageAC = (testMessage: string | null) => ({
 
 
 export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
+    dispatch(setLockButtonAC(true))
     const data: ForgotData = {
         email: getState().forgotPassword.email,
         from: getState().forgotPassword.from,
@@ -46,9 +48,12 @@ export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => Ap
         })
         .catch((error) => {
             console.log(error.response.data.error)
-        })
+        }).finally(()=>{
+        dispatch(setLockButtonAC(false))
+    })
 }
 export const setNewPassTC = (password: string, resetPasswordToken: string) => (dispatch: Dispatch<any>) => {
+    dispatch(setLockButtonAC(true))
     const data: NewPassData = {
         password,
         resetPasswordToken
@@ -59,7 +64,9 @@ export const setNewPassTC = (password: string, resetPasswordToken: string) => (d
         })
         .catch((error) => {
             dispatch(setTestMessageAC(error.response.data.error))
-        })
+        }).finally(()=>{
+        dispatch(setLockButtonAC(false))
+    })
 }
 
 export type SetEmailActionType = ReturnType<typeof setLoginAC>

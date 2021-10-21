@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 export const HeaderContainer = () => {
 
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
+    const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
     const dispatch = useDispatch()
 
     const logoutHandler = () => {
@@ -20,6 +21,7 @@ export const HeaderContainer = () => {
 
     return (
         <Header logoutHandler={logoutHandler}
-                isLoggedIn={isLoggedIn}/>
+                isLoggedIn={isLoggedIn}
+        disabled={lockButton}/>
     )
 }

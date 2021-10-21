@@ -19,7 +19,8 @@ export const ProfileContainer = () => {
     return (
 
         <Profile data={data}
-                 status={status}/>
+                 status={status}
+        />
 
     );
 };
