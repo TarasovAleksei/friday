@@ -21,36 +21,38 @@ export const Login: React.FC<PropsType> = (props) => {
     } = props
 
     return (
-        <div className={s.inner}>
-            <div className={s.wrap}>
-                <img className={s.img} src={logo} alt="" />
-            </div>
-            <h1 className={s.title}>Login</h1>
-            {
-                status === 'loading'
-                && <div
-                    style={{color: 'green'}}>
-                    Loading...
+        <div className={s.conteiner}>
+            <div className={s.inner}>
+                <div className={s.wrap}>
+                    <img className={s.img} src={logo} alt="" />
                 </div>
-            }
-            { errorMessage }
-            <div className={s.formLogin}>
-            <SuperInputText type='email' placeholder='Email' onChangeText={onChangeEmail} value={email}/>
-            <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='Password' onChangeText={onChangePassword} value={password}/>
-                <div className={s.wrapper}>
-                    <div className={s.recover}>
-                        <NavLink className={s.navbar} style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>Forgot password?</NavLink>
+                <h1 className={s.title}>Login</h1>
+                {
+                    status === 'loading'
+                    && <div
+                        style={{color: 'green'}}>
+                        Loading...
                     </div>
-                    <div className={s.formWrap}>
-                        <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
-                        <span className={s.span}>Remember me</span>
+                }
+                { errorMessage }
+                <div className={s.formLogin}>
+                <SuperInputText type='email' placeholder='Email' onChangeText={onChangeEmail} value={email}/>
+                <SuperInputText style={{marginTop: '24px'}} type='password' placeholder='Password' onChangeText={onChangePassword} value={password}/>
+                    <div className={s.wrapper}>
+                        <div className={s.recover}>
+                            <NavLink className={s.navbar} style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>Forgot password?</NavLink>
+                        </div>
+                        <div className={s.formWrap}>
+                            <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
+                            <span className={s.span}>Remember me</span>
+                        </div>
                     </div>
+                <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
                 </div>
-            <SuperButton style={{maxWidth:'266px', width:'100%', marginTop: '70px'}} name={'Login'} onClick={auth}/>
+                
             </div>
-
-            
         </div>
+        
         
     );
 };

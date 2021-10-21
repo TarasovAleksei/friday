@@ -2,6 +2,8 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 import s from './Header.module.css'
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
+import logo from "../../images/logo/logo.png";
+
 
 export const Header: React.FC<PropsType> = (props) => {
 
@@ -11,7 +13,12 @@ export const Header: React.FC<PropsType> = (props) => {
     } = props
 
     return (
-        <nav className={s.nav}>
+        <header className={s.header}>
+            <div className={s.inner}>
+                <div className={s.wrap}>
+                <img className={s.img} src={logo} alt="" />
+            </div>
+            <nav className={s.nav}>
 
             {!isLoggedIn &&
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/">Login</NavLink></div>
@@ -19,9 +26,13 @@ export const Header: React.FC<PropsType> = (props) => {
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/profile">Profile</NavLink></div>
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/newpassword">New password</NavLink></div>
             <div className={s.item}><NavLink activeClassName={s.activeLink} to="/404">Error 404</NavLink></div>
-            { isLoggedIn && <SuperButton name='logout' onClick={logoutHandler}/> }
+            { isLoggedIn && <SuperButton className={s.headerBtn} name='logout' onClick={logoutHandler}/> }
 
         </nav>
+            </div>
+            
+        </header>
+        
     )
 }
 

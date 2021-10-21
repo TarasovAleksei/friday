@@ -39,7 +39,24 @@
     background-color: #21268f;
 }
 
-.brownBtn {
+.defaultDisable {
+    display: inline-block;
+    padding: 7px 36px;
+    font-size: 10px;
+    border: 3px solid #9393a2;
+    outline: none;
+    border-radius: 30px;
+    color: #9393a2;
+    font-family: "SF UI Display";
+    font-weight: 500;
+    background-color: transparent;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+/* .defaultDiseible .brownBtn {
     display: inline-block;
     width: 15em;
     font-size: 70%;
@@ -49,7 +66,7 @@
     border-radius: 6px;
     outline: none;
     background: #874802;
-}
+} */
 
 .brownBtn:first-line {
     font-size: 170%;

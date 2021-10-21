@@ -15,18 +15,21 @@ type PropsType = {
 export const NewPassword = (props: PropsType) => {
     if(props.testMessage==='success') return <Redirect to={'/'}/>
     return (
-        <div className={s.inner}>
-             <div className={s.wrap}>
-                <img className={s.img} src={logo} alt="" />
+        <div className={s.conteiner}>
+            <div className={s.inner}>
+                <div className={s.wrap}>
+                    <img className={s.img} src={logo} alt="" />
+                </div>
+                <h1 className={s.title}>Create new password</h1> 
+                <div>{props.testMessage}</div>
+                <div className={s.form}>
+                    <SuperInputText type='password' placeholder='New password' onChangeText={props.onChangeNewPass} value={props.newPassword}/>
+                    <p className={s.text}>Create new password and we will send you further instructions to email</p>
+                </div>
+                    <SuperButton style={{marginTop:'90px'}} name={'Create new password'} onClick={props.sendNewPass}/>
             </div>
-            <h1 className={s.title}>Create new password</h1> 
-            <div>{props.testMessage}</div>
-            <div className={s.form}>
-                <SuperInputText type='password' placeholder='New password' onChangeText={props.onChangeNewPass} value={props.newPassword}/>
-                <p className={s.text}>Create new password and we will send you further instructions to email</p>
         </div>
-                <SuperButton style={{marginTop:'90px'}} name={'Create new password'} onClick={props.sendNewPass}/>
-            </div>
+        
     );
 };
 
