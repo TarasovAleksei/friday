@@ -1,10 +1,16 @@
+.conteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    max-width: 413px;
-    width: 100%;
+    min-width: 413px;
     padding: 36px 30px 60px 30px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -13,6 +19,7 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
 
 .wrap {
     width: 163px;

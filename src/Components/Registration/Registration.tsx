@@ -9,7 +9,8 @@ export const Registration = (props: PropsType) => {
 
     return (
         <>
-            <div className={s.inner}>
+            <div className={s.conteiner}>
+                <div className={s.inner}>
                 {props.message}
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>
@@ -34,6 +35,7 @@ export const Registration = (props: PropsType) => {
                                      onClick={props.registration}/>
                     </div>
                 </form>
+            </div>
             </div>
         </>
     );

@@ -6,30 +6,36 @@ import s from './NewPassword.module.css'
 import logo from '../../images/logo/logo.png'
 
 export const NewPassword = (props: PropsType) => {
-    if (props.testMessage === 'success') return <Redirect to={'/'}/>
+
+    if (props.testMessage === 'success') {
+        return <Redirect to={'/'}/>
+    }
+
     return (
-        <div className={s.inner}>
-            <div className={s.wrap}>
-                <img className={s.img} src={logo} alt=""/>
+        <div className={s.conteiner}>
+            <div className={s.inner}>
+                <div className={s.wrap}>
+                    <img className={s.img} src={logo} alt=""/>
+                </div>
+                <h1 className={s.title}>Create new password</h1>
+                <div>{props.testMessage}</div>
+                <div className={s.form}>
+                    {(props.passwordVisited && props.passwordError) &&
+                    <div style={{color: 'red'}}>{props.passwordError}</div>}
+                    <SuperInputText type='password'
+                                    placeholder='New password'
+                                    onChangeText={props.onChangeNewPass}
+                                    value={props.newPassword}
+                                    onBlur={(e) => props.blurHandler(e)}/>
+                    <p className={s.text}>
+                        Create new password and we will send you further instructions to email
+                    </p>
+                </div>
+                <SuperButton disabled={props.disabled || !props.formValid}
+                             style={{marginTop: '90px'}}
+                             name={'Create new password'}
+                             onClick={props.sendNewPass}/>
             </div>
-            <h1 className={s.title}>Create new password</h1>
-            <div>{props.testMessage}</div>
-            <div className={s.form}>
-                {(props.passwordVisited && props.passwordError) &&
-                <div style={{color: 'red'}}>{props.passwordError}</div>}
-                <SuperInputText type='password'
-                                placeholder='New password'
-                                onChangeText={props.onChangeNewPass}
-                                value={props.newPassword}
-                                onBlur={(e) => props.blurHandler(e)}/>
-                <p className={s.text}>
-                    Create new password and we will send you further instructions to email
-                </p>
-            </div>
-            <SuperButton disabled={props.disabled || !props.formValid}
-                         style={{marginTop: '90px'}}
-                         name={'Create new password'}
-                         onClick={props.sendNewPass}/>
         </div>
     );
 };

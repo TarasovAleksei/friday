@@ -32,8 +32,7 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <div className={s.test}>
+        <div className={s.app}>
                 <Switch>
                     <Route exact path={'/'} render={() => <AuthContainer/>}/>
                     <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
@@ -44,7 +43,6 @@ function App() {
                     <Route path={'/404'} render={() => <Error404/>}/>
                     <Redirect from={'*'} to={'/404'}/>
                 </Switch>
-            </div>
         </div>
     );
 }
