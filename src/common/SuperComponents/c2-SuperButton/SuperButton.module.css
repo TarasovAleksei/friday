@@ -2,19 +2,24 @@
     display: inline-block;
     padding: 7px 36px;
     font-size: 10px;
-    border: none;
+    border: 3px solid transparent;
     outline: none;
     border-radius: 30px;
-    color: #21268f;
+    color: #ffffff;
     opacity: 0.8;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
     font-family: "SF UI Display";
     font-weight: 500;
-    background-color: #d7d8ef;
+    background-color: #21268f;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
+    transition: margin-right 1.5s, color 1s;
+    -webkit-transition: margin-right 1.5s, color 1s;
+    -moz-transition: margin-right 1.5s, color 1s;
+    -ms-transition: margin-right 1.5s, color 1s;
+    -o-transition: margin-right 1.5s, color 1s;
 }
 
 .default:first-line {
@@ -23,8 +28,10 @@
 }
 
 .default:hover {
-    color: #ffffff;
-    background-color: #21268f;
+    cursor: pointer;
+    border: 3px solid #21268f;
+    color: #21268f;
+    background-color: transparent;
 }
 
 .default:active {

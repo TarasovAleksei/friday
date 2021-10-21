@@ -1,8 +1,9 @@
 .standartInput {
     outline: none;
     width: 100%;
-    padding: 7px 0px;
+    padding: 7px 0px 3px;
     margin: 0px 0;
+    font-size: 14px;
     box-sizing: border-box;
     border: none;
     border-bottom: 2px solid #cecfda;

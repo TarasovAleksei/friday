@@ -6,7 +6,6 @@ import {NavLink} from 'react-router-dom';
 import {RequestStatusType} from "../../Store/appReducer";
 import s from "./Login.module.css"
 import logo from '../../images/logo/logo.png';
-
 export const Login: React.FC<PropsType> = (props) => {
 
     const {
@@ -24,7 +23,7 @@ export const Login: React.FC<PropsType> = (props) => {
     return (
         <div className={s.inner}>
             <div className={s.wrap}>
-                <img className={s.img} src={logo} alt=""/>
+                <img className={s.img} src={logo} alt="" />
             </div>
             <h1 className={s.title}>Login</h1>
             {
@@ -41,8 +40,7 @@ export const Login: React.FC<PropsType> = (props) => {
                                 onChangeText={onChangePassword} value={password}/>
                 <div className={s.wrapper}>
                     <div className={s.recover}>
-                        <NavLink style={{textDecoration: 'none', color: '#2d2e46', alignItems: 'center'}}
-                                 to='/recoverypassword'>forgot password?</NavLink>
+                        <NavLink className={s.navbar} style={{textDecoration: 'none', color:'#2d2e46', alignItems:'center'}} activeStyle={{color: 'red', textDecoration: 'none'}} to='/recoverypassword'>Forgot password?</NavLink>
                     </div>
                     <div className={s.formWrap}>
                         <SuperCheckbox style={{margin: "0"}} onChangeChecked={onChangeRememberMe} checked={rememberMe}/>
@@ -54,7 +52,6 @@ export const Login: React.FC<PropsType> = (props) => {
             </div>
 
         </div>
-
     );
 };
 
