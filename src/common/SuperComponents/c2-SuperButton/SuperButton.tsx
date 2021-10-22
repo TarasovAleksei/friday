@@ -16,7 +16,7 @@ export const SuperButton: React.FC<SuperButtonPropsType> = (
         ...restProps
     }
 ) => {
-    const finalClassName = `${red ? s.red : s.default} ${className}`
+    const finalClassName = `${disabled ? s.defaultDisable : s.default} ${className}`
 
     return (
         <>
