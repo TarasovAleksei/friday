@@ -29,7 +29,7 @@ export const Login: React.FC<PropsType> = (props) => {
     } = props
 
     return (
-        <div className={s.conteiner}>
+        <div className={s.container}>
             <div className={s.inner}>
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>
@@ -49,9 +49,11 @@ export const Login: React.FC<PropsType> = (props) => {
                                     type='email'
                                     placeholder='Email'
                                     onChangeText={onChangeEmail}
-                                    value={email}/>
+                                    value={email}
+                                    name='email'/>
                     {(passwordVisited && passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
                     <SuperInputText style={{marginTop: '24px'}}
+                                    name='password'
                                     type='password'
                                     placeholder='Password'
                                     onChangeText={onChangePassword}
@@ -76,12 +78,6 @@ export const Login: React.FC<PropsType> = (props) => {
                                  style={{maxWidth: '266px', width: '100%', marginTop: '70px'}}
                                  name={'Login'} onClick={auth}/>
                 </div>
-                <div className={s.wrapRegistration}>
-                    <span className={s.spanText}>Don’t have an account?</span>
-                    <NavLink className={s.link} activeClassName={s.activeLink} to="/registration">
-                        Sign Up
-                    </NavLink>
-            </div>
             </div>
         </div>
     );

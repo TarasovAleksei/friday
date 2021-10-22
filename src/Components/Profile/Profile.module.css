@@ -1,8 +1,9 @@
 .profile {
     width: 100%;
+    font-family: "SF UI Display", sans-serif;
 }
 
-.container {
+.conteiner {
     display: flex;
     justify-content: center;
     align-items: center;
