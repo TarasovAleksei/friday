@@ -61,8 +61,8 @@ export const RegistrationContainer = () => {
 
     const onChangePassword = (password: string) => {
         setPassword(password)
-        if (password.length < 7) {
-            setPasswordError('Password must be longer than 7 characters')
+        if (password.length <= 8) {
+            setPasswordError('Password must be longer than 8 characters')
             if (!password) {
                 setPasswordError('Password cannot be empty')
             }
@@ -73,8 +73,8 @@ export const RegistrationContainer = () => {
 
     const onChangeRepeatPassword = (repeatPassword: string) => {
         setRepeatPassword(repeatPassword)
-        if (repeatPassword.length < 7) {
-            setRepeatPasswordError('Password must be longer than 7 characters')
+        if (repeatPassword.length < 8) {
+            setRepeatPasswordError('Password must be longer than 8 characters')
             if (!repeatPassword) {
                 setRepeatPasswordError('Password cannot be empty')
             }

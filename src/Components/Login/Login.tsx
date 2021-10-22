@@ -46,14 +46,15 @@ export const Login: React.FC<PropsType> = (props) => {
                 <div className={s.formLogin}>
                     {(emailVisited && emailError) && <div style={{color: 'red'}}>{emailError}</div>}
                     <SuperInputText onBlur={(e) => blurHandler(e)}
-                                    type='email'
-                                    placeholder='Email'
+                                    placeholder={'Email'}
                                     onChangeText={onChangeEmail}
-                                    value={email}/>
+                                    value={email}
+                                    name={'email'}/>
                     {(passwordVisited && passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
                     <SuperInputText style={{marginTop: '24px'}}
-                                    type='password'
-                                    placeholder='Password'
+                                    type={'password'}
+                                    name={'password'}
+                                    placeholder={'Password'}
                                     onChangeText={onChangePassword}
                                     value={password}
                                     onBlur={(e) => blurHandler(e)}/>
@@ -81,7 +82,7 @@ export const Login: React.FC<PropsType> = (props) => {
                     <NavLink className={s.link} activeClassName={s.activeLink} to="/registration">
                         Sign Up
                     </NavLink>
-            </div>
+                </div>
             </div>
         </div>
     );

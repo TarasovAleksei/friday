@@ -39,8 +39,8 @@ export const NewPasswordContainer = () => {
 
     const onChangeNewPass = (newPassword: string) => {
         setNewPassword(newPassword)
-        if (newPassword.length < 7) {
-            setPasswordError('Password must be longer than 7 characters')
+        if (newPassword.length < 8) {
+            setPasswordError('Password must be longer than 8 characters')
             if (!newPassword) {
                 setPasswordError('Password cannot be empty')
             }

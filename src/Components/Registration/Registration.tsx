@@ -12,7 +12,6 @@ export const Registration = (props: PropsType) => {
         <>
             <div className={s.container}>
                 <div className={s.inner}>
-                    {props.message}
                     <div className={s.wrap}>
                         <img className={s.img} src={logo} alt=""/>
                     </div>
@@ -24,6 +23,7 @@ export const Registration = (props: PropsType) => {
                             Loading...
                         </div>
                     }
+                    <div style={{color: 'red'}}>{props.message}</div>
                     <form action="">
                         {(props.emailVisited && props.emailError) &&
                         <div style={{color: 'red'}}>{props.emailError}</div>}

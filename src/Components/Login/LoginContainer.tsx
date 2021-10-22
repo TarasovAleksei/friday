@@ -59,8 +59,8 @@ export const LoginContainer = () => {
 
     const onChangePassword = (password: string) => {
         setPassword(password)
-        if (password.length < 7) {
-            setPasswordError('Password must be longer than 7 characters')
+        if (password.length < 8) {
+            setPasswordError('Password must be longer than 8 characters')
             if (!password) {
                 setPasswordError('Password cannot be empty')
             }
