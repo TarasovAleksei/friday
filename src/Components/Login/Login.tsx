@@ -29,7 +29,7 @@ export const Login: React.FC<PropsType> = (props) => {
     } = props
 
     return (
-        <div className={s.conteiner}>
+        <div className={s.holder}>
             <div className={s.inner}>
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>

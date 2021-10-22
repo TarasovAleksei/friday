@@ -13,7 +13,7 @@ export const NewPassword = (props: PropsType) => {
     }
 
     return (
-        <div className={s.container}>
+        <div className={s.holder}>
             <div className={s.inner}>
                 <div className={s.wrap}>
                     <img className={s.img} src={logo} alt=""/>
