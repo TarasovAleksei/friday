@@ -1,11 +1,22 @@
 .profile {
     width: 100%;
     font-family: "SF UI Display", sans-serif;
+    position: relative;
+    height: 100vh;
 }
 
-.holder {
+/* .holder {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+} */
+
+.titlLoading {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }

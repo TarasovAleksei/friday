@@ -17,7 +17,7 @@ export const Profile: React.FC<PropsType> = (props) => {
             <HeaderContainer/>
             <div className={s.inner}>
                 {status === 'loading'
-                ? <h1 style={{color: 'green'}}>Loading...</h1>
+                ? <h1 className={s.titlLoading} style={{color: 'green'}}>Loading...</h1>
                 : <div>
                     Profile
                     <div>{data.avatar}</div>
