@@ -34,7 +34,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
 }
 
 .wrapper {
@@ -99,5 +98,38 @@ label {
 }
 
 .recover:hover {
+    border-bottom: 2px solid #21268f;
+}
+
+.wrapRegistration {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.spanText {
+    color: #9393a2;
+    font-family: "SF UI Display";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.link {
+    text-decoration: none;
+    color: #21268f;
+    margin-top: 10px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: 1s, border-bottom 0.5s;
+    -webkit-transition: 1s, border-bottom 0.5s;
+    -moz-transition: 1s, border-bottom 0.5s;
+    -ms-transition: 1s, border-bottom 0.5s;
+    -o-transition: 1s, border-bottom 0.5s;
+}
+
+.link:hover {
     border-bottom: 2px solid #21268f;
 }

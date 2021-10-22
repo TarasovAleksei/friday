@@ -78,6 +78,12 @@ export const Login: React.FC<PropsType> = (props) => {
                                  style={{maxWidth: '266px', width: '100%', marginTop: '70px'}}
                                  name={'Login'} onClick={auth}/>
                 </div>
+                <div className={s.wrapRegistration}>
+                    <span className={s.spanText}>Don’t have an account?</span>
+                    <NavLink className={s.link} activeClassName={s.activeLink} to="/registration">
+                        Sign Up
+                    </NavLink>
+            </div>
             </div>
         </div>
     );
