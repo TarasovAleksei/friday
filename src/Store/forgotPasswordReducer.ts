@@ -9,7 +9,7 @@ export const initialState = {
     from: "test-front-admin <ai73a@yandex.by>",
     message: `<div style="background-color: lime; padding: 15px">
                 password recovery link:
-                <a href='https://tarasovaleksei.github.io/friday/#/newpassword/$token$'>
+                <a href='http://localhost:3000/#/newpassword/$token$'>
                 link</a></div>`,
     testMessage: '' as string | null
 }
