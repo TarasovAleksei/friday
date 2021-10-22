@@ -1,0 +1,10 @@
+.styleForSpan {
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    color: #1b31fa;
+    font-weight: 700;
+}
+.containerForSpan {
+    height: 50px;
+}

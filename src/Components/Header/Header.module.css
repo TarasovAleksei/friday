@@ -1,0 +1,82 @@
+.header {
+    box-sizing: border-box;
+    padding: 0 136px;
+    width: 100%;
+    background-color: #ebe0e9;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.wrap {
+    width: 163px;
+}
+
+.img {
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.headerBtn {
+    border: 3px solid transparent;
+    padding: 10px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+.item {}
+
+.item a {
+    border: 4px solid #21268f;
+    margin: 0;
+    padding: 10px;
+    color: white;
+    background-color: #21268f;
+    opacity: 0.8;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.item a.activeLink {
+
+    text-decoration: none;
+}
+
+.innerAuth {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapRegistration {
+    position: absolute;
+    bottom: 200px;
+    margin-top: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.spanTextAuth {
+    color: #9393a2;
+    font-family: "SF UI Display";
+    font-size: 14px;
+    font-weight: 600;
+}

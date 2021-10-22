@@ -1,0 +1,83 @@
+.standartInput {
+    outline: none;
+    width: 100%;
+    padding: 7px 0px 3px;
+    margin: 0px 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #cecfda;
+
+}
+
+.standartInput:focus {
+    /*  border-color: dodgerBlue;
+    box-shadow: 0 0 8px 0 dodgerBlue; */
+}
+
+.orangeInput {
+    width: 200px;
+    border: 2px solid #ff6100;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.orangeInput:focus {
+    border-color: #7901a5;
+    box-shadow: 0 0 8px 0 #dc4dc1;
+}
+
+.brownInput {
+    width: 200px;
+    border: 2px solid #310404;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.brownInput:focus {
+    border-color: #56e747;
+    box-shadow: 0 0 8px 0 #07ec28;
+}
+
+.errorInput {
+    width: 200px;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    background-color: #fa8484;
+}
+
+.errorInput:focus {
+    border-color: #fd0000;
+    box-shadow: 0 0 8px 0 #4e0202;
+
+}
+
+.error {
+    width: 200px;
+    height: 13px;
+    color: #ff0000;
+    font-family: ‘Raleway’, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.not_error {
+    width: 200px;
+    height: 13px;
+}

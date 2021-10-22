@@ -1,0 +1,22 @@
+.checkbox {
+
+    display: block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    --border-default: #bbbbc1;
+    --border-hover: #9898a3;
+    --active: #f26ec6;
+    --active-tick: #ffffff;
+}
+
+.spanClassName {
+    color: #000000;
+    font-family: ‘Raleway’, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 10px;
+    text-transform: uppercase;
+}
