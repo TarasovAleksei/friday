@@ -4,6 +4,7 @@ import {NewPassword} from "./NewPassword";
 import {useDispatch, useSelector} from "react-redux";
 import {setNewPassTC} from "../../Store/forgotPasswordReducer";
 import {AppRootStateType} from "../../Store/redux-store";
+import {RequestStatusType} from "../../Store/appReducer";
 
 export type ParamsType = {
     tokenForPass: string
@@ -15,7 +16,7 @@ export const NewPasswordContainer = () => {
     const [passwordError, setPasswordError] = useState<string>('Password cannot be empty')
     const [formValid, setFormValid] = useState(false)
     const [newPassword, setNewPassword] = useState<string>('')
-
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     const tokenForPass = useParams<ParamsType>().tokenForPass
     const testMessage = useSelector<AppRootStateType, string | null>(state => state.forgotPassword.testMessage)
     const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
@@ -61,6 +62,8 @@ export const NewPasswordContainer = () => {
                      passwordVisited={passwordVisited}
                      formValid={formValid}
                      passwordError={passwordError}
-                     blurHandler={blurHandler}/>
+                     blurHandler={blurHandler}
+                     status={status}/>
+
     );
 };

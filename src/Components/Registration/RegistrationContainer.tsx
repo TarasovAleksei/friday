@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
 import {InitialStateType, registrationTC, setMessageAC, setSuccessRegAC} from "../../Store/registrationReducer";
 import {Redirect} from "react-router-dom";
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const RegistrationContainer = () => {
 
@@ -20,7 +21,7 @@ export const RegistrationContainer = () => {
 
     const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
     const {message, successRegistration} = useSelector<AppRootStateType, InitialStateType>(state => state.registration)
-
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -111,6 +112,7 @@ export const RegistrationContainer = () => {
                           repeatPasswordVisited={repeatPasswordVisited}
                           formValid={formValid}
                           emailError={emailError}
+                          status={status}
                           passwordError={passwordError}
                           blurHandler={blurHandler}
                           repeatPasswordError={repeatPasswordError}/>

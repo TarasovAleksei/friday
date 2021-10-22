@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../Store/redux-store";
 import {loginVerificationTC, setLoginAC} from "../../Store/forgotPasswordReducer";
 import {RecoveryPassword} from "./RecoveryPassword";
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const RecoveryPasswordContainer = () => {
 
@@ -10,6 +11,7 @@ export const RecoveryPasswordContainer = () => {
     const [emailVisited, setEmailVisited] = useState<boolean>(false)
     const [emailError, setEmailError] = useState<string>('Email cannot be empty')
     const [formValid, setFormValid] = useState(false)
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
 
     const lockButton = useSelector<AppRootStateType, boolean>(state => state.app.lockButton)
 
@@ -54,6 +56,7 @@ export const RecoveryPasswordContainer = () => {
                               formValid={formValid}
                               blurHandler={blurHandler}
                               emailError={emailError}
+                              status={status}
             />
         </div>
     );

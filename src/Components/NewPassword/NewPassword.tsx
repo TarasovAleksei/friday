@@ -4,6 +4,7 @@ import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/Sup
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import s from './NewPassword.module.css'
 import logo from '../../images/logo/logo.png'
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const NewPassword = (props: PropsType) => {
 
@@ -18,6 +19,13 @@ export const NewPassword = (props: PropsType) => {
                     <img className={s.img} src={logo} alt=""/>
                 </div>
                 <h1 className={s.title}>Create new password</h1>
+                {
+                    props.status === 'loading'
+                    && <div
+                        style={{color: 'green'}}>
+                        Loading...
+                    </div>
+                }
                 <div>{props.testMessage}</div>
                 <div className={s.form}>
                     {(props.passwordVisited && props.passwordError) &&
@@ -49,6 +57,7 @@ type PropsType = {
     disabled: boolean
     passwordVisited: boolean
     formValid: boolean
+    status: RequestStatusType
     passwordError: string
     blurHandler: (e: React.FormEvent<HTMLInputElement>) => void
 }

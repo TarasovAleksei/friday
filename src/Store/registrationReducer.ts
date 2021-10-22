@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI, LoginType} from "../common/Api/api";
-import {setLockButtonAC} from "./appReducer";
+import {setAppStatusAC, setLockButtonAC} from "./appReducer";
 
 export type InitialStateType = typeof initialState;
 export const initialState = {
@@ -29,12 +29,15 @@ export const setSuccessRegAC = (successRegistration: boolean) => ({
 //thunks
 export const registrationTC = (data: LoginType) => (dispatch: Dispatch) => {
     dispatch(setLockButtonAC(true))
+    dispatch(setAppStatusAC("loading"))
     authAPI.register(data).then(() => {
         dispatch(setSuccessRegAC(true))
+        dispatch(setAppStatusAC("succeeded"))
     }).catch((error) => {
         dispatch(setMessageAC(error.response.data.error))
     }).finally(() => {
             dispatch(setLockButtonAC(false))
+            dispatch(setAppStatusAC(''))
         }
     )
 }

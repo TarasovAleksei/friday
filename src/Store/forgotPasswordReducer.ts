@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI, ForgotData, NewPassData} from "../common/Api/api";
 import {AppRootStateType} from "./redux-store";
-import {setLockButtonAC} from "./appReducer";
+import {setAppStatusAC, setLockButtonAC} from "./appReducer";
 
 export type InitialStateType = typeof initialState;
 export const initialState = {
@@ -34,6 +34,7 @@ export const setTestMessageAC = (testMessage: string | null) => ({
 
 //thunks
 export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
+    dispatch(setAppStatusAC("loading"))
     dispatch(setLockButtonAC(true))
     const data: ForgotData = {
         email: getState().forgotPassword.email,
@@ -42,16 +43,19 @@ export const loginVerificationTC = () => (dispatch: Dispatch, getState: () => Ap
     }
     authAPI.forgot(data)
         .then(() => {
+            dispatch(setAppStatusAC("succeeded"))
         })
         .catch((error) => {
             console.log(error.response.data.error)
         }).finally(() => {
         dispatch(setLockButtonAC(false))
+        dispatch(setAppStatusAC(''))
     })
 }
 
 export const setNewPassTC = (password: string, resetPasswordToken: string) => (dispatch: Dispatch<any>) => {
     dispatch(setLockButtonAC(true))
+    dispatch(setAppStatusAC("loading"))
     const data: NewPassData = {
         password,
         resetPasswordToken
@@ -59,11 +63,13 @@ export const setNewPassTC = (password: string, resetPasswordToken: string) => (d
     authAPI.setNewPass(data)
         .then(() => {
             dispatch(setTestMessageAC('success'))
+            dispatch(setAppStatusAC("succeeded"))
         })
         .catch((error) => {
             dispatch(setTestMessageAC(error.response.data.error))
         }).finally(() => {
         dispatch(setLockButtonAC(false))
+        dispatch(setAppStatusAC(''))
     })
 }
 

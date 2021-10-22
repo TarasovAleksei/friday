@@ -4,6 +4,7 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import s from "./RecoveryPassword.module.css"
 import logo from '../../images/logo/logo.png';
 import {NavLink} from "react-router-dom";
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
     return (
@@ -13,6 +14,13 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
                     <img className={s.img} src={logo} alt=""/>
                 </div>
                 <h2 className={s.title}>Forgot your password?</h2>
+                {
+                    props.status === 'loading'
+                    && <div
+                        style={{color: 'green'}}>
+                        Loading...
+                    </div>
+                }
                 <div className={s.form}>
                     {(props.emailVisited && props.emailError) && <div style={{color: 'red'}}>{props.emailError}</div>}
                     <SuperInputText type='email'
@@ -49,4 +57,5 @@ type RecoveryPasswordPropsType = {
     formValid: boolean
     blurHandler: (e: React.FormEvent<HTMLInputElement>) => void
     emailError: string
+    status: RequestStatusType
 }

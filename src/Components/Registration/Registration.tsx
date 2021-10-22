@@ -4,6 +4,7 @@ import {SuperInputText} from "../../common/SuperComponents/c1-SuperInputText/Sup
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import s from './Registration.module.css';
 import logo from '../../images/logo/logo.png';
+import {RequestStatusType} from "../../Store/appReducer";
 
 export const Registration = (props: PropsType) => {
 
@@ -16,6 +17,13 @@ export const Registration = (props: PropsType) => {
                         <img className={s.img} src={logo} alt=""/>
                     </div>
                     <h2 className={s.title}>Registration</h2>
+                    {
+                        props.status === 'loading'
+                        && <div
+                            style={{color: 'green'}}>
+                            Loading...
+                        </div>
+                    }
                     <form action="">
                         {(props.emailVisited && props.emailError) &&
                         <div style={{color: 'red'}}>{props.emailError}</div>}
@@ -71,6 +79,7 @@ type PropsType = {
     onChangeRepeatPassword: (repeatPassword: string) => void
     registration: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
     emailVisited: boolean
+    status: RequestStatusType
     passwordVisited: boolean
     repeatPasswordVisited: boolean
     formValid: boolean
