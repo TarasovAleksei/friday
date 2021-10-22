@@ -38,9 +38,9 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
                                      name={'Send Instructions'}
                                      onClick={props.onHandleForgot}/>
                     </NavLink>
-                    <div>Did you remember your password</div>
-                    <NavLink to={'/'}>
-                        <div>Try logging in</div>
+                    <span className={s.span}>Did you remember your password</span>
+                    <NavLink className={s.link} to={'/'}>
+                        Try logging in
                     </NavLink>
                 </div>
             </div>
