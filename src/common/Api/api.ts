@@ -5,9 +5,6 @@ const baseUrlForDeploy = 'https://neko-back.herokuapp.com/2.0'
 const instance = axios.create({
     baseURL: baseUrlForDeploy,
     withCredentials: true,
-    // headers: {
-    //     'API-KEY': 'de342f74-3acb-43a4-b6f0-3143b51bea1e'
-    // }
 })
 
 // api
@@ -16,10 +13,10 @@ export const authAPI = {
         return instance.post<LoginType, ResponseRegistration>('/auth/register', login)
     },
     forgot(data: ForgotData) {
-        return instance.post<ForgotData,ResponseForgot >('/auth/forgot', data)
+        return instance.post<ForgotData, ResponseForgot>('/auth/forgot', data)
     },
     login({email, password, rememberMe}: LoginParamsType) {
-        return instance.post<LoginParamsType, ResponseLogin> ('auth/login', {email, password, rememberMe})
+        return instance.post<LoginParamsType, ResponseLogin>('auth/login', {email, password, rememberMe})
     },
     logout() {
         return instance.delete<ResponseLogout>('auth/me')
@@ -27,12 +24,66 @@ export const authAPI = {
     me() {
         return instance.post<UserData>('auth/me')
     },
-    setNewPass(data:NewPassData){
+    setNewPass(data: NewPassData) {
         return instance.post<NewPassData, ResponseNewPass>('auth/set-new-password', data)
     }
 }
-
+export const packsAPI = {
+    getPacks(pageCount:number,page:number,sortPacks:string ){
+        return instance.get<cardsPacksResponse>(`cards/pack?pageCount=${pageCount}&page=${page}&sortPacks=${sortPacks}`)
+    }
+}
+export const cardsAPI = {
+    getCards(cardsPack_id:string, pageCount:number,page: number, sortPacks:string){
+        return instance.get<cardsResponse>(`cards/card?cardsPack_id=${cardsPack_id}&page=${page}&pageCount=${pageCount}&sortPacks=${sortPacks}`)
+    }
+}
 // types
+export type cardsPacksResponse = {
+    cardsPacks: cardsPacksType[]
+    cardPacksTotalCount: number
+    maxCardsCount: number
+    minCardsCount: number
+    page: number
+    pageCount: number
+}
+export type cardsPacksType={
+    _id: string
+    user_id: string
+    name: string
+    path: string
+    cardsCount: number
+    grade: number
+    shots: number
+    rating: number
+    type: string
+    created: string
+    updated: string
+    __v: number
+}
+export type cardsResponse= {
+    cards: cardsType[],
+    cardsTotalCount: number
+    maxGrade: number
+    minGrade: number
+    page: number
+    pageCount: number
+    packUserId: string
+}
+export type cardsType = {
+    answer: string
+    question: string
+    cardsPack_id: string
+    grade: number
+    rating: number
+    shots: number
+    type: string
+    user_id: string
+    created: string
+    updated: string
+    __v: number
+    _id: string
+}
 export type ResponseRegistration = {
     addedUser?: {}
     error?: string
@@ -58,7 +109,7 @@ export type ResponseForgot = {
     error: string
 }
 export type ResponseNewPass = {
-    info?:string,
+    info?: string,
     error?: string
 }
 export type UserData = {

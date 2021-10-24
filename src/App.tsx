@@ -12,6 +12,8 @@ import {ProfileContainer} from './Components/Profile/ProfileContainer';
 import {NewPasswordContainer} from "./Components/NewPassword/NewPasswordContainer";
 import {AppRootStateType} from "./Store/redux-store";
 import {CheckEmail} from "./Components/CheckEmail/CheckEmail";
+import {PacksContainer} from "./Components/Packs/PacksContainer";
+import {CardsContainer} from "./Components/Cards/CardsContainer";
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
                     <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>
                     <Route path={'/newpassword/:tokenForPass?'} render={() => <NewPasswordContainer/>}/>
                     <Route path={'/CheckEmail'} render={() => <CheckEmail/>}/>
+                    <Route path={'/packs'} render={() => <PacksContainer/>}/>
+                    <Route path={'/cards/:cardsPack_id?'} render={() => <CardsContainer/>}/>
                     <Route path={'/404'} render={() => <Error404/>}/>
                     <Redirect from={'*'} to={'/404'}/>
                 </Switch>
