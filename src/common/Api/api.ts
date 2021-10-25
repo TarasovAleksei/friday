@@ -31,11 +31,29 @@ export const authAPI = {
 export const packsAPI = {
     getPacks(pageCount:number,page:number,sortPacks:string ){
         return instance.get<cardsPacksResponse>(`cards/pack?pageCount=${pageCount}&page=${page}&sortPacks=${sortPacks}`)
+    },
+    addPack(cardsPack:any){
+        return instance.post('/cards/pack', {cardsPack})
+    },
+    deletePack(id:string){
+        return instance.delete(`/cards/pack?id=${id}`)
+    },
+    updatePack(cardsPack:any){
+        return instance.put(`/cards/pack`, {cardsPack})
     }
 }
 export const cardsAPI = {
     getCards(cardsPack_id:string, pageCount:number,page: number, sortPacks:string){
         return instance.get<cardsResponse>(`cards/card?cardsPack_id=${cardsPack_id}&page=${page}&pageCount=${pageCount}&sortPacks=${sortPacks}`)
+    },
+    addCard(card:any){
+        return instance.post('/cards/card', {card})
+    },
+    deleteCard(id:string){
+        return instance.delete(`/cards/card?id=${id}`)
+    },
+    updateCard(card:any){
+        return instance.put(`/cards/card`, {card})
     }
 }
 // types

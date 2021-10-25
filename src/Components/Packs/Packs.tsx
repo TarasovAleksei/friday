@@ -1,7 +1,7 @@
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType} from "../../common/Api/api";
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 
 
@@ -12,21 +12,26 @@ export const Packs: React.FC<PropsType> = ({
                                                minCardsCount,
                                                pageCount,
                                                page,
+                                               addPackCB, delPackCB, updatePackNameCB, errorMessage,
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-            <NavLink to={`/cards/`+item._id}>
+            <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
 
             <td>{item.cardsCount}</td>
-            <td>{item.updated}</td>
+            <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
             <td>    {<>
-                <SuperButton name={'add'}/>
-                <SuperButton name={'update'}/>
+                <SuperButton onClick={() => {
+                    delPackCB(item._id)
+                }} name={'del'}/>
+                <SuperButton onClick={() => {
+                    updatePackNameCB(item._id, 'newSuperName')
+                }} name={'update'}/>
             </>}
-                </td>
+            </td>
         </tr>;
     });
 
@@ -34,7 +39,10 @@ export const Packs: React.FC<PropsType> = ({
     return (
         <>
             <HeaderContainer/>
-            <h1>packs</h1>
+            <h1>packs</h1> {errorMessage}
+            <SuperButton onClick={() => {
+                addPackCB('newName')
+            }} name={'add'}/>
             <table>
                 <thead>
                 <tr>
@@ -60,7 +68,11 @@ type PropsType = {
     cardPacksTotalCount: null | number,
     maxCardsCount: null | number,
     minCardsCount: null | number,
+    errorMessage: string
     page: null | number,
     pageCount: null | number,
+    addPackCB: (name: string) => void,
+    delPackCB: (id: string) => void,
+    updatePackNameCB: (id: string, name: string) => void,
 }
 

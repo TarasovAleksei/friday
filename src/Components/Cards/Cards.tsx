@@ -1,20 +1,49 @@
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsType} from "../../common/Api/api";
+import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
+import {NavLink} from 'react-router-dom';
 
 
-export const Cards: React.FC<PropsType> = ({cards,cardsPack_id,page,pageCount,cardsTotalCount,sortPacks,packUserId,maxGrade,minGrade}) => {
+export const Cards: React.FC<PropsType> = ({
+                                               cards,
+                                               cardsPack_id,
+                                               page,
+                                               pageCount,
+                                               cardsTotalCount,
+                                               sortPacks,
+                                               packUserId,
+                                               maxGrade,
+                                               minGrade,
+                                               addCardCB,
+                                               cardURL,
+                                               delCardCB,
+                                               updateCardCB,
+                                           }) => {
     let table = cards.map(function (item) {
         return <tr key={item._id}>
             <td>{item.question}</td>
             <td>{item.answer}</td>
             <td>{item.grade}</td>
-            <td>{item.updated}</td>
+            <td>{item.updated.substr(0, 10)}</td>
+            <td>    {<>
+                <SuperButton onClick={() => {
+                    delCardCB(cardURL, item._id)
+                }} name={'del'}/>
+                <SuperButton onClick={()=>{updateCardCB(cardURL, item._id, 'newCustomQuestion')}} name={'update'}/>
+            </>}
+            </td>
         </tr>;
     });
     return (
         <>
             <HeaderContainer/>
+            <NavLink to={'/packs'}>
+                <SuperButton name={'back'}/>
+            </NavLink>
+            <SuperButton onClick={() => {
+                addCardCB(cardURL)
+            }} name={'add'}/>
             <h1>cards</h1>
             <table>
                 <thead>
@@ -23,6 +52,7 @@ export const Cards: React.FC<PropsType> = ({cards,cardsPack_id,page,pageCount,ca
                     <td>answer</td>
                     <td>grade</td>
                     <td>updated</td>
+                    <td>actions</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,5 +76,9 @@ type PropsType = {
     pageCount: number
     packUserId: string
     sortPacks: string
+    cardURL: string
+    addCardCB: (id: string) => void
+    delCardCB: (idPuck: string, idCard: string) => void
+    updateCardCB:(idPuck: string, idCard: string, name: string)=>void
 }
 
