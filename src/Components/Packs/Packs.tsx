@@ -2,6 +2,7 @@ import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType} from "../../common/Api/api";
 import { NavLink } from 'react-router-dom';
+import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -21,6 +22,11 @@ export const Packs: React.FC<PropsType> = ({
             <td>{item.cardsCount}</td>
             <td>{item.updated}</td>
             <td>{item.rating}</td>
+            <td>    {<>
+                <SuperButton name={'add'}/>
+                <SuperButton name={'update'}/>
+            </>}
+                </td>
         </tr>;
     });
 
@@ -33,9 +39,9 @@ export const Packs: React.FC<PropsType> = ({
                 <thead>
                 <tr>
                     <td>name</td>
-                    <td>cardsCount</td>
-                    <td>updated</td>
-                    <td>URL</td>
+                    <td>Cards</td>
+                    <td>Last updated</td>
+                    <td>Actions</td>
                 </tr>
                 </thead>
                 <tbody>
