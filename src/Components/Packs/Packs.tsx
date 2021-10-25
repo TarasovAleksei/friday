@@ -50,7 +50,7 @@ export const Packs: React.FC<PropsType> = ({
                         showQuickJumper
                         defaultCurrent={page}
                         pageSize={pageCount}
-                        total={cardPacksTotalCount}
+                        total={cardPacksTotalCount!}
                         current={page}
                         locale={localInfo}
                         onChange={onChangePage}/>
