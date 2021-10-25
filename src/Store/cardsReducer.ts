@@ -29,16 +29,44 @@ export const cardsReducer = (state: InitialStateType = initialState, action: Tot
 export const setDataCardsAC = (data: cardsResponse) => ({type: 'CARDS/SET-CARDS', data} as const)
 export const setCurrentPageAC = (page: number) => ({type: 'CARDS/SET-CURRENT-PAGE', currentPage: page} as const)
 //thunks
-export const fetchCardsTC = (cardURL: string) => (dispatch: Dispatch, getState: () => AppRootStateType) => {
+export const fetchCardsTC = (id: string) => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     let sortPacks = getState().cards.sortPacks
-    let cardsPack_id = cardURL
     let page = getState().cards.page
     let pageCount = getState().cards.pageCount
-    cardsAPI.getCards(cardsPack_id, pageCount, page, sortPacks).then((response) => {
+    cardsAPI.getCards(id, pageCount, page, sortPacks).then((response) => {
         dispatch(setDataCardsAC(response.data))
     })
 }
-
+export const addCardTC = (cardsPack_id: string) => (dispatch: Dispatch<any>) => {
+    const card = {
+        cardsPack_id
+    }
+    cardsAPI.addCard(card).then(() => {
+        dispatch(fetchCardsTC(cardsPack_id))
+    }).catch((error) => {
+            console.log(error.response.data.error)
+        }
+    )
+}
+export const delCardTC = (idPuck: string, idCard: string) => (dispatch: Dispatch<any>) => {
+    cardsAPI.deleteCard(idCard).then(() => {
+        dispatch(fetchCardsTC(idPuck))
+    }).catch((error) => {
+            console.log(error.response.data.error)
+        }
+    )
+}
+export const updateCardNameTC = (idPuck: string, idCard: string, name: string) => (dispatch: Dispatch<any>) => {
+    const card = {
+        _id: idCard, question: name
+    }
+    cardsAPI.updateCard(card).then(() => {
+        dispatch(fetchCardsTC(idPuck))
+    }).catch((error) => {
+        console.log(error.response.data.error)
+        }
+    )
+}
 //types
 export type InitialStateType = {
     cardsPack_id: string

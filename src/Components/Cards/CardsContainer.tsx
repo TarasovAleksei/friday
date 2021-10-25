@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {Cards} from "./Cards";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCardsTC, InitialStateType, setCurrentPageAC} from "../../Store/cardsReducer";
+import { setErrorMessagePuckAC} from "../../Store/packsReducer";
+import {addCardTC, delCardTC, fetchCardsTC, updateCardNameTC} from "../../Store/cardsReducer";
+import {InitialStateType, setCurrentPageAC} from "../../Store/cardsReducer";
 import {AppRootStateType} from "../../Store/redux-store";
 import {useParams} from "react-router-dom";
 
@@ -29,8 +31,19 @@ export const CardsContainer = () => {
 
     useEffect(() => {
         dispatch(fetchCardsTC(cardURL))
-    }, [cardsPack_id, pageCount, page, sortPacks])
-
+        return () => {
+            dispatch(setErrorMessagePuckAC(''))
+        }
+    }, [sortPacks, pageCount, page, maxGrade, minGrade])
+    const addCardCB = (id: string) => {
+        dispatch(addCardTC(id))
+    }
+    const delCardCB = (idPuck: string, idCard: string) => {
+        dispatch(delCardTC(idPuck, idCard))
+    }
+    const updateCardCB = (idPuck: string, idCard: string, name: string) => {
+        dispatch(updateCardNameTC(idPuck, idCard, name))
+    }
     return (
         <Cards
             cards={cards}
@@ -43,6 +56,10 @@ export const CardsContainer = () => {
             pageCount={pageCount}
             sortPacks={sortPacks}
             onChangePage={onChangePage}
+            cardURL={cardURL}
+            addCardCB={addCardCB}
+            delCardCB={delCardCB}
+            updateCardCB={updateCardCB}
         />
     );
 };

@@ -14,6 +14,7 @@ export const Packs: React.FC<PropsType> = ({
                                                minCardsCount,
                                                pageCount,
                                                page,
+                                               addPackCB, delPackCB, updatePackNameCB, errorMessage,
                                                onChangePage,
                                            }) => {
     let table = cardPacks.map(function (item) {
@@ -21,12 +22,17 @@ export const Packs: React.FC<PropsType> = ({
             <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
+
             <td>{item.cardsCount}</td>
-            <td>{item.updated}</td>
+            <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
             <td>    {<>
-                <SuperButton name={'add'}/>
-                <SuperButton name={'update'}/>
+                <SuperButton onClick={() => {
+                    delPackCB(item._id)
+                }} name={'del'}/>
+                <SuperButton onClick={() => {
+                    updatePackNameCB(item._id, 'newSuperName')
+                }} name={'update'}/>
             </>}
             </td>
         </tr>;
@@ -36,7 +42,10 @@ export const Packs: React.FC<PropsType> = ({
     return (
         <>
             <HeaderContainer/>
-            <h1>packs</h1>
+            <h1>packs</h1> {errorMessage}
+            <SuperButton onClick={() => {
+                addPackCB('newName')
+            }} name={'add'}/>
             <Pagination className="ant-pagination"
                         showQuickJumper
                         defaultCurrent={page}
@@ -72,5 +81,9 @@ type PropsType = {
     page:  number,
     pageCount: number,
     onChangePage: (currentPage: number) => void
+    errorMessage: string
+    addPackCB: (name: string) => void,
+    delPackCB: (id: string) => void,
+    updatePackNameCB: (id: string, name: string) => void,
 }
 
