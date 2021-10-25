@@ -5,3 +5,12 @@
     background: linear-gradient(180deg, #E6D4DE 0%, #9890C7 100%);
 
 }
+
+.preloaderApp {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}

@@ -5,6 +5,8 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import s from './NewPassword.module.css'
 import logo from '../../images/logo/logo.png'
 import {RequestStatusType} from "../../Store/appReducer";
+import { Preloader } from '../Preloader/Preloader';
+
 
 export const NewPassword = (props: PropsType) => {
 
@@ -21,10 +23,7 @@ export const NewPassword = (props: PropsType) => {
                 <h1 className={s.title}>Create new password</h1>
                 {
                     props.status === 'loading'
-                    && <div
-                        style={{color: 'green'}}>
-                        Loading...
-                    </div>
+                    && <div className={s.preloaderApp}> <Preloader/> </div>
                 }
                 <div>{props.testMessage}</div>
                 <div className={s.form}>

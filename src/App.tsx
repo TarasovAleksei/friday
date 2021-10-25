@@ -12,7 +12,7 @@ import {ProfileContainer} from './Components/Profile/ProfileContainer';
 import {NewPasswordContainer} from "./Components/NewPassword/NewPasswordContainer";
 import {AppRootStateType} from "./Store/redux-store";
 import {CheckEmail} from "./Components/CheckEmail/CheckEmail";
-
+import { Preloader } from './Components/Preloader/Preloader';
 
 function App() {
 
@@ -25,10 +25,7 @@ function App() {
     }, [])
 
     if (!isInitialized) {
-        return <h1
-            style={{position: 'fixed', top: '30%', textAlign: 'center', width: '100%', color: 'green'}}>
-            Loading...
-        </h1>
+        return <div className={s.preloaderApp}> <Preloader/> </div>
     }
 
     return (
