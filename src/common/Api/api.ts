@@ -29,12 +29,12 @@ export const authAPI = {
     }
 }
 export const packsAPI = {
-    getPacks(pageCount:number,page:number,sortPacks:string ){
+    getPacks(pageCount: number, page: number, sortPacks: string) {
         return instance.get<cardsPacksResponse>(`cards/pack?pageCount=${pageCount}&page=${page}&sortPacks=${sortPacks}`)
     }
 }
 export const cardsAPI = {
-    getCards(cardsPack_id:string, pageCount:number,page: number, sortPacks:string){
+    getCards(cardsPack_id: string, pageCount: number, page: number, sortPacks: string) {
         return instance.get<cardsResponse>(`cards/card?cardsPack_id=${cardsPack_id}&page=${page}&pageCount=${pageCount}&sortPacks=${sortPacks}`)
     }
 }
@@ -47,7 +47,7 @@ export type cardsPacksResponse = {
     page: number
     pageCount: number
 }
-export type cardsPacksType={
+export type cardsPacksType = {
     _id: string
     user_id: string
     name: string
@@ -61,7 +61,7 @@ export type cardsPacksType={
     updated: string
     __v: number
 }
-export type cardsResponse= {
+export type cardsResponse = {
     cards: cardsType[],
     cardsTotalCount: number
     maxGrade: number

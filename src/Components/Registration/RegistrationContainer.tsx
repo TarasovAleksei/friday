@@ -34,7 +34,7 @@ export const RegistrationContainer = () => {
             dispatch(setSuccessRegAC(false))
             dispatch(setMessageAC(''))
         }
-    }, [emailError, passwordError, repeatPasswordError])
+    }, [dispatch, emailError, passwordError, repeatPasswordError])
 
     const blurHandler = (e: React.FormEvent<HTMLInputElement>) => {
         switch (e.currentTarget.name) {

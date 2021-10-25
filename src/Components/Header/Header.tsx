@@ -18,9 +18,6 @@ export const Header: React.FC<PropsType> = (props) => {
     return (
         <header className={s.header}>
             <div className={s.inner}>
-                {!isLoggedIn &&
-                <div className={s.linkLogin}><NavLink activeClassName={s.activeLink} to="/">Login</NavLink></div>
-                }
                 <div className={s.wrapper}>
                     <div className={s.wrap}>
                         <img className={s.img} src={logo} alt=""/>

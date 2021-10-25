@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {Cards} from "./Cards";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchPacksTC} from "../../Store/packsReducer";
-import {fetchCardsTC, InitialStateType} from "../../Store/cardsReducer";
+import {fetchCardsTC, InitialStateType, setCurrentPageAC} from "../../Store/cardsReducer";
 import {AppRootStateType} from "../../Store/redux-store";
 import {useParams} from "react-router-dom";
 
@@ -19,11 +18,18 @@ export const CardsContainer = () => {
         maxGrade,
         minGrade
     } = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
+
     const cardURL = useParams<ParamsType>().cardsPack_id
+
     const dispatch = useDispatch()
+
+    const onChangePage = (currentPage: number) => {
+        dispatch(setCurrentPageAC(currentPage))
+    }
+
     useEffect(() => {
         dispatch(fetchCardsTC(cardURL))
-    }, [])
+    }, [cardsPack_id, pageCount, page, sortPacks])
 
     return (
         <Cards
@@ -36,6 +42,7 @@ export const CardsContainer = () => {
             page={page}
             pageCount={pageCount}
             sortPacks={sortPacks}
+            onChangePage={onChangePage}
         />
     );
 };

@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {cardsPacksResponse, cardsPacksType, packsAPI} from "../common/Api/api";
 import {AppRootStateType} from "./redux-store";
+import {setCurrentPageActionType} from "./cardsReducer";
 
 
 export const initialState: InitialStateType = {
@@ -8,8 +9,8 @@ export const initialState: InitialStateType = {
     cardPacksTotalCount: null,
     maxCardsCount: null,
     minCardsCount: null,
-    page: 2,
-    pageCount: 100,
+    page: 1,
+    pageCount: 10,
     sortPacks: '0updated',
 }
 
@@ -21,6 +22,8 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
                 ...state,
                 ...action.data
             }
+        case "CARDS/SET-CURRENT-PAGE":
+            return {...state, page: action.currentPage}
         default:
             return state
     }
@@ -47,4 +50,6 @@ export type InitialStateType = {
     sortPacks: string
 }
 export type setDataPacksActionType = ReturnType<typeof setDataPacksAC>
-export type TotalActionType = setDataPacksActionType
+export type TotalActionType =
+    | setDataPacksActionType
+    | setCurrentPageActionType

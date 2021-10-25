@@ -1,8 +1,10 @@
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType} from "../../common/Api/api";
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
+import Pagination from "rc-pagination";
+import {localInfo} from '../../common/locale/en_US';
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -12,13 +14,13 @@ export const Packs: React.FC<PropsType> = ({
                                                minCardsCount,
                                                pageCount,
                                                page,
+                                               onChangePage,
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-            <NavLink to={`/cards/`+item._id}>
+            <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
-
             <td>{item.cardsCount}</td>
             <td>{item.updated}</td>
             <td>{item.rating}</td>
@@ -26,7 +28,7 @@ export const Packs: React.FC<PropsType> = ({
                 <SuperButton name={'add'}/>
                 <SuperButton name={'update'}/>
             </>}
-                </td>
+            </td>
         </tr>;
     });
 
@@ -35,6 +37,14 @@ export const Packs: React.FC<PropsType> = ({
         <>
             <HeaderContainer/>
             <h1>packs</h1>
+            <Pagination className="ant-pagination"
+                        showQuickJumper
+                        defaultCurrent={page}
+                        pageSize={pageCount}
+                        total={cardPacksTotalCount}
+                        current={page}
+                        locale={localInfo}
+                        onChange={onChangePage}/>
             <table>
                 <thead>
                 <tr>
@@ -49,7 +59,6 @@ export const Packs: React.FC<PropsType> = ({
                 </tbody>
             </table>
         </>
-
     )
 }
 
@@ -57,10 +66,11 @@ export const Packs: React.FC<PropsType> = ({
 //types
 type PropsType = {
     cardPacks: cardsPacksType[],
-    cardPacksTotalCount: null | number,
+    cardPacksTotalCount: number | null,
     maxCardsCount: null | number,
     minCardsCount: null | number,
-    page: null | number,
-    pageCount: null | number,
+    page:  number,
+    pageCount: number,
+    onChangePage: (currentPage: number) => void
 }
 
