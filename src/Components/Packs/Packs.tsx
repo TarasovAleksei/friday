@@ -20,7 +20,7 @@ export const Packs: React.FC<PropsType> = ({
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-            <td></td>
+            
             <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
@@ -61,7 +61,7 @@ export const Packs: React.FC<PropsType> = ({
                     <table>
                         <thead>
                         <tr>    
-                            <td></td>
+                            
                             <td>Name</td>
                             <td>Cards</td>
                             <td>Last updated</td>
