@@ -6,6 +6,7 @@ import {NavLink} from 'react-router-dom';
 import {RequestStatusType} from "../../Store/appReducer";
 import s from "./Login.module.css"
 import logo from '../../images/logo/logo.png';
+import { Preloader } from '../Preloader/Preloader';
 
 export const Login: React.FC<PropsType> = (props) => {
 
@@ -37,10 +38,7 @@ export const Login: React.FC<PropsType> = (props) => {
                 <h1 className={s.title}>Login</h1>
                 {
                     status === 'loading'
-                    && <div
-                        style={{color: 'green'}}>
-                        Loading...
-                    </div>
+                    && <div className={s.preloaderApp}> <Preloader/> </div>
                 }
                 <div style={{color: 'red'}}>{errorMessage}</div>
                 <div className={s.formLogin}>

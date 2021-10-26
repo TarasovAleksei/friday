@@ -5,6 +5,7 @@ import s from "./RecoveryPassword.module.css"
 import logo from '../../images/logo/logo.png';
 import {NavLink} from "react-router-dom";
 import {RequestStatusType} from "../../Store/appReducer";
+import { Preloader } from '../Preloader/Preloader';
 
 export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
     return (
@@ -16,10 +17,7 @@ export const RecoveryPassword = (props: RecoveryPasswordPropsType) => {
                 <h2 className={s.title}>Forgot your password?</h2>
                 {
                     props.status === 'loading'
-                    && <div
-                        style={{color: 'green'}}>
-                        Loading...
-                    </div>
+                    && <div className={s.preloaderApp}> <Preloader/> </div>
                 }
                 <div className={s.form}>
                     {(props.emailVisited && props.emailError) && <div style={{color: 'red'}}>{props.emailError}</div>}

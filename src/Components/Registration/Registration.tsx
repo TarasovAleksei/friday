@@ -5,6 +5,7 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import s from './Registration.module.css';
 import logo from '../../images/logo/logo.png';
 import {RequestStatusType} from "../../Store/appReducer";
+import { Preloader } from '../Preloader/Preloader';
 
 export const Registration = (props: PropsType) => {
 
@@ -18,10 +19,7 @@ export const Registration = (props: PropsType) => {
                     <h2 className={s.title}>Registration</h2>
                     {
                         props.status === 'loading'
-                        && <div
-                            style={{color: 'green'}}>
-                            Loading...
-                        </div>
+                        && <div className={s.preloaderApp}> <Preloader/> </div>
                     }
                     <div style={{color: 'red'}}>{props.message}</div>
                     <form action="">
