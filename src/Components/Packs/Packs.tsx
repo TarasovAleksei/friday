@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom';
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import Pagination from "rc-pagination";
 import {localInfo} from '../../common/locale/en_US';
+import s from './Packs.module.css'
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -19,6 +20,7 @@ export const Packs: React.FC<PropsType> = ({
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
+            <td></td>
             <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
@@ -27,12 +29,15 @@ export const Packs: React.FC<PropsType> = ({
             <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
             <td>    {<>
-                <SuperButton onClick={() => {
+                <SuperButton className={s.btnDel} onClick={() => {
                     delPackCB(item._id)
-                }} name={'del'}/>
-                <SuperButton onClick={() => {
+                }} name={'Delete'}/>
+                <SuperButton className={s.btnEdit} onClick={() => {
                     updatePackNameCB(item._id, 'newSuperName')
-                }} name={'update'}/>
+                }} name={'Edit'}/>
+                <SuperButton className={s.btnLearn} onClick={() => {
+                    updatePackNameCB(item._id, 'newSuperName')
+                }} name={'Learn'}/>
             </>}
             </td>
         </tr>;
@@ -42,31 +47,42 @@ export const Packs: React.FC<PropsType> = ({
     return (
         <>
             <HeaderContainer/>
-            <h1>packs</h1> {errorMessage}
-            <SuperButton onClick={() => {
-                addPackCB('newName')
-            }} name={'add'}/>
-            <Pagination className="ant-pagination"
-                        showQuickJumper
-                        defaultCurrent={page}
-                        pageSize={pageCount}
-                        total={cardPacksTotalCount!}
-                        current={page}
-                        locale={localInfo}
-                        onChange={onChangePage}/>
-            <table>
-                <thead>
-                <tr>
-                    <td>name</td>
-                    <td>Cards</td>
-                    <td>Last updated</td>
-                    <td>Actions</td>
-                </tr>
-                </thead>
-                <tbody>
-                {table}
-                </tbody>
-            </table>
+            <div className={s.packs}>
+                    <div className={s.leftBlock}></div>
+                <div className={s.rihtBloc}>  
+                    <h1 className={s.title}>Packs list</h1> {errorMessage}
+                    <div className={s.wrapSearch}>
+                        <div className={s.plug}></div>
+                        <SuperButton onClick={() => {
+                        addPackCB('newName')
+                        }} name={'Add new pack'}/>
+                    </div>
+                
+                    <table>
+                        <thead>
+                        <tr>    
+                            <td></td>
+                            <td>Name</td>
+                            <td>Cards</td>
+                            <td>Last updated</td>
+                            <td>Created by</td>
+                            <td>Actions</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {table}
+                        </tbody>
+                    </table>
+                    <Pagination className="ant-pagination"
+                                showQuickJumper
+                                defaultCurrent={page}
+                                pageSize={pageCount}
+                                total={cardPacksTotalCount!}
+                                current={page}
+                                locale={localInfo}
+                                onChange={onChangePage}/>
+                </div>   
+            </div>
         </>
     )
 }

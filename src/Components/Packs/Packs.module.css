@@ -1,0 +1,164 @@
+.packs {
+    margin: 24px auto 0;
+    display: flex;
+    max-width: 1008px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #fefeff;
+}
+
+.leftBlock {
+    width: 243px;
+    height: 636px;
+    background-color: #ececf9;
+    border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    -moz-border-radius: 8px 0 0 8px;
+    -ms-border-radius: 8px 0 0 8px;
+    -o-border-radius: 8px 0 0 8px;
+}
+
+.rihtBloc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: #2d2e46;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+
+}
+
+table {
+    border-spacing: 0;
+    max-width: 670px;
+    width: 100%;
+    margin-top: 25px;
+    border: none;
+    box-shadow: 0px 2px 5px 2px #e8e8eb;
+    color: #000000;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+
+}
+
+table td {
+    padding: 11px 0;
+}
+
+
+table a {
+    text-decoration: none;
+    color: #000000;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+thead {
+    text-decoration: none;
+    color: #000000;
+    border: none;
+    background-color: #ececf9;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+thead td:nth-child(1) {
+    width: 24px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f7fd;
+}
+
+.wrapSearch {
+    display: flex;
+}
+
+.plug {
+    width: 461px;
+    height: 36px;
+    background-color: #ececf9;
+    border: 1px solid #635d80;
+}
+
+.btnDel {
+    margin-right: 6px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #f1453d;
+    opacity: 1;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btnDel:hover {
+    cursor: pointer;
+    border: 1px solid #f1453d;
+    color: #f1453d;
+    background-color: transparent;
+}
+
+.btnEdit {
+    margin-right: 6px;
+    padding: 5px 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #21268f;
+    opacity: 1;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btnEdit:hover {
+    cursor: pointer;
+    border: 1px solid #21268f;
+    color: #21268f;
+    background-color: transparent;
+}
+
+.btnLearn {
+    padding: 5px 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #21268f;
+    opacity: 1;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btnLearn:hover {
+    cursor: pointer;
+    border: 1px solid #21268f;
+    color: #21268f;
+    background-color: transparent;
+}
