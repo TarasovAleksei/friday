@@ -75,7 +75,7 @@ export const Packs: React.FC<PropsType> = ({
                         </table>
                     </div>
                     
-                    <Pagination style={{marginTop:'24px'}}
+                    <Pagination style={{marginTop:'24px', alignSelf:'flex-start'}}
                                 className="ant-pagination"
                                 showQuickJumper
                                 defaultCurrent={page}
