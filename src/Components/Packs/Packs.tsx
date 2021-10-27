@@ -48,32 +48,35 @@ export const Packs: React.FC<PropsType> = ({
         <>
             <HeaderContainer/>
             <div className={s.packs}>
-                    <div className={s.leftBlock}></div>
+                <div className={s.leftBlock}></div>
                 <div className={s.rihtBloc}>  
-                    <h1 className={s.title}>Packs list</h1> {errorMessage}
+                        <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
                         <div className={s.plug}></div>
-                        <SuperButton onClick={() => {
-                        addPackCB('newName')
-                        }} name={'Add new pack'}/>
+                            <SuperButton onClick={() => {
+                            addPackCB('newName')
+                            }} name={'Add new pack'}/>
                     </div>
-                
-                    <table>
-                        <thead>
-                        <tr>    
-                            
-                            <td>Name</td>
-                            <td>Cards</td>
-                            <td>Last updated</td>
-                            <td>Created by</td>
-                            <td>Actions</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {table}
-                        </tbody>
-                    </table>
-                    <Pagination className="ant-pagination"
+                    <div className={s.wrapTable}>
+                        <table>
+                            <thead>
+                                <tr>    
+                                        
+                                    <td>Name</td>
+                                    <td>Cards</td>
+                                    <td>Last updated</td>
+                                    <td>Created by</td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {table}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <Pagination style={{marginTop:'24px'}}
+                                className="ant-pagination"
                                 showQuickJumper
                                 defaultCurrent={page}
                                 pageSize={pageCount}
