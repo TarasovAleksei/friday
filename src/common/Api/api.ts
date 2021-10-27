@@ -26,6 +26,9 @@ export const authAPI = {
     },
     setNewPass(data: NewPassData) {
         return instance.post<NewPassData, ResponseNewPass>('auth/set-new-password', data)
+    },
+    updateProfile(name:string, avatar: string){
+        return instance.put<UserData>('auth/me', {name, avatar})
     }
 }
 export const packsAPI = {
@@ -134,7 +137,7 @@ export type UserData = {
     _id: string;
     email: string;
     name: string;
-    avatar?: string;
+    avatar: string;
     publicCardPacksCount: number; // количество колод
     created: Date;
     updated: Date;

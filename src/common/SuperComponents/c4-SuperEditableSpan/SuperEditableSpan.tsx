@@ -2,15 +2,10 @@ import React, {DetailedHTMLProps, InputHTMLAttributes, HTMLAttributes, useState}
 import classes from './SuperEditableSpan.module.css'
 import {SuperInputText} from "../c1-SuperInputText/SuperInputText";
 
-// тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
-// тип пропсов обычного спана
 type DefaultSpanPropsType = DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>
-
-// здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
-// (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperEditableSpanType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном инпуте
-    onChangeText?: (value: string) => void
+    onChangeText: (value: string) => void
     onEnter?: () => void
     error?: string
     spanClassName?: string
@@ -22,9 +17,9 @@ export const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
         autoFocus, // игнорировать изменение этого пропса
         onBlur,
         onEnter,
-        spanProps,
+        spanProps,onChangeText,
 
-        ...restProps// все остальные пропсы попадут в объект restProps
+        ...restProps
     }
 ) => {
     const [editMode, setEditMode] = useState<boolean>(false)
@@ -33,9 +28,10 @@ export const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
     const onEnterCallback = () => {
         setEditMode(!editMode) // выключить editMode при нажатии Enter
         onEnter && onEnter()
+
     }
     const onBlurCallback = (e: React.FocusEvent<HTMLInputElement>) => {
-         setEditMode(!editMode) // выключить editMode при нажатии за пределами инпута
+        setEditMode(!editMode)
         onBlur && onBlur(e)
     }
     const onDoubleClickCallBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -50,11 +46,11 @@ export const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
             {editMode
                 ? (
                     <SuperInputText
-                        autoFocus // пропсу с булевым значением не обязательно указывать true
+                        autoFocus
                         onBlur={onBlurCallback}
                         onEnter={onEnterCallback}
-
-                        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+                        onChangeText={onChangeText}
+                        {...restProps}
                     />
                 ) : (
                     <span

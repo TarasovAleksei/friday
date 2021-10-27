@@ -46,7 +46,13 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState:
             dispatch(setIsInitializedAC(true))
         })
 }
-
+export const updateProfileTC=(name:string, avatar:string)=>(dispatch: Dispatch<any>)=>{
+    authAPI.updateProfile(name, avatar).then(res=>{
+        dispatch(setDataProfileAC(res.data))
+    }).catch((e) => {
+        console.error(e)
+    })
+}
 //types
 export type RequestStatusType = 'loading' | 'succeeded' | ''
 type InitialStateType = typeof initialState
