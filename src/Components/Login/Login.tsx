@@ -38,7 +38,7 @@ export const Login: React.FC<PropsType> = (props) => {
                 <h1 className={s.title}>Login</h1>
                 {
                     status === 'loading'
-                    && <div className={s.preloaderApp}> <Preloader/> </div>
+                    && <div className={s.preloaderLogin}> <Preloader/> </div>
                 }
                 <div style={{color: 'red'}}>{errorMessage}</div>
                 <div className={s.formLogin}>
