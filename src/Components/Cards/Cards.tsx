@@ -10,79 +10,86 @@ import s from './Cards.module.css';
 
 
 export const Cards: React.FC<PropsType> = ({
-                                               cards,
-                                               cardsPack_id,
-                                               page,
-                                               pageCount,
-                                               cardsTotalCount,
-                                               sortPacks,
-                                               packUserId,
-                                               maxGrade,
-                                               minGrade,
-                                               addCardCB,
-                                               cardURL,
-                                               delCardCB,
-                                               updateCardCB,
-                                               onChangePage, message
-                                           }) => {
+    cards,
+    cardsPack_id,
+    page,
+    pageCount,
+    cardsTotalCount,
+    sortPacks,
+    packUserId,
+    maxGrade,
+    minGrade,
+    addCardCB,
+    cardURL,
+    delCardCB,
+    updateCardCB,
+    onChangePage, message
+    }) => {
 
     let table = cards.map(function (item) {
-        return <tr key={item._id}>
-            <td>{item.question}</td>
-            <td>{item.answer}</td>
-            <td>{item.grade}</td>
-            <td>{item.updated.substr(0, 10)}</td>
-            <td>    {<>
-                <SuperButton onClick={() => {
+    return <tr key={item._id}>
+        <td>{item.question}</td>
+        <td>{item.answer}</td>
+        <td>{item.grade}</td>
+        <td>{item.updated.substr(0, 10)}</td>
+        <td> {<>
+                <SuperButton className={s.btnDel} onClick={()=> {
                     delCardCB(cardURL, item._id)
-                }} name={'del'}/>
-                <SuperButton onClick={() => {
-                    updateCardCB(cardURL, item._id, 'newCustomQuestion')
-                }} name={'update'}/>
+                    }} name={'del'}/>
+                    <SuperButton className={s.btnEdit} onClick={()=> {
+                        updateCardCB(cardURL, item._id, 'newCustomQuestion')
+                        }} name={'Edit'}/>
             </>}
-            </td>
-        </tr>
+        </td>
+    </tr>
     });
     return (
 
-        <>
-            <HeaderContainer/>
-            <NavLink to={'/packs'}>
-                <SuperButton name={'back'}/>
+    <>
+        <HeaderContainer />
+        <div className={s.cards}>
+            <NavLink style={{width:'150px'}} to={'/packs'}> <SuperButton className={s.btnBack} name={'Pack Name'} />
             </NavLink>
-            <SuperButton onClick={() => {
-                addCardCB(cardURL)
-            }} name={'add'}/>
-            <h1>cards</h1> {message}
-            <Pagination className="ant-pagination"
-                        defaultCurrent={page}
-                        pageSize={pageCount}
-                        total={cardsTotalCount!}
-                        current={page}
-                        locale={localInfo}
-                        onChange={onChangePage}/>
-            <table>
+
+            <div className={s.wrapSearch}>
+                <div className={s.plug}>
+                    {/*
+                    <Search filterPacks={filterPacks} />*/}
+                </div>
+                <SuperButton onClick={()=> {
+                    addCardCB(cardURL)
+                    }} name={'Add new card'}/>
+            </div>
+
+
+            {/* <h1 className={s.title}>cards</h1> */} {message}
+            <div className={s.wrapTable}>
+                <table className={s.tableCards}>
                 <thead>
-                <tr>
-                    <td>question</td>
-                    <td>answer</td>
-                    <td>grade</td>
-                    <td>updated</td>
-                    <td>actions</td>
-                </tr>
+                    <tr>
+                        <td>question</td>
+                        <td>answer</td>
+                        <td>grade</td>
+                        <td>updated</td>
+                        <td>actions</td>
+                    </tr>
                 </thead>
                 <tbody>
-                {table}
+                    {table}
                 </tbody>
             </table>
-
-        </>
+            </div>
+            
+            <Pagination style={{marginTop:'24px'}} className="ant-pagination" defaultCurrent={page} pageSize={pageCount} total={cardsTotalCount!}
+                current={page} locale={localInfo} onChange={onChangePage} />
+        </div>
+    </>
     )
-}
+    }
 
 
-//types
-type PropsType = {
+    //types
+    type PropsType = {
     cardsPack_id: string
     cards: cardsType[],
     cardsTotalCount: null | number
@@ -98,5 +105,4 @@ type PropsType = {
     delCardCB: (idPuck: string, idCard: string) => void
     updateCardCB: (idPuck: string, idCard: string, name: string) => void
     message: string
-}
-
+    }
