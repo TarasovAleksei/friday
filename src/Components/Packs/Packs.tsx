@@ -6,6 +6,7 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import Pagination from "rc-pagination";
 import {localInfo} from '../../common/locale/en_US';
 import s from './Packs.module.css'
+import {Search} from "../../common/Search/Search";
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -16,7 +17,7 @@ export const Packs: React.FC<PropsType> = ({
                                                pageCount,
                                                page,
                                                addPackCB, delPackCB, updatePackNameCB, errorMessage,
-                                               onChangePage,
+                                               onChangePage,filterPacks,
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
@@ -52,7 +53,10 @@ export const Packs: React.FC<PropsType> = ({
                 <div className={s.rihtBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
-                        <div className={s.plug}></div>
+
+                        <div className={s.plug}>
+                            {/*<Search filterPacks={filterPacks}/>*/}
+                        </div>
                         <SuperButton onClick={() => {
                             addPackCB('newName')
                         }} name={'Add new pack'}/>
@@ -104,5 +108,6 @@ type PropsType = {
     addPackCB: (name: string) => void,
     delPackCB: (id: string) => void,
     updatePackNameCB: (id: string, name: string) => void,
+    filterPacks:(filterValue: string)=>void
 }
 

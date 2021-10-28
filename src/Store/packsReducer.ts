@@ -6,6 +6,7 @@ import {setCurrentPageActionType} from "./cardsReducer";
 
 export const initialState: InitialStateType = {
     cardPacks: [],
+    // filteredCardPacks: [],
     cardPacksTotalCount: null,
     maxCardsCount: null,
     minCardsCount: null,
@@ -24,12 +25,25 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
             return {...state, message: action.message}
         case "CARDS/SET-CURRENT-PAGE":
             return {...state, page: action.currentPage}
+        // case "PACKS/FILTER-PACKS":
+        //     const regExp = new RegExp(action.searchValue, 'i');
+        //     return {
+        //         ...state,
+        //         filteredCardPacks: [
+        //             ...state.cardPacks.filter(pack =>
+        //                 Object.values(pack).some(el => regExp.test(el))
+        //             )],
+        //     };
         default:
             return state
     }
 }
 
 // actions
+export const filterAC = (searchValue: string) => ({
+    type: 'PACKS/FILTER-PACKS',
+    searchValue,
+} as const)
 export const setDataPacksAC = (data: cardsPacksResponse) => ({type: 'PACKS/SET-PACKS', data} as const)
 export const setErrorMessagePuckAC = (message: string) => ({type: 'PACKS/SET-MESSAGE', message} as const)
 //thunks
@@ -80,6 +94,7 @@ export const updatePackNameTC = (_id: string, name: string) => (dispatch: Dispat
 //types
 export type InitialStateType = {
     cardPacks: cardsPacksType[],
+    // filteredCardPacks: cardsPacksType[],
     cardPacksTotalCount: null | number,
     maxCardsCount: null | number,
     minCardsCount: null | number,
@@ -90,4 +105,10 @@ export type InitialStateType = {
 }
 export type setDataPacksActionType = ReturnType<typeof setDataPacksAC>
 export type setErrorMessagePuckActionType = ReturnType<typeof setErrorMessagePuckAC>
-export type TotalActionType = setDataPacksActionType | setErrorMessagePuckActionType |setCurrentPageActionType
+export type filterActionType = ReturnType<typeof filterAC>
+
+export type TotalActionType =
+    setDataPacksActionType
+    | setErrorMessagePuckActionType
+    | setCurrentPageActionType
+    | filterActionType

@@ -23,11 +23,11 @@ export const Cards: React.FC<PropsType> = ({
                                                cardURL,
                                                delCardCB,
                                                updateCardCB,
-                                               onChangePage
+                                               onChangePage, message
                                            }) => {
 
     let table = cards.map(function (item) {
-        return<tr key={item._id}>
+        return <tr key={item._id}>
             <td>{item.question}</td>
             <td>{item.answer}</td>
             <td>{item.grade}</td>
@@ -36,7 +36,9 @@ export const Cards: React.FC<PropsType> = ({
                 <SuperButton onClick={() => {
                     delCardCB(cardURL, item._id)
                 }} name={'del'}/>
-                <SuperButton onClick={()=>{updateCardCB(cardURL, item._id, 'newCustomQuestion')}} name={'update'}/>
+                <SuperButton onClick={() => {
+                    updateCardCB(cardURL, item._id, 'newCustomQuestion')
+                }} name={'update'}/>
             </>}
             </td>
         </tr>
@@ -44,15 +46,14 @@ export const Cards: React.FC<PropsType> = ({
     return (
 
         <>
-            
-                <HeaderContainer/>
+            <HeaderContainer/>
             <NavLink to={'/packs'}>
                 <SuperButton name={'back'}/>
             </NavLink>
             <SuperButton onClick={() => {
                 addCardCB(cardURL)
             }} name={'add'}/>
-            <h1>cards</h1>
+            <h1>cards</h1> {message}
             <Pagination className="ant-pagination"
                         defaultCurrent={page}
                         pageSize={pageCount}
@@ -74,7 +75,7 @@ export const Cards: React.FC<PropsType> = ({
                 {table}
                 </tbody>
             </table>
-            
+
         </>
     )
 }
@@ -95,6 +96,7 @@ type PropsType = {
     cardURL: string
     addCardCB: (id: string) => void
     delCardCB: (idPuck: string, idCard: string) => void
-    updateCardCB:(idPuck: string, idCard: string, name: string)=>void
+    updateCardCB: (idPuck: string, idCard: string, name: string) => void
+    message: string
 }
 

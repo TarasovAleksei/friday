@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     addPackTC,
     delPackTC,
-    fetchPacksTC,
+    fetchPacksTC, filterAC,
     InitialStateType,
     setErrorMessagePuckAC,
     updatePackNameTC
@@ -52,7 +52,9 @@ export const PacksContainer = () => {
     const updatePackNameCB = (id: string, name: string) => {
         dispatch(updatePackNameTC(id, name))
     }
-
+    const filterPacks = (filterValue: string) => {
+        dispatch(filterAC(filterValue))
+    }
     return (
         <Packs
             cardPacks={cardPacks}
@@ -66,6 +68,7 @@ export const PacksContainer = () => {
             delPackCB={delPackCB}
             updatePackNameCB={updatePackNameCB}
             onChangePage={onChangePage}
+            filterPacks={filterPacks}
         />
     );
 };
