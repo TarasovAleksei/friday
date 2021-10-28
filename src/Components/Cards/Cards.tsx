@@ -6,6 +6,7 @@ import {localInfo} from '../../common/locale/en_US';
 import '../../common/PaginationStyles/Pagination.css'
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import {NavLink} from 'react-router-dom';
+import s from './Cards.module.css';
 
 
 export const Cards: React.FC<PropsType> = ({
@@ -26,7 +27,7 @@ export const Cards: React.FC<PropsType> = ({
                                            }) => {
 
     let table = cards.map(function (item) {
-        return <tr key={item._id}>
+        return<tr key={item._id}>
             <td>{item.question}</td>
             <td>{item.answer}</td>
             <td>{item.grade}</td>
@@ -38,13 +39,13 @@ export const Cards: React.FC<PropsType> = ({
                 <SuperButton onClick={()=>{updateCardCB(cardURL, item._id, 'newCustomQuestion')}} name={'update'}/>
             </>}
             </td>
-        </tr>;
+        </tr>
     });
     return (
 
         <>
-
-            <HeaderContainer/>
+            
+                <HeaderContainer/>
             <NavLink to={'/packs'}>
                 <SuperButton name={'back'}/>
             </NavLink>
@@ -73,6 +74,7 @@ export const Cards: React.FC<PropsType> = ({
                 {table}
                 </tbody>
             </table>
+            
         </>
     )
 }

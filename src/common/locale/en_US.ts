@@ -4,7 +4,7 @@ import {PaginationLocale} from "rc-pagination";
 export const localInfo: PaginationLocale = {
     // Options.jsx
     items_per_page: '/ page',
-    jump_to: 'Go to',
+    jump_to: 'Show',
     jump_to_confirm: 'confirm',
     page: '',
 
