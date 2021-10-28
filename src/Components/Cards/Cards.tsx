@@ -23,7 +23,8 @@ export const Cards: React.FC<PropsType> = ({
                                                cardURL,
                                                delCardCB,
                                                updateCardCB,
-                                               onChangePage, message
+                                               onChangePage,
+                                               message,
                                            }) => {
 
     let table = cards.map(function (item) {

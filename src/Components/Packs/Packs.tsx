@@ -16,9 +16,16 @@ export const Packs: React.FC<PropsType> = ({
                                                minCardsCount,
                                                pageCount,
                                                page,
-                                               addPackCB, delPackCB, updatePackNameCB, errorMessage,
-                                               onChangePage,filterPacks,
+                                               addPackCB,
+                                               delPackCB,
+                                               updatePackNameCB,
+                                               errorMessage,
+                                               filterPacks,
+                                               onChangePage,
+                                               onSortClick,
+                                               sortPointer,
                                            }) => {
+
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
 
@@ -44,7 +51,6 @@ export const Packs: React.FC<PropsType> = ({
         </tr>;
     });
 
-
     return (
         <>
             <HeaderContainer/>
@@ -68,7 +74,7 @@ export const Packs: React.FC<PropsType> = ({
 
                                 <td>Name</td>
                                 <td>Cards</td>
-                                <td>Last updated</td>
+                                <td onClick={onSortClick}>Last updated {sortPointer}</td>
                                 <td>Created by</td>
                                 <td>Actions</td>
                             </tr>
@@ -109,5 +115,7 @@ type PropsType = {
     delPackCB: (id: string) => void,
     updatePackNameCB: (id: string, name: string) => void,
     filterPacks:(filterValue: string)=>void
+    onSortClick: () => void
+    sortPointer: null | string
 }
 

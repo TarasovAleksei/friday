@@ -18,7 +18,8 @@ export const CardsContainer = () => {
         pageCount,
         page,
         maxGrade,
-        minGrade, message
+        minGrade,
+        message,
     } = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
 
     const cardURL = useParams<ParamsType>().cardsPack_id
