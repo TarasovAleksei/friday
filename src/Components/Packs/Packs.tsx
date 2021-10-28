@@ -20,7 +20,7 @@ export const Packs: React.FC<PropsType> = ({
                                            }) => {
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-            
+
             <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
@@ -35,9 +35,9 @@ export const Packs: React.FC<PropsType> = ({
                 <SuperButton className={s.btnEdit} onClick={() => {
                     updatePackNameCB(item._id, 'newSuperName')
                 }} name={'Edit'}/>
-                <SuperButton className={s.btnLearn} onClick={() => {
-                    updatePackNameCB(item._id, 'newSuperName')
-                }} name={'Learn'}/>
+                <NavLink to={`/cards/` + item._id}>
+                    <SuperButton className={s.btnLearn} name={'Learn'}/>
+                </NavLink>
             </>}
             </td>
         </tr>;
@@ -49,33 +49,33 @@ export const Packs: React.FC<PropsType> = ({
             <HeaderContainer/>
             <div className={s.packs}>
                 <div className={s.leftBlock}></div>
-                <div className={s.rihtBloc}>  
-                        <h1 className={s.title}>Packs list</h1> {errorMessage}
+                <div className={s.rihtBloc}>
+                    <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
                         <div className={s.plug}></div>
-                            <SuperButton onClick={() => {
+                        <SuperButton onClick={() => {
                             addPackCB('newName')
-                            }} name={'Add new pack'}/>
+                        }} name={'Add new pack'}/>
                     </div>
                     <div className={s.wrapTable}>
                         <table>
                             <thead>
-                                <tr>    
-                                        
-                                    <td>Name</td>
-                                    <td>Cards</td>
-                                    <td>Last updated</td>
-                                    <td>Created by</td>
-                                    <td>Actions</td>
-                                </tr>
+                            <tr>
+
+                                <td>Name</td>
+                                <td>Cards</td>
+                                <td>Last updated</td>
+                                <td>Created by</td>
+                                <td>Actions</td>
+                            </tr>
                             </thead>
                             <tbody>
-                                {table}
+                            {table}
                             </tbody>
                         </table>
                     </div>
-                    
-                    <Pagination style={{marginTop:'24px', alignSelf:'flex-start'}}
+
+                    <Pagination style={{marginTop: '24px', alignSelf: 'flex-start'}}
                                 className="ant-pagination"
                                 showQuickJumper
                                 defaultCurrent={page}
@@ -84,7 +84,7 @@ export const Packs: React.FC<PropsType> = ({
                                 current={page}
                                 locale={localInfo}
                                 onChange={onChangePage}/>
-                </div>   
+                </div>
             </div>
         </>
     )
@@ -97,7 +97,7 @@ type PropsType = {
     cardPacksTotalCount: number | null,
     maxCardsCount: null | number,
     minCardsCount: null | number,
-    page:  number,
+    page: number,
     pageCount: number,
     onChangePage: (currentPage: number) => void
     errorMessage: string
