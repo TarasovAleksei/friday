@@ -9,7 +9,7 @@ export const initialState = {
     maxGrade: null,
     minGrade: null,
     page: 1,
-    pageCount: 5,
+    pageCount: 8,
     packUserId: '615328794022038ed07f6373',
     sortPacks: '0updated'
 }

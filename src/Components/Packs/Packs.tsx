@@ -16,7 +16,10 @@ export const Packs: React.FC<PropsType> = ({
                                                page,
                                                addPackCB, delPackCB, updatePackNameCB, errorMessage,
                                                onChangePage,
+                                               onSortClick,
+                                               sortPointer,
                                            }) => {
+
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
             <NavLink to={`/cards/` + item._id}>
@@ -38,7 +41,6 @@ export const Packs: React.FC<PropsType> = ({
         </tr>;
     });
 
-
     return (
         <>
             <HeaderContainer/>
@@ -47,7 +49,7 @@ export const Packs: React.FC<PropsType> = ({
                 addPackCB('newName')
             }} name={'add'}/>
             <Pagination className="ant-pagination"
-                        showQuickJumper
+                        showSizeChanger
                         defaultCurrent={page}
                         pageSize={pageCount}
                         total={cardPacksTotalCount!}
@@ -59,7 +61,7 @@ export const Packs: React.FC<PropsType> = ({
                 <tr>
                     <td>name</td>
                     <td>Cards</td>
-                    <td>Last updated</td>
+                    <td onClick={onSortClick}>Last updated {sortPointer}</td>
                     <td>Actions</td>
                 </tr>
                 </thead>
@@ -78,12 +80,14 @@ type PropsType = {
     cardPacksTotalCount: number | null,
     maxCardsCount: null | number,
     minCardsCount: null | number,
-    page:  number,
+    page: number,
     pageCount: number,
     onChangePage: (currentPage: number) => void
     errorMessage: string
     addPackCB: (name: string) => void,
     delPackCB: (id: string) => void,
     updatePackNameCB: (id: string, name: string) => void,
+    onSortClick: () => void
+    sortPointer: null | string
 }
 

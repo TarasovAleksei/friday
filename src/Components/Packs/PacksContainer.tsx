@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Packs} from "./Packs";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -6,7 +6,7 @@ import {
     delPackTC,
     fetchPacksTC,
     InitialStateType,
-    setErrorMessagePuckAC,
+    setErrorMessagePuckAC, sortAC,
     updatePackNameTC
 } from "../../Store/packsReducer";
 import {AppRootStateType} from "../../Store/redux-store";
@@ -24,6 +24,8 @@ export const PacksContainer = () => {
         sortPacks,
         message,
     } = useSelector<AppRootStateType, InitialStateType>(state => state.packs)
+
+    const [sortPointer, setSortPointer] = useState<null | '▲' | '▼'>(null)
 
     const dispatch = useDispatch()
 
@@ -43,6 +45,7 @@ export const PacksContainer = () => {
         sortPacks,
         page,
     ])
+
     const addPackCB = (name: string) => {
         dispatch(addPackTC(name))
     }
@@ -51,6 +54,18 @@ export const PacksContainer = () => {
     }
     const updatePackNameCB = (id: string, name: string) => {
         dispatch(updatePackNameTC(id, name))
+    }
+    const sortClick = (sortPacks: string) => {
+        dispatch(sortAC(sortPacks))
+    }
+    const onSortClick = () => {
+        if (sortPacks === '0updated') {
+            sortClick('1updated')
+            setSortPointer('▲')
+        } else {
+            sortClick('0updated')
+            setSortPointer('▼')
+        }
     }
 
     return (
@@ -66,6 +81,8 @@ export const PacksContainer = () => {
             delPackCB={delPackCB}
             updatePackNameCB={updatePackNameCB}
             onChangePage={onChangePage}
+            onSortClick={onSortClick}
+            sortPointer={sortPointer}
         />
     );
 };

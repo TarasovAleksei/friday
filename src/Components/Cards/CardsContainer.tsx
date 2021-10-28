@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Cards} from "./Cards";
 import {useDispatch, useSelector} from "react-redux";
-import { setErrorMessagePuckAC} from "../../Store/packsReducer";
+import {setErrorMessagePuckAC, sortAC} from "../../Store/packsReducer";
 import {addCardTC, delCardTC, fetchCardsTC, updateCardNameTC} from "../../Store/cardsReducer";
 import {InitialStateType, setCurrentPageAC} from "../../Store/cardsReducer";
 import {AppRootStateType} from "../../Store/redux-store";

@@ -10,9 +10,9 @@ export const initialState: InitialStateType = {
     maxCardsCount: null,
     minCardsCount: null,
     page: 1,
-    pageCount: 10,
+    pageCount: 100,
     sortPacks: '0updated',
-    message: ''
+    message: '',
 }
 
 
@@ -24,6 +24,12 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
             return {...state, message: action.message}
         case "CARDS/SET-CURRENT-PAGE":
             return {...state, page: action.currentPage}
+        case "PACKS/SORT": {
+            return {
+                ...state,
+                sortPacks: state.sortPacks === '0updated' ? '1updated' : '0updated'
+            }
+        }
         default:
             return state
     }
@@ -32,6 +38,8 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
 // actions
 export const setDataPacksAC = (data: cardsPacksResponse) => ({type: 'PACKS/SET-PACKS', data} as const)
 export const setErrorMessagePuckAC = (message: string) => ({type: 'PACKS/SET-MESSAGE', message} as const)
+export const sortAC = (sortPacks: string) => ({type: 'PACKS/SORT', sortPacks} as const)
+
 //thunks
 export const fetchPacksTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     dispatch(setErrorMessagePuckAC(''))
@@ -86,8 +94,13 @@ export type InitialStateType = {
     page: number,
     pageCount: number,
     sortPacks: string,
-    message: string
+    message: string,
 }
 export type setDataPacksActionType = ReturnType<typeof setDataPacksAC>
 export type setErrorMessagePuckActionType = ReturnType<typeof setErrorMessagePuckAC>
-export type TotalActionType = setDataPacksActionType | setErrorMessagePuckActionType |setCurrentPageActionType
+export type sortActionType = ReturnType<typeof sortAC>
+export type TotalActionType =
+    setDataPacksActionType
+    | setErrorMessagePuckActionType
+    | setCurrentPageActionType
+    | sortActionType

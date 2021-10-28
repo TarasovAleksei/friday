@@ -22,7 +22,7 @@ export const Cards: React.FC<PropsType> = ({
                                                cardURL,
                                                delCardCB,
                                                updateCardCB,
-                                               onChangePage
+                                               onChangePage,
                                            }) => {
 
     let table = cards.map(function (item) {
@@ -35,7 +35,9 @@ export const Cards: React.FC<PropsType> = ({
                 <SuperButton onClick={() => {
                     delCardCB(cardURL, item._id)
                 }} name={'del'}/>
-                <SuperButton onClick={()=>{updateCardCB(cardURL, item._id, 'newCustomQuestion')}} name={'update'}/>
+                <SuperButton onClick={() => {
+                    updateCardCB(cardURL, item._id, 'newCustomQuestion')
+                }} name={'update'}/>
             </>}
             </td>
         </tr>;
@@ -93,6 +95,6 @@ type PropsType = {
     cardURL: string
     addCardCB: (id: string) => void
     delCardCB: (idPuck: string, idCard: string) => void
-    updateCardCB:(idPuck: string, idCard: string, name: string)=>void
+    updateCardCB: (idPuck: string, idCard: string, name: string) => void
 }
 
