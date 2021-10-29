@@ -52,10 +52,11 @@ export const Packs: React.FC<PropsType> = ({
         <>
             <HeaderContainer/>
             <div className={s.packs}>
+                <div className={s.leftBlock}></div>
                 <div className={s.rihtBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
-                        <div className={s.plug}>
+                        <div className={s.search}>
                             <input
                                 type="text"
                                 placeholder="Search..."
@@ -63,7 +64,7 @@ export const Packs: React.FC<PropsType> = ({
                                     callSetSearchPack(e.currentTarget.value)
                                 }
                             />
-                            <SuperButton onClick={getSearchPacks} name={'🔎'}/>
+                            <SuperButton className={s.btnSearch} onClick={getSearchPacks} name={'.'}/>
                         </div>
                         <SuperButton onClick={() => {
                             addPackCB('newName')
