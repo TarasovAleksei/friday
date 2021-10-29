@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/friday/static/css/main.e989bf8e.chunk.css",
-    "main.js": "/friday/static/js/main.3c9c23ac.chunk.js",
-    "main.js.map": "/friday/static/js/main.3c9c23ac.chunk.js.map",
+    "main.css": "/friday/static/css/main.484e4e47.chunk.css",
+    "main.js": "/friday/static/js/main.9eedbab7.chunk.js",
+    "main.js.map": "/friday/static/js/main.9eedbab7.chunk.js.map",
     "runtime-main.js": "/friday/static/js/runtime-main.1ffe1a07.js",
     "runtime-main.js.map": "/friday/static/js/runtime-main.1ffe1a07.js.map",
-    "static/js/2.978ec924.chunk.js": "/friday/static/js/2.978ec924.chunk.js",
-    "static/js/2.978ec924.chunk.js.map": "/friday/static/js/2.978ec924.chunk.js.map",
+    "static/js/2.b2827c69.chunk.js": "/friday/static/js/2.b2827c69.chunk.js",
+    "static/js/2.b2827c69.chunk.js.map": "/friday/static/js/2.b2827c69.chunk.js.map",
     "index.html": "/friday/index.html",
-    "static/css/main.e989bf8e.chunk.css.map": "/friday/static/css/main.e989bf8e.chunk.css.map",
-    "static/js/2.978ec924.chunk.js.LICENSE.txt": "/friday/static/js/2.978ec924.chunk.js.LICENSE.txt",
+    "static/css/main.484e4e47.chunk.css.map": "/friday/static/css/main.484e4e47.chunk.css.map",
+    "static/js/2.b2827c69.chunk.js.LICENSE.txt": "/friday/static/js/2.b2827c69.chunk.js.LICENSE.txt",
     "static/media/index.css": "/friday/static/media/SFUIDisplay-Regular.1b6ee1f6.woff",
     "static/media/Error404.module.css": "/friday/static/media/bg.9dec475d.jpeg",
     "static/media/icon-packs.eec99206.svg": "/friday/static/media/icon-packs.eec99206.svg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1ffe1a07.js",
-    "static/js/2.978ec924.chunk.js",
-    "static/css/main.e989bf8e.chunk.css",
-    "static/js/main.3c9c23ac.chunk.js"
+    "static/js/2.b2827c69.chunk.js",
+    "static/css/main.484e4e47.chunk.css",
+    "static/js/main.9eedbab7.chunk.js"
   ]
 }
