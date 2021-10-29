@@ -33,13 +33,13 @@ export const Cards: React.FC<PropsType> = ({
             <td>{item.answer}</td>
             <td>{item.grade}</td>
             <td>{item.updated.substr(0, 10)}</td>
-            <td>    {<>
-                <SuperButton onClick={() => {
+            <td> {<>
+                <SuperButton className={s.btnDel} onClick={() => {
                     delCardCB(cardURL, item._id)
                 }} name={'del'}/>
-                <SuperButton onClick={() => {
+                <SuperButton className={s.btnEdit} onClick={() => {
                     updateCardCB(cardURL, item._id, 'newCustomQuestion')
-                }} name={'update'}/>
+                }} name={'Edit'}/>
             </>}
             </td>
         </tr>
@@ -48,35 +48,43 @@ export const Cards: React.FC<PropsType> = ({
 
         <>
             <HeaderContainer/>
-            <NavLink to={'/packs'}>
-                <SuperButton name={'back'}/>
-            </NavLink>
-            <SuperButton onClick={() => {
-                addCardCB(cardURL)
-            }} name={'add'}/>
-            <h1>cards</h1> {message}
-            <Pagination className="ant-pagination"
-                        defaultCurrent={page}
-                        pageSize={pageCount}
-                        total={cardsTotalCount!}
-                        current={page}
-                        locale={localInfo}
-                        onChange={onChangePage}/>
-            <table>
-                <thead>
-                <tr>
-                    <td>question</td>
-                    <td>answer</td>
-                    <td>grade</td>
-                    <td>updated</td>
-                    <td>actions</td>
-                </tr>
-                </thead>
-                <tbody>
-                {table}
-                </tbody>
-            </table>
+            <div className={s.cards}>
+                <NavLink style={{width: '150px'}} to={'/packs'}> <SuperButton className={s.btnBack} name={'Pack Name'}/>
+                </NavLink>
 
+                <div className={s.wrapSearch}>
+                    <div className={s.plug}>
+                        {/*
+                    <Search filterPacks={filterPacks} />*/}
+                    </div>
+                    <SuperButton onClick={() => {
+                        addCardCB(cardURL)
+                    }} name={'Add new card'}/>
+                </div>
+
+
+                {/* <h1 className={s.title}>cards</h1> */} {message}
+                <div className={s.wrapTable}>
+                    <table className={s.tableCards}>
+                        <thead>
+                        <tr>
+                            <td>question</td>
+                            <td>answer</td>
+                            <td>grade</td>
+                            <td>updated</td>
+                            <td>actions</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {table}
+                        </tbody>
+                    </table>
+                </div>
+
+                <Pagination style={{marginTop: '24px'}} className="ant-pagination" defaultCurrent={page}
+                            pageSize={pageCount} total={cardsTotalCount!}
+                            current={page} locale={localInfo} onChange={onChangePage}/>
+            </div>
         </>
     )
 }

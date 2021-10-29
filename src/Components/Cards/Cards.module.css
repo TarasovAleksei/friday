@@ -1,0 +1,191 @@
+.cards {
+    margin: 24px auto 0;
+    padding: 24px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-width: 1008px;
+    border-radius: 8px;
+    background-color: #fefeff;
+}
+
+.cardWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapSearch {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plug {
+    width: 750px;
+    height: 36px;
+    background-color: #ececf9;
+    border: 1px solid #635d80;
+}
+
+.title {
+    align-self: flex-start;
+    color: #2d2e46;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.wrapTable {
+    display: flex;
+    justify-content: last baseline;
+    margin-top: 25px;
+    max-height: 432px;
+    overflow-x: auto;
+    box-shadow: 0px 2px 5px 2px #e8e8eb;
+}
+
+.tableCards {
+    width: 100%;
+    max-width: 960px;
+    table-layout: fixed;
+    border-spacing: 0;
+    color: #000000;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    border: none;
+
+}
+
+table td {
+    padding: 11px 25px;
+}
+
+table th {
+    width: 100%;
+}
+
+table td:first-child {
+    padding-left: 24px;
+}
+
+table td:last-child {
+    display: flex;
+    padding-right: 24px;
+}
+
+table a {
+    text-decoration: none;
+    color: #000000;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+thead {
+    text-decoration: none;
+    color: #000000;
+    border: none;
+    background-color: #ececf9;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+}
+
+
+
+thead td:nth-child(1) {}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f7fd;
+}
+
+.btnBack {
+    position: relative;
+    margin-right: 0px;
+    padding: 0 0 0 25px;
+    box-sizing: border-box;
+    color: #2d2e46;
+    background-color: transparent;
+    opacity: 1;
+    cursor: not-allowed;
+    border: none;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+.btnBack:hover {
+    cursor: pointer;
+    border: none;
+    color: #2d2e46;
+    background-color: transparent;
+}
+
+.btnBack::after {
+    content: '';
+    top: 7px;
+    left: 0;
+    width: 16px;
+    height: 11px;
+    position: absolute;
+    background-image: url(../../images/btn/icon-arrow.png);
+}
+
+
+
+.btnDel {
+    margin-right: 6px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #f1453d;
+    opacity: 1;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btnDel:hover {
+    cursor: pointer;
+    border: 1px solid #f1453d;
+    color: #f1453d;
+    background-color: transparent;
+}
+
+.btnEdit {
+    margin-right: 6px;
+    padding: 5px 4px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background-color: #21268f;
+    opacity: 1;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btnEdit:hover {
+    cursor: pointer;
+    border: 1px solid #21268f;
+    color: #21268f;
+    background-color: transparent;
+}

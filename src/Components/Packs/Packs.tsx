@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType} from "../../common/Api/api";
@@ -118,4 +119,3 @@ type PropsType = {
     onSortClick: () => void
     sortPointer: null | string
 }
-
