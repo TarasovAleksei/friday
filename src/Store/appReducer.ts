@@ -1,7 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI, UserData} from "../common/Api/api";
 import {setIsLoggedInAC, SetIsLoggedInActionType} from "./authReducer";
-import {AppRootStateType} from "./redux-store";
 
 const initialState = {
     status: 'succeeded' as RequestStatusType,
@@ -33,12 +32,11 @@ export const setDataProfileAC = (data: UserData) => ({type: 'login/SET-DATA-PROF
 export const setLockButtonAC = (lockButton: boolean) => ({type: 'REGISTRATION/LOCK-BUTTON', lockButton} as const)
 
 //thunks
-export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>, getState: () => AppRootStateType) => {
+export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>) => {
     authAPI.me()
         .then((res) => {
             dispatch(setIsLoggedInAC(true))
             dispatch(setDataProfileAC(res.data))
-            console.log(getState().app.isInitialized)
         }).catch((e) => {
         console.error(e)
     })

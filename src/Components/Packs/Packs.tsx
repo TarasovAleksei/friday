@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType} from "../../common/Api/api";
@@ -7,7 +6,6 @@ import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButt
 import Pagination from "rc-pagination";
 import {localInfo} from '../../common/locale/en_US';
 import s from './Packs.module.css'
-import {Search} from "../../common/Search/Search";
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -21,23 +19,22 @@ export const Packs: React.FC<PropsType> = ({
                                                delPackCB,
                                                updatePackNameCB,
                                                errorMessage,
-                                               filterPacks,
                                                onChangePage,
                                                onSortClick,
                                                sortPointer,
+                                               callSetSearchPack,
+                                               getSearchPacks
                                            }) => {
 
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-
             <NavLink to={`/cards/` + item._id}>
                 <td>{item.name}</td>
             </NavLink>
-
             <td>{item.cardsCount}</td>
             <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
-            <td>    {<>
+            <td>
                 <SuperButton className={s.btnDel} onClick={() => {
                     delPackCB(item._id)
                 }} name={'Delete'}/>
@@ -47,7 +44,6 @@ export const Packs: React.FC<PropsType> = ({
                 <NavLink to={`/cards/` + item._id}>
                     <SuperButton className={s.btnLearn} name={'Learn'}/>
                 </NavLink>
-            </>}
             </td>
         </tr>;
     });
@@ -56,13 +52,18 @@ export const Packs: React.FC<PropsType> = ({
         <>
             <HeaderContainer/>
             <div className={s.packs}>
-                <div className={s.leftBlock}></div>
                 <div className={s.rihtBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
-
                         <div className={s.plug}>
-                            {/*<Search filterPacks={filterPacks}/>*/}
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                onChange={(e) =>
+                                    callSetSearchPack(e.currentTarget.value)
+                                }
+                            />
+                            <SuperButton onClick={getSearchPacks} name={'🔎'}/>
                         </div>
                         <SuperButton onClick={() => {
                             addPackCB('newName')
@@ -72,7 +73,6 @@ export const Packs: React.FC<PropsType> = ({
                         <table>
                             <thead>
                             <tr>
-
                                 <td>Name</td>
                                 <td>Cards</td>
                                 <td onClick={onSortClick}>Last updated {sortPointer}</td>
@@ -85,7 +85,6 @@ export const Packs: React.FC<PropsType> = ({
                             </tbody>
                         </table>
                     </div>
-
                     <Pagination style={{marginTop: '24px', alignSelf: 'flex-start'}}
                                 className="ant-pagination"
                                 showQuickJumper
@@ -115,7 +114,8 @@ type PropsType = {
     addPackCB: (name: string) => void,
     delPackCB: (id: string) => void,
     updatePackNameCB: (id: string, name: string) => void,
-    filterPacks:(filterValue: string)=>void
     onSortClick: () => void
     sortPointer: null | string
+    callSetSearchPack: (value: string) => void
+    getSearchPacks: () => void
 }

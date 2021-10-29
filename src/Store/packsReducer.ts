@@ -6,7 +6,6 @@ import {setCurrentPageActionType} from "./cardsReducer";
 
 export const initialState: InitialStateType = {
     cardPacks: [],
-    // filteredCardPacks: [],
     cardPacksTotalCount: null,
     maxCardsCount: null,
     minCardsCount: null,
@@ -14,6 +13,7 @@ export const initialState: InitialStateType = {
     pageCount: 10,
     sortPacks: '0updated',
     message: '',
+    searchPacks: '',
 }
 
 
@@ -25,40 +25,30 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
             return {...state, message: action.message}
         case "CARDS/SET-CURRENT-PAGE":
             return {...state, page: action.currentPage}
-        // case "PACKS/FILTER-PACKS":
-        //     const regExp = new RegExp(action.searchValue, 'i');
-        //     return {
-        //         ...state,
-        //         filteredCardPacks: [
-        //             ...state.cardPacks.filter(pack =>
-        //                 Object.values(pack).some(el => regExp.test(el))
-        //             )],
-        //     };
         case "PACKS/SORT": {
             return {
                 ...state,
                 sortPacks: state.sortPacks === '0updated' ? '1updated' : '0updated'
             }
         }
+        case "SET_SEARCH_PACKS":
+            return { ...state, searchPacks: action.searchValue };
         default:
             return state
     }
 }
 
 // actions
-export const filterAC = (searchValue: string) => ({
-    type: 'PACKS/FILTER-PACKS',
-    searchValue,
-} as const)
 export const setDataPacksAC = (data: cardsPacksResponse) => ({type: 'PACKS/SET-PACKS', data} as const)
 export const setErrorMessagePuckAC = (message: string) => ({type: 'PACKS/SET-MESSAGE', message} as const)
 export const sortAC = (sortPacks: string) => ({type: 'PACKS/SORT', sortPacks} as const)
+export const setSearchPacksAC = (searchValue: string) => ({type: "SET_SEARCH_PACKS", searchValue} as const)
 
 //thunks
 export const fetchPacksTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     dispatch(setErrorMessagePuckAC(''))
-    let {sortPacks, page, pageCount} = getState().packs
-    packsAPI.getPacks(pageCount, page, sortPacks).then((response) => {
+    let {sortPacks, page, pageCount, searchPacks} = getState().packs
+    packsAPI.getPacks(pageCount, page, sortPacks, searchPacks).then((response) => {
         dispatch(setDataPacksAC(response.data))
     }).catch((error) => {
             dispatch(setErrorMessagePuckAC(error.response.data.error))
@@ -102,7 +92,6 @@ export const updatePackNameTC = (_id: string, name: string) => (dispatch: Dispat
 //types
 export type InitialStateType = {
     cardPacks: cardsPacksType[],
-    // filteredCardPacks: cardsPacksType[],
     cardPacksTotalCount: null | number,
     maxCardsCount: null | number,
     minCardsCount: null | number,
@@ -110,15 +99,16 @@ export type InitialStateType = {
     pageCount: number,
     sortPacks: string,
     message: string,
+    searchPacks: string,
 }
 export type setDataPacksActionType = ReturnType<typeof setDataPacksAC>
 export type setErrorMessagePuckActionType = ReturnType<typeof setErrorMessagePuckAC>
-export type filterActionType = ReturnType<typeof filterAC>
 export type sortActionType = ReturnType<typeof sortAC>
+export type setSearchPacksActionType = ReturnType<typeof setSearchPacksAC>
 
 export type TotalActionType =
     setDataPacksActionType
     | setErrorMessagePuckActionType
     | setCurrentPageActionType
-    | filterActionType
     | sortActionType
+    | setSearchPacksActionType

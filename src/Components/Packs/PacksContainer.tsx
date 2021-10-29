@@ -5,9 +5,9 @@ import {
     addPackTC,
     delPackTC,
     fetchPacksTC,
-    filterAC,
     InitialStateType,
     setErrorMessagePuckAC,
+    setSearchPacksAC,
     sortAC,
     updatePackNameTC
 } from "../../Store/packsReducer";
@@ -28,6 +28,7 @@ export const PacksContainer = () => {
     } = useSelector<AppRootStateType, InitialStateType>(state => state.packs)
 
     const [sortPointer, setSortPointer] = useState<null | '▲' | '▼'>(null)
+    const [searchPack, setSearchPack] = useState("");
 
     const dispatch = useDispatch()
 
@@ -57,9 +58,6 @@ export const PacksContainer = () => {
     const updatePackNameCB = (id: string, name: string) => {
         dispatch(updatePackNameTC(id, name))
     }
-    const filterPacks = (filterValue: string) => {
-        dispatch(filterAC(filterValue))
-    }
     const sortClick = (sortPacks: string) => {
         dispatch(sortAC(sortPacks))
     }
@@ -71,6 +69,13 @@ export const PacksContainer = () => {
             sortClick('0updated')
             setSortPointer('▼')
         }
+    }
+    const callSetSearchPack = (value: string) => {
+        setSearchPack(value);
+        dispatch(setSearchPacksAC(searchPack));
+    }
+    const getSearchPacks = () => {
+        dispatch(fetchPacksTC())
     }
 
     return (
@@ -86,9 +91,10 @@ export const PacksContainer = () => {
             delPackCB={delPackCB}
             updatePackNameCB={updatePackNameCB}
             onChangePage={onChangePage}
-            filterPacks={filterPacks}
             onSortClick={onSortClick}
             sortPointer={sortPointer}
+            callSetSearchPack={callSetSearchPack}
+            getSearchPacks={getSearchPacks}
         />
     );
 };
