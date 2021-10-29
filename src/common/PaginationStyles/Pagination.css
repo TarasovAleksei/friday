@@ -243,6 +243,7 @@
 .rc-pagination-options-quick-jumper input {
     width: 50px;
     margin: 0 8px;
+    border: 1px solid #635d80;
 }
 
 .rc-pagination-simple .rc-pagination-prev,
