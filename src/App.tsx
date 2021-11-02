@@ -15,7 +15,7 @@ import {CheckEmail} from "./Components/CheckEmail/CheckEmail";
 import {PacksContainer} from "./Components/Packs/PacksContainer";
 import {CardsContainer} from "./Components/Cards/CardsContainer";
 
-import { Preloader } from './Components/Preloader/Preloader';
+import {Preloader} from './Components/Preloader/Preloader';
 
 function App() {
 
@@ -28,26 +28,28 @@ function App() {
     }, [])
 
     if (!isInitialized) {
-        return <div className={s.preloaderApp}> <Preloader/> </div>
+        return <div className={s.preloaderApp}><Preloader/></div>
     }
 
     return (
         <div className={s.app}>
-                <Switch>
-                    <Route exact path={'/'} render={() => <AuthContainer/>}/>
-                    <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
-                    <Route path={'/profile'} render={() => <ProfileContainer/>}/>
-                    <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>
-                    <Route path={'/newpassword/:tokenForPass?'} render={() => <NewPasswordContainer/>}/>
-                    <Route path={'/CheckEmail'} render={() => <CheckEmail/>}/>
-                    <Route path={'/packs'} render={() => <PacksContainer/>}/>
-                    <Route path={'/cards/:cardsPack_id?'} render={() => <CardsContainer/>}/>
-                    <Route path={'/404'} render={() => <Error404/>}/>
-                    <Redirect from={'*'} to={'/404'}/>
-                </Switch>
+            <Switch>
+                <Route exact path={'/'} render={() => <AuthContainer/>}/>
+                <Route path={'/registration'} render={() => <RegistrationContainer/>}/>
+                <Route path={'/profile'} render={() => <ProfileContainer/>}/>
+                <Route path={'/recoverypassword'} render={() => <RecoveryPasswordContainer/>}/>
+                <Route path={'/newpassword/:tokenForPass?'} render={() => <NewPasswordContainer/>}/>
+                <Route path={'/CheckEmail'} render={() => <CheckEmail/>}/>
+                <Route path={'/packs'} render={() => <PacksContainer/>}/>
+                <Route path={'/cards/:cardsPack_id?'} render={() => <CardsContainer/>}/>
+                <Route path={'/404'} render={() => <Error404/>}/>
+                <Redirect from={'*'} to={'/404'}/>
+            </Switch>
         </div>
     );
 }
 
 export default App;
+
+
 

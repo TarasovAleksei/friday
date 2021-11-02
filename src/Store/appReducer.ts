@@ -35,8 +35,8 @@ export const setLockButtonAC = (lockButton: boolean) => ({type: 'REGISTRATION/LO
 export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>) => {
     authAPI.me()
         .then((res) => {
-            dispatch(setIsLoggedInAC(true))
             dispatch(setDataProfileAC(res.data))
+            dispatch(setIsLoggedInAC(true))
         }).catch((e) => {
         console.error(e)
     })
@@ -44,8 +44,8 @@ export const initializeAppTC = () => (dispatch: Dispatch<ActionsType>) => {
             dispatch(setIsInitializedAC(true))
         })
 }
-export const updateProfileTC=(name:string, avatar:string)=>(dispatch: Dispatch<any>)=>{
-    authAPI.updateProfile(name, avatar).then(res=>{
+export const updateProfileTC = (name: string, avatar: string) => (dispatch: Dispatch<any>) => {
+    authAPI.updateProfile(name, avatar).then(res => {
         dispatch(setDataProfileAC(res.data))
     }).catch((e) => {
         console.error(e)

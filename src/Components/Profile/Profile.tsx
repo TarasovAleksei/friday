@@ -12,7 +12,7 @@ export const Profile: React.FC<PropsType> = (props) => {
 
     const {
         name, avatar,
-        status,changeName,
+        status, changeName,
         onChangeName,
     } = props
 
@@ -26,9 +26,8 @@ export const Profile: React.FC<PropsType> = (props) => {
                         <h1 className={s.title}>Personal Information</h1>
                         <img className={s.avatar} src={avatar != null ? avatar : userDefaultPhoto}
                              alt="ava"/>
-                        <SuperEditableSpan onChangeText={onChangeName} onEnter={changeName} onBlur={changeName} value={name} />
-
-
+                        <SuperEditableSpan onChangeText={onChangeName} onEnter={changeName} onBlur={changeName}
+                                           value={name}/>
                         {/*<div className={s.wrapBtn}>*/}
                         {/*    <SuperButton*/}
                         {/*        style={{maxWidth: '127px', width: '100%',}}*/}
@@ -48,10 +47,10 @@ export const Profile: React.FC<PropsType> = (props) => {
 
 //types
 type PropsType = {
-    name:string
-    avatar:string
-    onChangeName:(newName:string)=>void
-    changeName:()=>void
+    name: string
+    avatar: string
+    onChangeName: (newName: string) => void
+    changeName: () => void
     status: RequestStatusType
 }
 

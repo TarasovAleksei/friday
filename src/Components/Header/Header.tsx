@@ -24,10 +24,13 @@ export const Header: React.FC<PropsType> = (props) => {
                     </div>
                     <nav className={s.headerNav}>
                         <ul className={s.list}>
-                            <li className={s.item}><img src={iconPacks} alt="icon"/><NavLink
-                                activeClassName={s.activeLink} to="/packs">Packs list</NavLink></li>
-                            <li className={s.item}><img src={iconProfile} alt="icon"/><NavLink
-                                activeClassName={s.activeLink} to="/profile">Profile</NavLink></li>
+
+                            <li className={s.item}><NavLink
+                                activeClassName={s.activeLink} to="/packs"><img src={iconPacks} alt="icon"/>Packs
+                                list</NavLink></li>
+                            <li className={s.item}><NavLink
+                                activeClassName={s.activeLink} to="/profile"><img src={iconProfile} alt="icon"/>Profile</NavLink>
+                            </li>
                         </ul>
                     </nav>
                 </div>
