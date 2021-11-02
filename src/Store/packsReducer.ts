@@ -14,6 +14,7 @@ export const initialState: InitialStateType = {
     sortPacks: '0updated',
     message: '',
     searchPacks: '',
+    showPrivatePacks: true,
 }
 
 
@@ -31,8 +32,14 @@ export const packsReducer = (state: InitialStateType = initialState, action: Tot
                 sortPacks: state.sortPacks === '0updated' ? '1updated' : '0updated'
             }
         }
+        case "SET_PRIVATE_PACKS":
+            return {
+                ...state,
+                showPrivatePacks: action.showPrivatePacks
+            }
+
         case "SET_SEARCH_PACKS":
-            return { ...state, searchPacks: action.searchValue };
+            return {...state, searchPacks: action.searchValue};
         default:
             return state
     }
@@ -43,12 +50,16 @@ export const setDataPacksAC = (data: cardsPacksResponse) => ({type: 'PACKS/SET-P
 export const setErrorMessagePuckAC = (message: string) => ({type: 'PACKS/SET-MESSAGE', message} as const)
 export const sortAC = (sortPacks: string) => ({type: 'PACKS/SORT', sortPacks} as const)
 export const setSearchPacksAC = (searchValue: string) => ({type: "SET_SEARCH_PACKS", searchValue} as const)
+export const setPrivatePacksAC = (showPrivatePacks: boolean) => ({type: "SET_PRIVATE_PACKS", showPrivatePacks} as const)
 
 //thunks
 export const fetchPacksTC = () => (dispatch: Dispatch, getState: () => AppRootStateType) => {
     dispatch(setErrorMessagePuckAC(''))
-    let {sortPacks, page, pageCount, searchPacks} = getState().packs
-    packsAPI.getPacks(pageCount, page, sortPacks, searchPacks).then((response) => {
+    let {sortPacks, page, pageCount, searchPacks, showPrivatePacks} = getState().packs
+    let user_id = ''
+    if (showPrivatePacks)
+        user_id = getState().app.data._id
+    packsAPI.getPacks(pageCount, page, sortPacks, searchPacks, user_id).then((response) => {
         dispatch(setDataPacksAC(response.data))
     }).catch((error) => {
             dispatch(setErrorMessagePuckAC(error.response.data.error))
@@ -100,15 +111,18 @@ export type InitialStateType = {
     sortPacks: string,
     message: string,
     searchPacks: string,
+    showPrivatePacks: boolean
+
 }
 export type setDataPacksActionType = ReturnType<typeof setDataPacksAC>
 export type setErrorMessagePuckActionType = ReturnType<typeof setErrorMessagePuckAC>
 export type sortActionType = ReturnType<typeof sortAC>
 export type setSearchPacksActionType = ReturnType<typeof setSearchPacksAC>
+export type setPrivatePacksActionType = ReturnType<typeof setPrivatePacksAC>
 
 export type TotalActionType =
     setDataPacksActionType
     | setErrorMessagePuckActionType
     | setCurrentPageActionType
     | sortActionType
-    | setSearchPacksActionType
+    | setSearchPacksActionType | setPrivatePacksActionType

@@ -1,11 +1,16 @@
 import React from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
-import {cardsPacksType} from "../../common/Api/api";
+import {cardsPacksType, UserData} from "../../common/Api/api";
 import {NavLink} from 'react-router-dom';
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import Pagination from "rc-pagination";
 import {localInfo} from '../../common/locale/en_US';
 import s from './Packs.module.css'
+import userDefaultPhoto from "../../images/profile/no_foto.jpeg";
+import {SuperCheckbox} from "../../common/SuperComponents/c3-SuperCheckbox/SuperCheckbox";
+import {ModalAddPackContainer} from "../../common/Modal/ModalAddPackContainer";
+import {ModalDellPackContainer} from "../../common/Modal/ModalDellPackContainer";
+import {ModalUpdatePackContainer} from "../../common/Modal/ModalUpdatePackContainer";
 
 
 export const Packs: React.FC<PropsType> = ({
@@ -23,37 +28,81 @@ export const Packs: React.FC<PropsType> = ({
                                                onSortClick,
                                                sortPointer,
                                                callSetSearchPack,
-                                               getSearchPacks
+                                               getSearchPacks,
+                                               data,
+                                               showPrivatePacks,
+                                               changePrivatePacks,
+                                               showModalAddPack,
+                                               changeShowModalAdd,
+                                               showModalDellPack,
+                                               changeShowModalDell,
+                                               idForDellModal,
+                                               nameForDellModal,
+                                               onChangeId,onChangeNamePack,showModalUpdatePack,
+                                               changeShowModalUpdate
                                            }) => {
 
     let table = cardPacks.map(function (item) {
         return <tr key={item._id}>
-            <NavLink to={`/cards/` + item._id}>
-                <td>{item.name}</td>
-            </NavLink>
+
+
+            <td><NavLink to={`/cards/` + item._id}>{item.name}</NavLink></td>
+
             <td>{item.cardsCount}</td>
             <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
             <td>
                 <SuperButton className={s.btnDel} onClick={() => {
-                    delPackCB(item._id)
+                    changeShowModalDell()
+                    onChangeId(item._id)
+                    onChangeNamePack(item.name)
                 }} name={'Delete'}/>
                 <SuperButton className={s.btnEdit} onClick={() => {
-                    updatePackNameCB(item._id, 'newSuperName')
+                    changeShowModalUpdate()
+                    onChangeId(item._id)
+                    onChangeNamePack(item.name)
                 }} name={'Edit'}/>
                 <NavLink to={`/cards/` + item._id}>
                     <SuperButton className={s.btnLearn} name={'Learn'}/>
                 </NavLink>
             </td>
-        </tr>;
-    });
+        </tr>
+    })
 
     return (
         <>
             <HeaderContainer/>
+            <ModalAddPackContainer
+                show={showModalAddPack}
+                changeShowModalAdd={changeShowModalAdd}
+                addPackCB={addPackCB}
+            />
+            <ModalDellPackContainer
+                show={showModalDellPack}
+                packName={nameForDellModal}
+                changeShowModalDell={changeShowModalDell}
+                delPackCB={delPackCB}
+            />
+            <ModalUpdatePackContainer
+                show={showModalUpdatePack}
+                packName={nameForDellModal}
+                changeShowModalUpdate={changeShowModalUpdate}
+                updatePackNameCB={updatePackNameCB}
+                onChangeNamePack={onChangeNamePack}
+            />
             <div className={s.packs}>
-                <div className={s.leftBlock}></div>
-                <div className={s.rihtBloc}>
+                <div className={s.leftBlock}>
+                    <div className={s.containerForProfileInPacks}>
+                        <img className={s.avatar} src={data.avatar != null ? data.avatar : userDefaultPhoto}
+                             alt="ava"/>
+                        <div>{data.name}</div>
+                    </div>
+                    <SuperCheckbox style={{margin: "0"}}
+                                   checked={showPrivatePacks}
+                                   onChangeChecked={changePrivatePacks}/>
+                    <span>My packs</span>
+                </div>
+                <div className={s.rightBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
                         <div className={s.search}>
@@ -66,9 +115,7 @@ export const Packs: React.FC<PropsType> = ({
                             />
                             <SuperButton className={s.btnSearch} onClick={getSearchPacks} name={'.'}/>
                         </div>
-                        <SuperButton onClick={() => {
-                            addPackCB('newName')
-                        }} name={'Add new pack'}/>
+                        <SuperButton onClick={changeShowModalAdd} name={'Add new pack'}/>
                     </div>
                     <div className={s.wrapTable}>
                         <table>
@@ -113,10 +160,23 @@ type PropsType = {
     onChangePage: (currentPage: number) => void
     errorMessage: string
     addPackCB: (name: string) => void,
-    delPackCB: (id: string) => void,
-    updatePackNameCB: (id: string, name: string) => void,
+    delPackCB: () => void,
+    updatePackNameCB: (newName:string) => void,
     onSortClick: () => void
     sortPointer: null | string
     callSetSearchPack: (value: string) => void
     getSearchPacks: () => void
+    data: UserData
+    showPrivatePacks: boolean
+    changePrivatePacks: () => void
+    showModalAddPack: boolean
+    changeShowModalAdd: () => void
+    showModalDellPack: boolean
+    changeShowModalDell: () => void
+    idForDellModal: string
+    nameForDellModal: string
+    onChangeId: (id: string) => void
+    onChangeNamePack: (name: string) => void
+    showModalUpdatePack:boolean
+    changeShowModalUpdate:()=>void
 }

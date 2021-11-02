@@ -32,8 +32,8 @@ export const authAPI = {
     }
 }
 export const packsAPI = {
-    getPacks(pageCount: number, page: number, sortPacks: string, packName: string) {
-        return instance.get<cardsPacksResponse>(`cards/pack?pageCount=${pageCount}&page=${page}&sortPacks=${sortPacks}&packName=${packName}`)
+    getPacks(pageCount: number, page: number, sortPacks: string, packName: string, user_id:string) {
+        return instance.get<cardsPacksResponse>(`cards/pack?pageCount=${pageCount}&page=${page}&sortPacks=${sortPacks}&packName=${packName}&user_id=${user_id}`)
     },
     addPack(cardsPack:any){
         return instance.post('/cards/pack', {cardsPack})

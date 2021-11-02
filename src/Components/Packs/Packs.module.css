@@ -8,6 +8,7 @@
 }
 
 .leftBlock {
+
     width: 243px;
     height: 636px;
     background-color: #ececf9;
@@ -17,8 +18,15 @@
     -ms-border-radius: 8px 0 0 8px;
     -o-border-radius: 8px 0 0 8px;
 }
-
-.rihtBloc {
+.containerForProfileInPacks {
+    display: flex;
+    flex-direction: column;
+}
+.avatar {
+    width: 130px;
+    height: 130px;
+}
+.rightBloc {
     margin: 0 43px;
     display: flex;
     flex-direction: column;
