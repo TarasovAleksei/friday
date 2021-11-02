@@ -42,7 +42,6 @@ export const ModalWindow: React.FC<IModal> = (
                     left: '0px',
                     width: '100vw',
                     height: '100vh',
-
                     background: 'black',
                     opacity: 0.35,
                     zIndex: 10,
@@ -58,13 +57,9 @@ export const ModalWindow: React.FC<IModal> = (
                     left,
                     width,
                     height,
-                    borderRadius: '15px',
                     display: 'flex',
                     flexFlow: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-
-                    background: '#21268f',
+                    background: '#ffffff',
                     zIndex: 21,
 
                     ...modalStyle,

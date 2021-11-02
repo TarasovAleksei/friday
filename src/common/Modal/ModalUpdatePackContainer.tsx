@@ -1,6 +1,9 @@
+import s from './ModalUpdatePackContainer.module.css'
 import React, {useState} from 'react';
 import {ModalWindow} from "./ModalWindow";
+import { SuperButton } from '../SuperComponents/c2-SuperButton/SuperButton';
 import {SuperInputText} from "../SuperComponents/c1-SuperInputText/SuperInputText";
+import iconCross from '../../images/btn/icon-cross.svg';
 
 interface ModalContainerType {
     show: boolean
@@ -32,14 +35,22 @@ export const ModalUpdatePackContainer: React.FC<ModalContainerType> = ({
                 enableBackground={true}
                 backgroundOnClick={changeShowModalUpdate}
 
-                width={400}
-                height={300}
+                width={395}
+                height={233}
                 show={show}
             >
-                <span> Update pack</span>
-                <SuperInputText autoFocus value={packName} onChangeText={onChangeNewName}/>
-                <button onClick={changeShowModalUpdate}>no</button>
-                <button onClick={updatePackInModal}>edit</button>
+                <div className ={s.wrapTitle}>
+                    <h3 className={s.titleModal}>Edit pack</h3>
+                    <button className={s.modalBtnCross} onClick={changeShowModalUpdate}><img className={s.modalImg} src={iconCross} alt="X" /></button>
+                </div>
+                <div className={s.modalLine}></div>
+                <div className={s.modalInputWrap}>
+                    <SuperInputText className={s.modalInput} placeholder={'Edit Pack'} autoFocus value={packName} onChangeText={onChangeNewName}/>
+                </div>
+                <div className={s.modalBtnWrap}>
+                    <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close' />
+                    <SuperButton onClick={updatePackInModal} name='Edit' />
+                </div>
             </ModalWindow>
         </>
     )
