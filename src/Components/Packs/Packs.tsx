@@ -91,17 +91,26 @@ export const Packs: React.FC<PropsType> = ({
                 onChangeNamePack={onChangeNamePack}
             />
             <div className={s.packs}>
+
+
+
                 <div className={s.leftBlock}>
-                    <div className={s.containerForProfileInPacks}>
+                    <div className={s.wrapProfile}>
                         <img className={s.avatar} src={data.avatar != null ? data.avatar : userDefaultPhoto}
                              alt="ava"/>
-                        <div>{data.name}</div>
+                        <span className={s.nameHuman}>{data.name}</span>
+                        <span className={s.nameProfession}>Front-end developer</span>
+                        <SuperButton className={s.btnEditProfile} name={'Edit profile'}/>
                     </div>
                     <SuperCheckbox style={{margin: "0"}}
                                    checked={showPrivatePacks}
                                    onChangeChecked={changePrivatePacks}/>
                     <span>My packs</span>
                 </div>
+
+
+
+
                 <div className={s.rightBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>

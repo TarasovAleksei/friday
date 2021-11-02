@@ -28,6 +28,7 @@ export const Profile: React.FC<PropsType> = (props) => {
                              alt="ava"/>
                         <SuperEditableSpan onChangeText={onChangeName} onEnter={changeName} onBlur={changeName}
                                            value={name}/>
+                        
                         {/*<div className={s.wrapBtn}>*/}
                         {/*    <SuperButton*/}
                         {/*        style={{maxWidth: '127px', width: '100%',}}*/}

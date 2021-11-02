@@ -7,6 +7,9 @@
     background-color: #fefeff;
 }
 
+
+
+
 .leftBlock {
 
     width: 243px;
@@ -18,14 +21,53 @@
     -ms-border-radius: 8px 0 0 8px;
     -o-border-radius: 8px 0 0 8px;
 }
-.containerForProfileInPacks {
+
+.wrapProfile {
+    padding: 24px 0 12px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #d9d9f1;
+    border-radius: 8px 0 8px 8px;
+    -webkit-border-radius: 8px 0 8px 8px;
+    -moz-border-radius: 8px 0 8px 8px;
+    -ms-border-radius: 8px 0 8px 8px;
+    -o-border-radius: 8px 0 8px 8px;
 }
+
 .avatar {
-    width: 130px;
-    height: 130px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
+
+.nameHuman {
+    margin-top: 10px;
+    color: #2d2e46;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.nameProfession {
+    margin-top: 5px;
+    color: #83839b;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.btnEditProfile {
+    margin-top: 8px;
+}
+
+
+
+
 .rightBloc {
     margin: 0 43px;
     display: flex;
