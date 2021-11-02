@@ -45,7 +45,7 @@ export const ModalUpdatePackContainer: React.FC<ModalContainerType> = ({
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} placeholder={'Edit Pack'} autoFocus value={packName} onChangeText={onChangeNewName}/>
+                    <SuperInputText className={s.modalInput} placeholder={'Edit Pack'} autoFocus  onChangeText={onChangeNewName}/>
                 </div>
                 <div className={s.modalBtnWrap}>
                     <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close' />

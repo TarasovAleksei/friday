@@ -35,7 +35,7 @@ export const ModalAddPackContainer: React.FC<ModalContainerType> = ({show, chang
                 show={show}
             >
                 <div className ={s.wrapTitle}>
-                    <h3 className={s.titleModal}>Delete pack</h3>
+                    <h3 className={s.titleModal}>Add new pack</h3>
                     <button className={s.modalBtnCross} onClick={changeShowModalAdd}><img className={s.modalImg} src={iconCross} alt="X" /></button>
                 </div>
                 <div className={s.modalLine}></div>
