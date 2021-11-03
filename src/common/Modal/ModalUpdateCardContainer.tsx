@@ -54,6 +54,7 @@ export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
+                    
                     <SuperInputText className={s.modalInput} value={cardName} autoFocus onChangeText={onChangeNewName}/>
                 </div>
                 <div className={s.modalInputWrap}>

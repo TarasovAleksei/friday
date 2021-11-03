@@ -54,12 +54,16 @@ export const ModalUpdateProfileContainer: React.FC<ModalContainerType> = ({
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={name} autoFocus onChangeText={onChangeNewName}/>
+                    <label style={{width:'100%', marginTop:'0'}} htmlFor="">Name
+                        <SuperInputText className={s.modalInput} value={name} autoFocus onChangeText={onChangeNewName}/>
+                    </label>
                 </div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={avatar} onChangeText={onChangeNewAvatar}/>
+                    <label style={{width:'100%', marginTop:'0'}} htmlFor="">Avatar url:
+                        <SuperInputText className={s.modalInput} value={avatar} onChangeText={onChangeNewAvatar}/>
+                    </label>
                 </div>
-                <div className={s.modalBtnWrap}>
+                <div style={{marginTop:'0'}} className={s.modalBtnWrap}>
                     <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close'/>
                     <SuperButton onClick={updateProfileInModal} name='Edit'/>
                 </div>
