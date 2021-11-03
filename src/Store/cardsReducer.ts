@@ -46,10 +46,12 @@ export const fetchCardsTC = (id: string) => (dispatch: Dispatch, getState: () =>
         }
     )
 }
-export const addCardTC = (cardsPack_id: string) => (dispatch: Dispatch<any>) => {
+export const addCardTC = (cardsPack_id: string, question: string, answer: string) => (dispatch: Dispatch<any>) => {
     dispatch(setErrorMessageCardAC(''))
     const card = {
-        cardsPack_id
+        cardsPack_id,
+        question,
+        answer
     }
     cardsAPI.addCard(card).then(() => {
         dispatch(fetchCardsTC(cardsPack_id))
@@ -67,10 +69,10 @@ export const delCardTC = (idPuck: string, idCard: string) => (dispatch: Dispatch
         }
     )
 }
-export const updateCardNameTC = (idPuck: string, idCard: string, name: string) => (dispatch: Dispatch<any>) => {
+export const updateCardNameTC = (idPuck: string, idCard: string, question: string,answer:string) => (dispatch: Dispatch<any>) => {
     dispatch(setErrorMessageCardAC(''))
     const card = {
-        _id: idCard, question: name
+        _id: idCard, question, answer
     }
     cardsAPI.updateCard(card).then(() => {
         dispatch(fetchCardsTC(idPuck))
@@ -90,7 +92,7 @@ export type InitialStateType = {
     pageCount: number
     packUserId: string
     sortPacks: string
-    message:string
+    message: string
 }
 export type setDataCardsActionType = ReturnType<typeof setDataCardsAC>
 export type setCurrentPageActionType = ReturnType<typeof setCurrentPageAC>

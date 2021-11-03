@@ -1,5 +1,5 @@
 import s from './ModalUpdatePackContainer.module.css'
-import React from 'react';
+import React, {useState} from 'react';
 import {ModalWindow} from "./ModalWindow";
 import {SuperButton} from '../SuperComponents/c2-SuperButton/SuperButton';
 import {SuperInputText} from "../SuperComponents/c1-SuperInputText/SuperInputText";
@@ -7,27 +7,34 @@ import iconCross from '../../images/btn/icon-cross.svg';
 
 interface ModalContainerType {
     show: boolean
-    packName: string
+    cardName: string
+    answer: string
     changeShowModalUpdate: () => void
-    updatePackNameCB: (newName: string) => void
-    onChangeNamePack: (name: string) => void
+    updateCardNameCB: () => void
+    onChangeNameCard: (name: string) => void
+    onChangeNewAnswer:(answer:string)=>void
 }
 
-export const ModalUpdatePackContainer: React.FC<ModalContainerType> = ({
+export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
                                                                            show,
-                                                                           packName,
+                                                                           cardName,
+                                                                           answer,
                                                                            changeShowModalUpdate,
-                                                                           updatePackNameCB,
-                                                                           onChangeNamePack
+                                                                           updateCardNameCB,
+                                                                           onChangeNameCard,
+                                                                           onChangeNewAnswer
                                                                        }) => {
-    const onChangeNewName = (packName: string) => {
-        onChangeNamePack(packName)
+
+    const onChangeNewName = (cardName: string) => {
+        onChangeNameCard(cardName)
+    }
+    const onChangeNewAnswerName = (answer: string) => {
+        onChangeNewAnswer(answer)
     }
     const updatePackInModal = () => {
-        updatePackNameCB(packName)
+        updateCardNameCB()
         changeShowModalUpdate()
     }
-    console.log(packName)
     return (
         <>
 
@@ -47,7 +54,10 @@ export const ModalUpdatePackContainer: React.FC<ModalContainerType> = ({
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={packName} autoFocus onChangeText={onChangeNewName}/>
+                    <SuperInputText className={s.modalInput} value={cardName} autoFocus onChangeText={onChangeNewName}/>
+                </div>
+                <div className={s.modalInputWrap}>
+                    <SuperInputText className={s.modalInput} value={answer} onChangeText={onChangeNewAnswerName}/>
                 </div>
                 <div className={s.modalBtnWrap}>
                     <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close'/>

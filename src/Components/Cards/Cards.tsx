@@ -7,6 +7,10 @@ import '../../common/PaginationStyles/Pagination.css'
 import {SuperButton} from "../../common/SuperComponents/c2-SuperButton/SuperButton";
 import {NavLink} from 'react-router-dom';
 import s from './Cards.module.css';
+import {ModalAddCardContainer} from "../../common/Modal/ModalAddCardContainer";
+import * as cluster from "cluster";
+import {ModalDellCardContainer} from "../../common/Modal/ModalDellCardContainer";
+import {ModalUpdateCardContainer} from "../../common/Modal/ModalUpdateCardContainer";
 
 
 export const Cards: React.FC<PropsType> = ({
@@ -24,7 +28,17 @@ export const Cards: React.FC<PropsType> = ({
                                                delCardCB,
                                                updateCardCB,
                                                onChangePage,
-                                               message,
+                                               message, showModalAddCard,
+                                               showModalDellCard,
+                                               showModalUpdateCard,
+                                               changeShowModalAdd,
+                                               changeShowModalDell,
+                                               changeShowModalUpdate,
+                                               nameForModal,
+                                               onChangeId,
+                                               onChangeNameCard,
+                                               newCardAnswer,
+                                               onChangeNewAnswer,
                                            }) => {
 
     let table = cards.map(function (item) {
@@ -35,10 +49,15 @@ export const Cards: React.FC<PropsType> = ({
             <td>{item.updated.substr(0, 10)}</td>
             <td> {<>
                 <SuperButton className={s.btnDel} onClick={() => {
-                    delCardCB(cardURL, item._id)
+                    onChangeId(item._id)
+                    onChangeNameCard(item.question)
+                    changeShowModalDell()
                 }} name={'del'}/>
                 <SuperButton className={s.btnEdit} onClick={() => {
-                    updateCardCB(cardURL, item._id, 'newCustomQuestion')
+                    onChangeId(item._id)
+                    onChangeNameCard(item.question)
+                    onChangeNewAnswer(item.answer)
+                    changeShowModalUpdate()
                 }} name={'Edit'}/>
             </>}
             </td>
@@ -48,22 +67,37 @@ export const Cards: React.FC<PropsType> = ({
 
         <>
             <HeaderContainer/>
+            <ModalAddCardContainer cardsPack_id={cardsPack_id}
+                                   show={showModalAddCard}
+                                   changeShowModalAdd={changeShowModalAdd}
+                                   addCardCB={addCardCB}/>
+            <ModalDellCardContainer
+                show={showModalDellCard}
+                changeShowModalDell={changeShowModalDell}
+                delCardCB={delCardCB}
+                packName={nameForModal}
+            />
+            <ModalUpdateCardContainer
+                show={showModalUpdateCard}
+                answer={newCardAnswer}
+                cardName={nameForModal}
+                changeShowModalUpdate={changeShowModalUpdate}
+                updateCardNameCB={updateCardCB}
+                onChangeNameCard={onChangeNameCard}
+                onChangeNewAnswer={onChangeNewAnswer}
+            />
             <div className={s.cards}>
                 <NavLink style={{width: '150px'}} to={'/packs'}> <SuperButton className={s.btnBack} name={'Pack Name'}/>
                 </NavLink>
 
                 <div className={s.wrapSearch}>
                     <div className={s.plug}>
-                        {/*
-                    <Search filterPacks={filterPacks} />*/}
                     </div>
                     <SuperButton onClick={() => {
-                        addCardCB(cardURL)
+                        changeShowModalAdd()
                     }} name={'Add new card'}/>
                 </div>
-
-
-                {/* <h1 className={s.title}>cards</h1> */} {message}
+                {message}
                 <div className={s.wrapTable}>
                     <table className={s.tableCards}>
                         <thead>
@@ -103,9 +137,20 @@ type PropsType = {
     sortPacks: string
     onChangePage: (currentPage: number) => void
     cardURL: string
-    addCardCB: (id: string) => void
-    delCardCB: (idPuck: string, idCard: string) => void
-    updateCardCB: (idPuck: string, idCard: string, name: string) => void
+    addCardCB: (id: string, question: string, answer: string) => void
+    delCardCB: () => void
+    updateCardCB: () => void
     message: string
+    showModalAddCard: boolean
+    showModalDellCard: boolean
+    showModalUpdateCard: boolean
+    changeShowModalAdd: () => void
+    changeShowModalDell: () => void
+    changeShowModalUpdate: () => void
+    nameForModal: string
+    onChangeId: (id: string) => void
+    onChangeNameCard: (name: string) => void
+    newCardAnswer: string
+    onChangeNewAnswer: (answer: string) => void
 }
 
