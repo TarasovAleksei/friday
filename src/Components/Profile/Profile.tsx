@@ -41,7 +41,7 @@ export const Profile: React.FC<PropsType> = ({
                         <h1 className={s.title}>Personal Information</h1>
                         <img className={s.avatar} src={avatar != null ? avatar : userDefaultPhoto}
                              alt="ava"/>
-                        <div>{name}</div>
+                        <div className={s.nameHuman}>{name}</div>
                         <SuperButton onClick={changeShowModalUpdate} className={s.btnEditProfile} name={'Edit profile'}/>
                     </div>
                 }

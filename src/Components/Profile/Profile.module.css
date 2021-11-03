@@ -7,8 +7,8 @@
 
 .holder {
     display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    justify-content: center;
+    margin-top: 100px;
 
 }
 
@@ -22,19 +22,19 @@
 }
 
 .inner {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*background-color: #ffffff;*/
-    /*max-width: 413px;*/
-    /*width: 100%;*/
-    /*padding: 36px 30px 60px 30px;*/
-    /*box-sizing: border-box;*/
-    /*border-radius: 5px;*/
-    /*-webkit-border-radius: 5px;*/
-    /*-moz-border-radius: 5px;*/
-    /*-ms-border-radius: 5px;*/
-    /*-o-border-radius: 5px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    max-width: 413px;
+    width: 100%;
+    padding: 36px 30px 60px 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .title {
@@ -46,13 +46,23 @@
 }
 
 .avatar {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
-.wrapBtn {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 100px;
+.btnEditProfile {
+    margin-top: 20px;
+}
+
+.nameHuman {
+    margin-top: 10px;
+    color: #2d2e46;
+    font-family: "SF UI Display", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
 }
