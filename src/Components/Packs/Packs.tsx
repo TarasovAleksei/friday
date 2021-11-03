@@ -100,7 +100,7 @@ export const Packs: React.FC<PropsType> = ({
                              alt="ava"/>
                         <span className={s.nameHuman}>{data.name}</span>
                         <span className={s.nameProfession}>Front-end developer</span>
-                        <SuperButton className={s.btnEditProfile} name={'Edit profile'}/>
+
                     </div>
                     <SuperCheckbox style={{margin: "0"}}
                                    checked={showPrivatePacks}

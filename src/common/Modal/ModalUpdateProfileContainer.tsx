@@ -7,32 +7,32 @@ import iconCross from '../../images/btn/icon-cross.svg';
 
 interface ModalContainerType {
     show: boolean
-    cardName: string
-    answer: string
+    name: string
+    avatar: string
     changeShowModalUpdate: () => void
-    updateCardNameCB: () => void
-    onChangeNameCard: (name: string) => void
-    onChangeNewAnswer:(answer:string)=>void
+    updateProfile: () => void
+    onChangeNameProfile: (name: string) => void
+    onChangeAvatarProfile: (avatar: string) => void
 }
 
-export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
-                                                                           show,
-                                                                           cardName,
-                                                                           answer,
-                                                                           changeShowModalUpdate,
-                                                                           updateCardNameCB,
-                                                                           onChangeNameCard,
-                                                                           onChangeNewAnswer
-                                                                       }) => {
+export const ModalUpdateProfileContainer: React.FC<ModalContainerType> = ({
+                                                                              show,
+                                                                              name,
+                                                                              avatar,
+                                                                              changeShowModalUpdate,
+                                                                              updateProfile,
+                                                                              onChangeNameProfile,
+                                                                              onChangeAvatarProfile
+                                                                          }) => {
 
-    const onChangeNewName = (cardName: string) => {
-        onChangeNameCard(cardName)
+    const onChangeNewName = (name: string) => {
+        onChangeNameProfile(name)
     }
-    const onChangeNewAnswerName = (answer: string) => {
-        onChangeNewAnswer(answer)
+    const onChangeNewAvatar = (avatar: string) => {
+        onChangeAvatarProfile(avatar)
     }
-    const updatePackInModal = () => {
-        updateCardNameCB()
+    const updateProfileInModal = () => {
+        updateProfile()
         changeShowModalUpdate()
     }
     return (
@@ -54,14 +54,14 @@ export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={cardName} autoFocus onChangeText={onChangeNewName}/>
+                    <SuperInputText className={s.modalInput} value={name} autoFocus onChangeText={onChangeNewName}/>
                 </div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={answer} onChangeText={onChangeNewAnswerName}/>
+                    <SuperInputText className={s.modalInput} value={avatar} onChangeText={onChangeNewAvatar}/>
                 </div>
                 <div className={s.modalBtnWrap}>
                     <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close'/>
-                    <SuperButton onClick={updatePackInModal} name='Edit'/>
+                    <SuperButton onClick={updateProfileInModal} name='Edit'/>
                 </div>
             </ModalWindow>
         </>

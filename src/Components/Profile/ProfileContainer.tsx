@@ -11,13 +11,20 @@ export const ProfileContainer = () => {
     const data = useSelector<AppRootStateType, UserData>(state => state.app.data)
     const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     const dispatch = useDispatch()
+    const [showModalUpdateProfile, setShowModalUpdateProfile] = useState(false);
     const [newName, setNewName]=useState<string>(data.name)
     const [newAvatar, setNewAvatar]=useState<string>(data.avatar)
-    const changeName = () => {
+    const updateProfile = () => {
         dispatch(updateProfileTC(newName,newAvatar))
     }
     const onChangeName = (newName:string)=>{
         setNewName(newName)
+    }
+    const onChangeAvatar = (newAvatar:string)=>{
+        setNewAvatar(newAvatar)
+    }
+    const changeShowModalUpdate = () => {
+        setShowModalUpdateProfile(!showModalUpdateProfile)
     }
     if (!isLoggedIn) {
         return <Redirect to={'/'}/>
@@ -27,7 +34,10 @@ export const ProfileContainer = () => {
         <Profile name={newName}
                  avatar={newAvatar}
                  onChangeName={onChangeName}
-                 changeName={changeName}
+                 onChangeAvatar={onChangeAvatar}
+                 updateProfile={updateProfile}
+                 showModalUpdateProfile={showModalUpdateProfile}
+                 changeShowModalUpdate={changeShowModalUpdate}
                  status={status}
         />
     );

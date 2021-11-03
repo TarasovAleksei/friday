@@ -7,18 +7,33 @@ import {Preloader} from '../Preloader/Preloader';
 import {SuperButton} from '../../common/SuperComponents/c2-SuperButton/SuperButton';
 import userDefaultPhoto from '../../images/profile/no_foto.jpeg'
 import {SuperEditableSpan} from "../../common/SuperComponents/c4-SuperEditableSpan/SuperEditableSpan";
+import {ModalUpdateProfileContainer} from "../../common/Modal/ModalUpdateProfileContainer";
 
-export const Profile: React.FC<PropsType> = (props) => {
+export const Profile: React.FC<PropsType> = ({
+                                                 name,
+                                                 avatar,
+                                                 onChangeName,
+                                                 onChangeAvatar,
+                                                 updateProfile,
+                                                 status,
+                                                 showModalUpdateProfile,
+                                                 changeShowModalUpdate,
+                                             }) => {
 
-    const {
-        name, avatar,
-        status, changeName,
-        onChangeName,
-    } = props
 
     return (
         <div className={s.profile}>
             <HeaderContainer/>
+            <ModalUpdateProfileContainer
+                show={showModalUpdateProfile}
+                name={name}
+                avatar={avatar}
+                changeShowModalUpdate={changeShowModalUpdate}
+                onChangeNameProfile={onChangeName}
+                onChangeAvatarProfile={onChangeAvatar}
+                updateProfile={updateProfile}
+
+            />
             <div className={s.holder}>
                 {status === 'loading'
                     ? <div className={s.preloaderProfile}><Preloader/></div>
@@ -26,18 +41,8 @@ export const Profile: React.FC<PropsType> = (props) => {
                         <h1 className={s.title}>Personal Information</h1>
                         <img className={s.avatar} src={avatar != null ? avatar : userDefaultPhoto}
                              alt="ava"/>
-                        <SuperEditableSpan onChangeText={onChangeName} onEnter={changeName} onBlur={changeName}
-                                           value={name}/>
-                        
-                        {/*<div className={s.wrapBtn}>*/}
-                        {/*    <SuperButton*/}
-                        {/*        style={{maxWidth: '127px', width: '100%',}}*/}
-                        {/*        name={'Cancel'}/>*/}
-                        {/*    <SuperButton*/}
-                        {/*        style={{maxWidth: '127px', width: '100%',}}*/}
-                        {/*        name={'Save'}/>*/}
-                        {/*</div>*/}
-
+                        <div>{name}</div>
+                        <SuperButton onClick={changeShowModalUpdate} className={s.btnEditProfile} name={'Edit profile'}/>
                     </div>
                 }
             </div>
@@ -51,7 +56,10 @@ type PropsType = {
     name: string
     avatar: string
     onChangeName: (newName: string) => void
-    changeName: () => void
+    onChangeAvatar: (newName: string) => void
+    updateProfile: () => void
     status: RequestStatusType
+    showModalUpdateProfile: boolean
+    changeShowModalUpdate: () => void
 }
 
