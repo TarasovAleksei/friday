@@ -1,12 +1,10 @@
 import React from 'react';
-import {UserData} from "../../common/Api/api";
 import {RequestStatusType} from "../../Store/appReducer";
 import {HeaderContainer} from "../Header/HeaderContainer";
 import s from "./Profile.module.css"
 import {Preloader} from '../Preloader/Preloader';
 import {SuperButton} from '../../common/SuperComponents/c2-SuperButton/SuperButton';
 import userDefaultPhoto from '../../images/profile/no_foto.jpeg'
-import {SuperEditableSpan} from "../../common/SuperComponents/c4-SuperEditableSpan/SuperEditableSpan";
 import {ModalUpdateProfileContainer} from "../../common/Modal/ModalUpdateProfileContainer";
 
 export const Profile: React.FC<PropsType> = ({

@@ -12,7 +12,7 @@ interface ModalContainerType {
     changeShowModalUpdate: () => void
     updateCardNameCB: () => void
     onChangeNameCard: (name: string) => void
-    onChangeNewAnswer:(answer:string)=>void
+    onChangeNewAnswer: (answer: string) => void
 }
 
 export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
@@ -47,20 +47,24 @@ export const ModalUpdateCardContainer: React.FC<ModalContainerType> = ({
                 show={show}
             >
                 <div className={s.wrapTitle}>
-                    <h3 className={s.titleModal}>Edit pack</h3>
+                    <h3 className={s.titleModal}>Edit card</h3>
                     <button className={s.modalBtnCross} onClick={changeShowModalUpdate}><img className={s.modalImg}
                                                                                              src={iconCross} alt="X"/>
                     </button>
                 </div>
                 <div className={s.modalLine}></div>
                 <div className={s.modalInputWrap}>
-                    
-                    <SuperInputText className={s.modalInput} value={cardName} autoFocus onChangeText={onChangeNewName}/>
+                    <label style={{width: '100%', marginTop: '0'}} htmlFor="">Question
+                        <SuperInputText className={s.modalInput} value={cardName} autoFocus
+                                        onChangeText={onChangeNewName}/>
+                    </label>
                 </div>
                 <div className={s.modalInputWrap}>
-                    <SuperInputText className={s.modalInput} value={answer} onChangeText={onChangeNewAnswerName}/>
+                    <label style={{width: '100%', marginTop: '0'}} htmlFor="">Answer
+                        <SuperInputText className={s.modalInput} value={answer} onChangeText={onChangeNewAnswerName}/>
+                    </label>
                 </div>
-                <div className={s.modalBtnWrap}>
+                <div style={{marginTop:'0'}} className={s.modalBtnWrap}>
                     <SuperButton className={s.modalBtnGrey} onClick={changeShowModalUpdate} name='Close'/>
                     <SuperButton onClick={updatePackInModal} name='Edit'/>
                 </div>

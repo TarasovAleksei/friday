@@ -41,13 +41,12 @@ export const ModalUpdateProfileContainer: React.FC<ModalContainerType> = ({
             <ModalWindow
                 enableBackground={true}
                 backgroundOnClick={changeShowModalUpdate}
-
                 width={395}
                 height={233}
                 show={show}
             >
                 <div className={s.wrapTitle}>
-                    <h3 className={s.titleModal}>Edit pack</h3>
+                    <h3 className={s.titleModal}>Edit profile</h3>
                     <button className={s.modalBtnCross} onClick={changeShowModalUpdate}><img className={s.modalImg}
                                                                                              src={iconCross} alt="X"/>
                     </button>
