@@ -20,6 +20,18 @@
     -o-border-radius: 5px;
 }
 
+@media (max-width: 415px) {
+    .inner {
+        min-width: 355px;
+    }
+}
+
+@media (max-width: 360px) {
+    .inner {
+        min-width: 318px;
+    }
+}
+
 
 .wrap {
     width: 163px;

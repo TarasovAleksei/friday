@@ -54,7 +54,7 @@ export const Registration = (props: PropsType) => {
                                 <SuperButton name={'Cancel'}/>
                             </NavLink>
                             <SuperButton disabled={props.disabled || !props.formValid}
-                                         style={{padding: "0px 62px"}}
+                                         style={{padding: "7px 62px"}}
                                          name={'Register'}
                                          onClick={props.registration}/>
                         </div>

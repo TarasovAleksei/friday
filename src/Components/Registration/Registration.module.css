@@ -21,6 +21,18 @@
     -o-border-radius: 5px;
 }
 
+@media (max-width: 415px) {
+    .inner {
+        min-width: 355px;
+    }
+}
+
+@media (max-width: 360px) {
+    .inner {
+        min-width: 318px;
+    }
+}
+
 .wrap {
     width: 163px;
 }
@@ -57,4 +69,16 @@ label {
     margin-top: 70px;
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 415px) {
+    .wrapper {
+        height: 80px !important;
+        margin-top: 30px;
+        height: 100%;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: space-between;
+
+    }
 }

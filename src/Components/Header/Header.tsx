@@ -20,7 +20,7 @@ export const Header: React.FC<PropsType> = (props) => {
             <div className={s.inner}>
                 <div className={s.wrapper}>
                     <div className={s.wrap}>
-                        <img className={s.img} src={logo} alt=""/>
+                        <img className={s.img} src={logo} alt="logo"/>
                     </div>
                     <nav className={s.headerNav}>
                         <ul className={s.list}>

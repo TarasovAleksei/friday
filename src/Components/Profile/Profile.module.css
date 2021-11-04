@@ -37,6 +37,18 @@
     -o-border-radius: 5px;
 }
 
+@media (max-width: 420px) {
+    .inner {
+        max-width: 380px;
+    }
+}
+
+@media (max-width: 385px) {
+    .inner {
+        max-width: 320px;
+    }
+}
+
 .title {
     color: #2d2e46;
     font-family: "SF UI Display", sans-serif;

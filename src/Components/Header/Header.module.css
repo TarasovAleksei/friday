@@ -5,27 +5,44 @@
     background-color: #ebe0e9;
 }
 
+@media (max-width: 1013px) {
+    .header {
+        padding: 5px 136px;
+    }
+}
+
 .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
+}
+
+@media (max-width: 779px) {
+    .inner {
+        justify-content: center;
+    }
 }
 
 .wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     max-width: 677px;
     width: 100%;
 }
 
-.wrap {
-    width: 163px;
+@media (max-width: 779px) {
+    .wrapper {
+        justify-content: center;
+    }
 }
 
+
 .img {
-    width: 100%;
+    width: 163px;
 }
 
 
