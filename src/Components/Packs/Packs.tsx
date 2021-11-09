@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {HeaderContainer} from "../Header/HeaderContainer";
 import {cardsPacksType, UserData} from "../../common/Api/api";
 import {NavLink} from 'react-router-dom';
@@ -11,7 +11,6 @@ import {SuperCheckbox} from "../../common/SuperComponents/c3-SuperCheckbox/Super
 import {ModalAddPackContainer} from "../../common/Modal/ModalAddPackContainer";
 import {ModalDellPackContainer} from "../../common/Modal/ModalDellPackContainer";
 import {ModalUpdatePackContainer} from "../../common/Modal/ModalUpdatePackContainer";
-
 
 export const Packs: React.FC<PropsType> = ({
                                                cardPacks,
@@ -38,7 +37,7 @@ export const Packs: React.FC<PropsType> = ({
                                                changeShowModalDell,
                                                idForDellModal,
                                                nameForDellModal,
-                                               onChangeId,onChangeNamePack,showModalUpdatePack,
+                                               onChangeId, onChangeNamePack, showModalUpdatePack,
                                                changeShowModalUpdate
                                            }) => {
 
@@ -52,23 +51,28 @@ export const Packs: React.FC<PropsType> = ({
             <td>{item.updated.substr(0, 10)}</td>
             <td>{item.rating}</td>
             <td>
+                {item.user_id===data._id &&
                 <SuperButton className={s.btnDel} onClick={() => {
                     changeShowModalDell()
                     onChangeId(item._id)
                     onChangeNamePack(item.name)
-                }} name={'Delete'}/>
+                }} name={'Delete'}/>}
+                {item.user_id===data._id &&
                 <SuperButton className={s.btnEdit} onClick={() => {
                     changeShowModalUpdate()
                     onChangeId(item._id)
                     onChangeNamePack(item.name)
-                }} name={'Edit'}/>
+                }} name={'Edit'}/>}
                 <NavLink to={`/cards/` + item._id}>
                     <SuperButton className={s.btnLearn} name={'Learn'}/>
                 </NavLink>
             </td>
         </tr>
     })
-
+    // const onChangeGradeHandler = (newGradeValue: number[]) => {
+    //     setGradeCardValue(newGradeValue)
+    // }
+    // const [gradeCardValue, setGradeCardValue] = useState<number[]>([0, 90])
     return (
         <>
             <HeaderContainer/>
@@ -93,7 +97,6 @@ export const Packs: React.FC<PropsType> = ({
             <div className={s.packs}>
 
 
-
                 <div className={s.leftBlock}>
                     <div className={s.wrapProfile}>
                         <img className={s.avatar} src={data.avatar != null ? data.avatar : userDefaultPhoto}
@@ -106,11 +109,17 @@ export const Packs: React.FC<PropsType> = ({
                                    checked={showPrivatePacks}
                                    onChangeChecked={changePrivatePacks}/>
                     <span>My packs</span>
+                    {/*<div className={s.rangeValues}>*/}
+                    {/*    <div>min:{gradeCardValue[0]}</div>*/}
+                    {/*    <div>max:{gradeCardValue[1]}</div>*/}
+                    {/*</div>*/}
+                    {/*<div className={s.rangeClass}>*/}
+                    {/*    <div className={s.rangeLine}>*/}
+                    {/*        <Range step={0.1} min={0} max={100} defaultValue={gradeCardValue} value={gradeCardValue}*/}
+                    {/*               onChange={onChangeGradeHandler}/>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
                 </div>
-
-
-
-
                 <div className={s.rightBloc}>
                     <h1 className={s.title}>Packs list</h1> {errorMessage}
                     <div className={s.wrapSearch}>
@@ -122,6 +131,7 @@ export const Packs: React.FC<PropsType> = ({
                                     callSetSearchPack(e.currentTarget.value)
                                 }
                             />
+
                             <SuperButton className={s.btnSearch} onClick={getSearchPacks} name={'.'}/>
                         </div>
                         <SuperButton onClick={changeShowModalAdd} name={'Add new pack'}/>
@@ -170,7 +180,7 @@ type PropsType = {
     errorMessage: string
     addPackCB: (name: string) => void,
     delPackCB: () => void,
-    updatePackNameCB: (newName:string) => void,
+    updatePackNameCB: (newName: string) => void,
     onSortClick: () => void
     sortPointer: null | string
     callSetSearchPack: (value: string) => void
@@ -186,6 +196,6 @@ type PropsType = {
     nameForDellModal: string
     onChangeId: (id: string) => void
     onChangeNamePack: (name: string) => void
-    showModalUpdatePack:boolean
-    changeShowModalUpdate:()=>void
+    showModalUpdatePack: boolean
+    changeShowModalUpdate: () => void
 }

@@ -6,6 +6,7 @@ import {addCardTC, delCardTC, fetchCardsTC, updateCardNameTC} from "../../Store/
 import {InitialStateType, setCurrentPageAC} from "../../Store/cardsReducer";
 import {AppRootStateType} from "../../Store/redux-store";
 import {useParams} from "react-router-dom";
+import {UserData} from "../../common/Api/api";
 
 
 export const CardsContainer = () => {
@@ -21,6 +22,7 @@ export const CardsContainer = () => {
         minGrade,
         message,
     } = useSelector<AppRootStateType, InitialStateType>(state => state.cards)
+    const userId = useSelector<AppRootStateType, string>(state => state.app.data._id)
     const [showModalAddCard, setShowModalAddCard] = useState(false);
     const [showModalDellCard, setShowModalDellCard] = useState(false);
     const [showModalUpdateCard, setShowModalUpdateCard] = useState(false);
@@ -52,7 +54,10 @@ export const CardsContainer = () => {
         setNewCardAnswer(answer)
     }
     useEffect(() => {
-        dispatch(fetchCardsTC(cardURL))
+        setTimeout(() => {
+            dispatch(fetchCardsTC(cardURL))
+        }, 2000)
+
         return () => {
             dispatch(setErrorMessagePuckAC(''))
         }
@@ -68,6 +73,7 @@ export const CardsContainer = () => {
     }
     return (
         <Cards
+            userId={userId}
             cards={cards}
             cardsPack_id={cardURL}
             cardsTotalCount={cardsTotalCount}

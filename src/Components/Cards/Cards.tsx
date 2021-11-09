@@ -14,7 +14,7 @@ import {ModalUpdateCardContainer} from "../../common/Modal/ModalUpdateCardContai
 
 
 export const Cards: React.FC<PropsType> = ({
-                                               cards,
+                                               cards, userId,
                                                cardsPack_id,
                                                page,
                                                pageCount,
@@ -48,17 +48,22 @@ export const Cards: React.FC<PropsType> = ({
             <td>{item.grade}</td>
             <td>{item.updated.substr(0, 10)}</td>
             <td> {<>
+                {item.user_id === userId &&
                 <SuperButton className={s.btnDel} onClick={() => {
                     onChangeId(item._id)
                     onChangeNameCard(item.question)
                     changeShowModalDell()
                 }} name={'del'}/>
-                <SuperButton className={s.btnEdit} onClick={() => {
-                    onChangeId(item._id)
-                    onChangeNameCard(item.question)
-                    onChangeNewAnswer(item.answer)
-                    changeShowModalUpdate()
-                }} name={'Edit'}/>
+                }
+                {
+                    item.user_id === userId && <SuperButton className={s.btnEdit} onClick={() => {
+                        onChangeId(item._id)
+                        onChangeNameCard(item.question)
+                        onChangeNewAnswer(item.answer)
+                        changeShowModalUpdate()
+                    }} name={'Edit'}/>
+                }
+
             </>}
             </td>
         </tr>
@@ -126,6 +131,7 @@ export const Cards: React.FC<PropsType> = ({
 
 //types
 type PropsType = {
+    userId: string
     cardsPack_id: string
     cards: cardsType[],
     cardsTotalCount: null | number

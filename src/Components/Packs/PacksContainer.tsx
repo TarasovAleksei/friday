@@ -42,7 +42,10 @@ export const PacksContainer = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchPacksTC())
+        setTimeout(() => {
+                dispatch(fetchPacksTC())
+            }, 1000
+        )
         return () => {
             dispatch(setErrorMessagePuckAC(''))
         }
@@ -61,7 +64,7 @@ export const PacksContainer = () => {
     const delPackCB = () => {
         dispatch(delPackTC(idForModal))
     }
-    const updatePackNameCB = (newName:string) => {
+    const updatePackNameCB = (newName: string) => {
         dispatch(updatePackNameTC(idForModal, newName))
     }
     const sortClick = (sortPacks: string) => {
